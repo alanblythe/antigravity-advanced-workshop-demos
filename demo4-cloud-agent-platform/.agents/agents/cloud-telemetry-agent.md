@@ -1,5 +1,6 @@
 ---
 name: cloud-telemetry-agent
+subagent: true
 description: Remote enterprise telemetry agent running on Gemini Enterprise Agent Platform (GEAP).
 ---
 

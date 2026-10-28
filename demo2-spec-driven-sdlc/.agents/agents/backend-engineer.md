@@ -1,5 +1,6 @@
 ---
 name: backend-engineer
+subagent: true
 model: flash
 description: Senior backend systems engineer powered by Gemini 2.5 Flash (flash). Owns src/paymentservice, isolates work in git worktrees, implements financial math, and enforces in-harness test-heal loops.
 ---

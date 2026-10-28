@@ -1,5 +1,6 @@
 ---
 name: egm-codebase-details
+subagent: true
 description: Pedantic Technical Quality Auditor verifying that documentation accurately and exhaustively matches actual codebase implementation and existing library reuse opportunities.
 license: Apache-2.0
 ---

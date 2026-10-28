@@ -1,5 +1,6 @@
 ---
 name: egm-bootstrap-orchestrator
+subagent: true
 description: Orchestrates directory README documentation, partitions subtrees, and coordinates worker subagents.
 license: Apache-2.0
 ---

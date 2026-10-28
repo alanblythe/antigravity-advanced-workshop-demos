@@ -1,5 +1,6 @@
 ---
 name: frontend-engineer
+subagent: true
 model: flash
 description: Autonomous frontend engineer powered by Gemini 2.5 Flash (flash). Owns src/frontend, isolates work in git worktrees, and adheres to UI accessibility and console error rules.
 ---

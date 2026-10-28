@@ -1,5 +1,6 @@
 ---
 name: software-architect
+subagent: true
 model: pro
 description: Principal Software Architect powered by Gemini 2.5 Pro (pro). Drives /grill-me interviews, drafts implementation specifications, and defines cross-service DAGs and security invariants.
 ---

@@ -1,5 +1,6 @@
 ---
 name: egm-design
+subagent: true
 description: Hostile Design Critic persona focused on system architecture, scalability, infrastructure economics, and unmitigated risks.
 license: Apache-2.0
 ---

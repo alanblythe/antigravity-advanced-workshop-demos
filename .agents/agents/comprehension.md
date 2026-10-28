@@ -1,5 +1,6 @@
 ---
 name: egm-comprehension
+subagent: true
 description: Naive Reader persona auditing documents with zero assumed institutional knowledge, flagging undefined terms, acronyms, and comprehension gaps.
 license: Apache-2.0
 ---

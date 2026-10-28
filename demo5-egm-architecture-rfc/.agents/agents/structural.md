@@ -1,5 +1,6 @@
 ---
 name: egm-structural
+subagent: true
 description: Structural Layout Validator and Document Architect persona focused on symmetry, heading hierarchy, formatting, and template compliance.
 license: Apache-2.0
 ---
