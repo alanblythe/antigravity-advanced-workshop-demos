@@ -1,0 +1,10 @@
+[project]
+name = "demo2-spec-driven-sdlc"
+version = "0.1.0"
+dependencies = ["pytest>=8.0.0", "ruff>=0.4.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["."]
+
+[tool.ruff]
+line-length = 100

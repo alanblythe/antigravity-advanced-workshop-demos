@@ -1,0 +1,30 @@
+# Environment & credentials
+.env
+.env.local
+*.env
+!.env.example
+.gcloud/
+application_default_credentials.json
+
+# Scratch & runtime artifacts
+.scratch/*
+!**/.scratch/reconcile-plan.md
+.worktrees/
+browser-verification.png
+*.log
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+env/
+venv/
+
+# macOS
+.DS_Store

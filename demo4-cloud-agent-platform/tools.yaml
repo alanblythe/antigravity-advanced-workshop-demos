@@ -1,0 +1,20 @@
+# Bundled MCP Toolbox Configuration for Container Deployment
+version: 1.0.0
+sources:
+  bigquery_telemetry:
+    kind: bigquery
+    project: "${GOOGLE_CLOUD_PROJECT:-your-demo-project}"
+    dataset: "telemetry"
+    location: "us-central1"
+
+tools:
+  describe_table:
+    kind: describe_table
+    source: bigquery_telemetry
+    description: "Inspects schema and column details."
+
+  execute_sql:
+    kind: execute_sql
+    source: bigquery_telemetry
+    description: "Executes read-only analytical SQL."
+    read_only: true

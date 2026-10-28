@@ -1,0 +1,5 @@
+# Cursor Editor Rules
+- Always use Go 1.22+ conventions.
+- Format all code with gofmt.
+- Never commit secrets or hardcoded passwords.
+- Handlers must validate all request fields before dispatch.

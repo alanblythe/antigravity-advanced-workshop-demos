@@ -1,0 +1,32 @@
+{
+  "governance": {
+    "organization": "Example Enterprise COE",
+    "enforcement_mode": "STRICT_GOVERNED",
+    "sandboxing": {
+      "default_sandbox_mode": "STANDARD_CONTAINER",
+      "disallow_inline_eval_scripts": true
+    },
+    "terminal_execution": {
+      "auto_approve_prefixes": [
+        "pytest",
+        "ruff check",
+        "python3 scripts/",
+        "agy mcp list"
+      ],
+      "disallowed_patterns": [
+        "rm -rf /",
+        "DROP TABLE",
+        "DELETE FROM",
+        "curl * | bash"
+      ]
+    },
+    "mcp_registry": {
+      "enforce_catalog_allowlist": true,
+      "approved_servers": [
+        "bq-toolbox",
+        "graphify",
+        "filesystem-sandbox"
+      ]
+    }
+  }
+}
