@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "bq-toolbox": {
+      "command": "toolbox",
+      "args": [
+        "--tools-file",
+        "tools.yaml",
+        "--stdio"
+      ]
+    }
+  }
+}

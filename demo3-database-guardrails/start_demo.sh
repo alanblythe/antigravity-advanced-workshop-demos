@@ -5,8 +5,25 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 echo "==> Preparing Demo 3: Database MCP Toolbox Guardrails..."
-rm -rf .mcp.json
-echo "✔ Reset local MCP configuration (.mcp.json removed). Ready for live addition."
+mkdir -p .agents .gemini
+cat << 'EOF' > .agents/mcp_config.json
+{
+  "mcpServers": {
+    "bq-toolbox": {
+      "command": "toolbox",
+      "args": [
+        "--tools-file",
+        "tools.yaml",
+        "--stdio"
+      ]
+    }
+  }
+}
+EOF
+
+cp .agents/mcp_config.json .gemini/mcp_config.json
+cp .agents/mcp_config.json .mcp.json
+echo "✔ Local MCP configuration verified (.agents/mcp_config.json, .mcp.json, .gemini/mcp_config.json ready with bq-toolbox)."
 
 # Verify ADC environment
 ADC_TARGET="${GOOGLE_APPLICATION_CREDENTIALS:-${HOME}/.config/gcloud-workshop/application_default_credentials.json}"

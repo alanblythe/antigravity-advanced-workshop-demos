@@ -103,7 +103,7 @@ python3 scripts/standardize.py --apply --strategy merge
 ```text
 Trace all callers of reconcile_transactions across the codebase using the code graph. Do not read the entire files.
 ```
-* **Highlight:** Antigravity calls the symbol graph tool (`graphify-mcp` / LSP), returning callers in <2k tokens instead of reading 50k tokens of whole files.
+* **Highlight:** Antigravity calls the symbol graph tool (`ast-graph` / LSP), returning callers in <2k tokens instead of reading 50k tokens of whole files.
 
 #### Step 2: Switch Model Tier for Fast vs. Complex Tasks
 * **Where to run:** Interactive Antigravity TUI (`agy`)
@@ -224,8 +224,8 @@ agy --agent spec-adversary -p "Audit git diff main...feat/reconcile against .age
 
 ## Module 3: Enterprise Data Guardrails & Admin Governance
 
-### Demo 3: Live Database MCP Toolbox Addition & Safe Querying
-* **Goal:** Demonstrate live MCP registration, querying BigQuery read-only, and verifying negative security controls.
+### Demo 3: In-Repo Database MCP Toolbox & Safe Querying
+* **Goal:** Demonstrate repository-committed MCP configuration, querying BigQuery read-only, and verifying negative security controls.
 
 #### Step 1: Reset & Start Demo 3
 * **Where to run:** Workstation Terminal (`demo3-database-guardrails/`)
@@ -239,10 +239,7 @@ source scripts/set_env.sh
 ```bash
 ./start_demo.sh
 ```
-```bash
-agy mcp add bq-toolbox -- toolbox --tools-file "$PWD/tools.yaml" --stdio
-```
-* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile (`antigravity-workshop`), while the MCP server is instantly registered in `.mcp.json` without restarting the IDE or CLI.
+* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile (`antigravity-workshop`), while the MCP server is pre-configured and committed directly in `.mcp.json` (and `.gemini/mcp_config.json`), making tools immediately available without manual registration or polluting global user configs.
 
 #### Step 2: Query Telemetry Data via Antigravity Agent
 * **Where to run:** Interactive Antigravity TUI (`agy`)

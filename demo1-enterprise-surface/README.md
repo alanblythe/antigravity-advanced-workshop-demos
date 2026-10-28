@@ -7,9 +7,10 @@
 ## Files in This Demo
 
 * **`AGENTS.md`**: Neutral open-standard agent configuration adhering to Linux Foundation AAIF specifications.
-* **`.agents/rules/`**: Progressive disclosure rules (`architecture.md`, `security.md`) with explicit trigger frontmatter (`trigger: model_decision`, `paths: ["**/*.py"]`).
+* **`.agents/rules/`**: Progressive disclosure rules (`architecture.md`, `security.md`, `context-hygiene.md`) with explicit trigger frontmatter (`trigger: model_decision`, `paths: ["**/*.py"]`).
+* **`.agents/agents/arch-scout.md`**: Fast Flash-tiered subagent constrained to AST code graph queries.
 * **`.agents/skills/repo-health/SKILL.md`**: Portable skill demonstrating open-standard skill directory structure.
-* **`.mcp.json`**: Model Context Protocol configuration exposing AST symbol graph tools (`graphify-mcp` / LSP).
+* **`.gemini/mcp_config.json`**: Native Antigravity Model Context Protocol configuration exposing AST symbol graph tools (`ast-graph` / LSP).
 * **`scripts/standardize.py`**: Automated workspace harmonization script linking rules and skills across tools.
 
 ---

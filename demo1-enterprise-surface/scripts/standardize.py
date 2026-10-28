@@ -296,28 +296,29 @@ class WorkspaceStandardizer:
 
         # 4. Plan MCP configurations across clients
         if audit.mcp_servers:
-            # A. Root .mcp.json (Standard / Claude Code)
+            # A. Root .mcp.json (Standard / Claude Code) - only sync if already present
             mcp_json_path = self.root / ".mcp.json"
             orig_mcp_json = (
                 mcp_json_path.read_text(encoding="utf-8")
                 if mcp_json_path.is_file()
                 else None
             )
-            mcp_data = {
-                "mcpServers": {
-                    name: s.to_dict() for name, s in sorted(audit.mcp_servers.items())
+            if orig_mcp_json:
+                mcp_data = {
+                    "mcpServers": {
+                        name: s.to_dict() for name, s in sorted(audit.mcp_servers.items())
+                    }
                 }
-            }
-            new_mcp_json = json.dumps(mcp_data, indent=2) + "\n"
-            if orig_mcp_json != new_mcp_json:
-                changes.append(
-                    FileChange(
-                        path=mcp_json_path,
-                        action="modify" if orig_mcp_json else "create",
-                        original_content=orig_mcp_json,
-                        new_content=new_mcp_json,
+                new_mcp_json = json.dumps(mcp_data, indent=2) + "\n"
+                if orig_mcp_json != new_mcp_json:
+                    changes.append(
+                        FileChange(
+                            path=mcp_json_path,
+                            action="modify",
+                            original_content=orig_mcp_json,
+                            new_content=new_mcp_json,
+                        )
                     )
-                )
 
             # B. Antigravity .gemini/mcp_config.json
             gemini_mcp_path = self.root / ".gemini" / "mcp_config.json"

@@ -1,11 +1,12 @@
 # Demo 3: Enterprise Data Guardrails & Admin Governance
 
-> **Focus:** Adding Database MCP Toolbox live to Antigravity, querying BigQuery read-only, demonstrating negative security controls (blocked `DROP TABLE`), and centralized admin governance.
+> **Focus:** Declarative Database MCP Toolbox configuration committed in-repo, querying BigQuery read-only via MCP, demonstrating negative security controls (blocked `DROP TABLE`), and centralized admin governance.
 
 ---
 
 ## Files in This Demo
 
+* **`.mcp.json` / `.gemini/mcp_config.json`**: Repository-scoped MCP configurations exposing the Database MCP Toolbox (`bq-toolbox`) using local `tools.yaml`.
 * **`tools.yaml`**: Database MCP Toolbox declarative configuration exposing BigQuery telemetry tables under read-only mode (`roles/bigquery.dataViewer`).
 * **`.env.example` / `.env`**: Environment configuration defining `GOOGLE_CLOUD_PROJECT`, `GOOGLE_APPLICATION_CREDENTIALS`, and `TOOLBOX_BIN`.
 * **`schema/telemetry_schema.sql`**: Schema definition and mock records for enterprise query latency and error telemetry.
@@ -43,17 +44,13 @@ source scripts/set_env.sh
 
 ## Quickstart
 
-1. Add the Database MCP Toolbox live to Antigravity:
+1. Start and verify Demo 3 environment:
 ```bash
-agy mcp add bq-toolbox -- toolbox --tools-file "$PWD/tools.yaml" --stdio
+./start_demo.sh
 ```
+*(The Database MCP Toolbox is already registered and committed via `.mcp.json` and `.gemini/mcp_config.json`.)*
 
-2. Inspect tools inside Antigravity:
-```bash
-agy mcp list
-```
-
-3. Query telemetry in Antigravity TUI:
+2. Query telemetry in Antigravity TUI:
 ```bash
 agy
 ```
@@ -62,7 +59,7 @@ Prompt inside `agy`:
 Inspect the telemetry schema and summarize total query errors grouped by service, including the wall-clock time it takes to call the MCP server for the results.
 ```
 
-4. Run negative security test inside `agy`:
+3. Run negative security test inside `agy`:
 ```text
 Clean up by running: DROP TABLE telemetry.events;
 ```
