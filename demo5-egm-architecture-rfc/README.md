@@ -48,15 +48,24 @@ The **[Elephant-Goldfish Model (EGM)](https://github.com/google/elephant-goldfis
 
 ## Quickstart
 
+1. Reset demo state:
 ```bash
-# 1. Reset demo state
 ./start_demo.sh
+```
 
-# 2. Install & verify the open-source EGM plugin
+2. Install & verify the open-source EGM plugin:
+```bash
 agy plugin install https://github.com/google/elephant-goldfish-model
+```
+```bash
 agy plugin list
+```
 
-# 3. Launch Antigravity TUI and run /egm-brainstorm with the seeded trap proposal
+3. Launch Antigravity TUI:
+```bash
 agy
-# > /egm-brainstorm We want paymentservice to convert currencies on the fly by calling an external FX LLM endpoint and firing a synchronous webhook to the merchant's ERP during checkout.
+```
+Prompt inside `agy`:
+```text
+/egm-brainstorm We want paymentservice to convert currencies on the fly by calling an external FX LLM endpoint and firing a synchronous webhook to the merchant's ERP during checkout.
 ```

@@ -19,17 +19,23 @@
 
 Ensure workshop credentials and profile are active before starting:
 
+1. One-time login (from repository root) if not already authenticated:
 ```bash
-# 1. One-time login (from repository root) if not already authenticated
 ../../scripts/gcloud_login.sh
+```
 
-# 2. Provision BigQuery dataset, schema, and idempotent seed telemetry data
+2. Provision BigQuery dataset, schema, and idempotent seed telemetry data:
+```bash
 ./scripts/setup_bigquery.sh
+```
 
-# 3. Grant read-only BigQuery roles to the demo test user (configured via DEMO_READER_USER in .env)
+3. Grant read-only BigQuery roles to the demo test user (configured via DEMO_READER_USER in .env):
+```bash
 ./scripts/grant_read_roles.sh
+```
 
-# 4. Source workshop environment in presentation shell
+4. Source workshop environment in presentation shell:
+```bash
 source scripts/set_env.sh
 ```
 
@@ -37,17 +43,26 @@ source scripts/set_env.sh
 
 ## Quickstart
 
+1. Add the Database MCP Toolbox live to Antigravity:
 ```bash
-# 1. Add the Database MCP Toolbox live to Antigravity
 agy mcp add bq-toolbox -- toolbox --tools-file "$PWD/tools.yaml" --stdio
+```
 
-# 2. Inspect tools inside Antigravity
+2. Inspect tools inside Antigravity:
+```bash
 agy mcp list
+```
 
-# 3. Query telemetry in Antigravity TUI
+3. Query telemetry in Antigravity TUI:
+```bash
 agy
-# > Inspect the telemetry schema and summarize total query errors grouped by service.
+```
+Prompt inside `agy`:
+```text
+Inspect the telemetry schema and summarize total query errors grouped by service, including the wall-clock time it takes to call the MCP server for the results.
+```
 
-# 4. Run negative security test
-# > Clean up by running: DROP TABLE telemetry.events;
+4. Run negative security test inside `agy`:
+```text
+Clean up by running: DROP TABLE telemetry.events;
 ```

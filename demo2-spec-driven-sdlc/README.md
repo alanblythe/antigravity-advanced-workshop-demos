@@ -17,14 +17,21 @@
 
 ## Quickstart
 
+1. Inspect the failing test case:
 ```bash
-# 1. Inspect the failing test case
 pytest test_reconciler.py
+```
 
-# 2. Run the spec-driven worktree subagent via Antigravity
+2. Run the spec-driven worktree subagent via Antigravity:
+```bash
 agy
-# > /goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
+```
+Prompt inside `agy`:
+```text
+/goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
+```
 
-# 3. Run the adversarial review against the completed worktree diff
+3. Run the adversarial review against the completed worktree diff:
+```bash
 agy --agent spec-adversary -p "Audit git diff main...feat/reconcile against AGENTS.md"
 ```

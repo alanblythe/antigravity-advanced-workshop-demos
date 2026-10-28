@@ -2,7 +2,9 @@
 
 Run the following command to restore dependencies to `vendor/` directory:
 
-    go mod vendor
+```bash
+go mod vendor
+```
 
 ## Dynamic catalog reloading / artificial delay
 
@@ -19,12 +21,15 @@ of the CPU time.
 You can trigger this feature (and the delay) by sending a `USR1` signal and
 remove it (if needed) by sending a `USR2` signal:
 
-```
-# Trigger bug
+Trigger bug:
+```bash
 kubectl exec \
     $(kubectl get pods -l app=productcatalogservice -o jsonpath='{.items[0].metadata.name}') \
     -c server -- kill -USR1 1
-# Remove bug
+```
+
+Remove bug:
+```bash
 kubectl exec \
     $(kubectl get pods -l app=productcatalogservice -o jsonpath='{.items[0].metadata.name}') \
     -c server -- kill -USR2 1

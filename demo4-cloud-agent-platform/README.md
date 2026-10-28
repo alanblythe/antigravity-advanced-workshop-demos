@@ -21,11 +21,13 @@
 
 Ensure workshop credentials and profile are active before starting:
 
+1. One-time login (from repository root) if not already authenticated:
 ```bash
-# 1. One-time login (from repository root) if not already authenticated
 ../../scripts/gcloud_login.sh
+```
 
-# 2. Source workshop environment in presentation shell
+2. Source workshop environment in presentation shell:
+```bash
 source scripts/set_env.sh
 ```
 
@@ -33,15 +35,24 @@ source scripts/set_env.sh
 
 ## Quickstart
 
+1. Inspect the pre-deployed agent's A2A Agent Card:
 ```bash
-# 1. Inspect the pre-deployed agent's A2A Agent Card
 bash scripts/test_invoke.sh --card
+```
 
-# 2. Invoke the deployed GEAP agent from Antigravity TUI
+2. Invoke the deployed GEAP agent from Antigravity TUI:
+```bash
 agy
-# > @cloud-telemetry-agent Analyze query error spikes across the cluster over the last 24h.
+```
+Prompt inside `agy`:
+```text
+@cloud-telemetry-agent Analyze query error spikes across the cluster over the last 24h.
+```
 
-# 3. Inspect deployment recipe
+3. Inspect deployment recipe:
+```bash
 cat Dockerfile
+```
+```bash
 cat scripts/deploy.sh
 ```

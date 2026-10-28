@@ -20,11 +20,13 @@ Before starting the workshop or between dry-runs, run this single command to res
 
 Before presenting live demos that interact with Google Cloud services (Demo 3 BigQuery telemetry and Demo 4 GEAP cloud agent), initialize the isolated workshop credentials:
 
+1. Login with dedicated workshop profile (saved to `~/.config/gcloud-workshop`):
 ```bash
-# 1. Login with dedicated workshop profile (saved to ~/.config/gcloud-workshop)
 ./scripts/gcloud_login.sh
+```
 
-# 2. Source the environment into your presentation terminal
+2. Source the environment into your presentation terminal:
+```bash
 source ./scripts/set_gcloud_env.sh
 ```
 *Note: Sourcing `set_gcloud_env.sh` sets `GOOGLE_APPLICATION_CREDENTIALS`, `CLOUDSDK_CONFIG`, `GOOGLE_CLOUD_PROJECT`, and `GCLOUD_PROFILE` without affecting your personal global gcloud settings.*
@@ -62,11 +64,17 @@ source ./scripts/set_gcloud_env.sh
 
 #### Step 2: Enterprise CLI Login & Token Check
 * **Where to run:** Workstation Terminal (`demo1-enterprise-surface/`)
-* **Command:**
+* **Commands:**
 ```bash
 cd demo1-enterprise-surface
+```
+```bash
 ./start_demo.sh
+```
+```bash
 agy login --enterprise
+```
+```bash
 agy auth status
 ```
 * **Highlight:** Show verified corporate identity and active project binding.
@@ -74,11 +82,12 @@ agy auth status
 #### Step 3: Run Workspace Standardization
 * **Where to run:** Workstation Terminal (`demo1-enterprise-surface/`)
 * **Commands:**
+1. Dry run: Audit and detect multi-tool rules (Cursor + Claude):
 ```bash
-# 1. Dry run: Audit and detect multi-tool rules (Cursor + Claude)
 python3 scripts/standardize.py --dry-run --strategy merge
-
-# 2. Apply canonical AGENTS.md and symlinks
+```
+2. Apply canonical AGENTS.md and symlinks:
+```bash
 python3 scripts/standardize.py --apply --strategy merge
 ```
 * **Highlight:** Point out how Antigravity detects existing **Cursor** (`.cursorrules`) and **Claude Code** (`CLAUDE.md`) configurations, merges them into the open Linux Foundation **`AGENTS.md`**, and generates backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`). This proves Antigravity doesn't disrupt your organization's Cursor developers—it gives the entire team a single source of truth without configuration drift.
@@ -113,9 +122,11 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 
 #### Step 1: Prepare Clean Demo 2 Environment
 * **Where to run:** Workstation Terminal (`demo2-spec-driven-sdlc/`)
-* **Command:**
+* **Commands:**
 ```bash
 cd demo2-spec-driven-sdlc
+```
+```bash
 ./start_demo.sh
 ```
 
@@ -221,8 +232,14 @@ agy --agent spec-adversary -p "Audit git diff main...feat/reconcile against .age
 * **Commands:**
 ```bash
 cd demo3-database-guardrails
+```
+```bash
 source scripts/set_env.sh
+```
+```bash
 ./start_demo.sh
+```
+```bash
 agy mcp add bq-toolbox -- toolbox --tools-file "$PWD/tools.yaml" --stdio
 ```
 * **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile (`antigravity-workshop`), while the MCP server is instantly registered in `.mcp.json` without restarting the IDE or CLI.
@@ -265,7 +282,11 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 * **Commands:**
 ```bash
 cd demo4-cloud-agent-platform
+```
+```bash
 source scripts/set_env.sh
+```
+```bash
 ./start_demo.sh
 ```
 * **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop credentials and exports `GEAP_AGENT_URL`, connecting the local workstation directly to the deployed cloud agent platform.
@@ -305,11 +326,17 @@ curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
 
 #### Step 1: Reset Demo 5 & Install the Open-Source EGM Plugin
 * **Where to run:** Workstation Terminal (`demo5-egm-architecture-rfc/`)
-* **Command:**
+* **Commands:**
 ```bash
 cd demo5-egm-architecture-rfc
+```
+```bash
 ./start_demo.sh
+```
+```bash
 agy plugin install https://github.com/google/elephant-goldfish-model
+```
+```bash
 agy plugin list
 ```
 * **Highlight:** Show how `plugin.json` at the repository root installs all 7 EGM skills (`egm-brainstorm`, `egm-draft`, `egm-review`, `egm-resolve`, `egm-bootstrap`, `egm-review-loop`, `egm-drift-report`) and 9 specialized subagent personas (`egm-synthesizer`, `egm-zoom-out`, `egm-design`, `egm-codebase-details`, etc.) into `~/.gemini/config/plugins/egm/`.

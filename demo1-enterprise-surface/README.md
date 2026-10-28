@@ -16,13 +16,17 @@
 
 ## Quickstart
 
+1. Verify enterprise authentication:
 ```bash
-# 1. Verify enterprise authentication
 agy auth status
+```
 
-# 2. Harmonize workspace standards
+2. Harmonize workspace standards:
+```bash
 python3 scripts/standardize.py
+```
 
-# 3. Test symbol navigation via AST
+3. Test symbol navigation via AST:
+```bash
 agy -p "Trace all callers of reconcile_transactions using the symbol graph"
 ```
