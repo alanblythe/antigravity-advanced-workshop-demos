@@ -39,7 +39,7 @@ source scripts/set_env.sh
 
 ```bash
 # 1. Add the Database MCP Toolbox live to Antigravity
-agy mcp add bq-toolbox -- toolbox --tools-file tools.yaml --stdio
+agy mcp add bq-toolbox -- toolbox --tools-file "$PWD/tools.yaml" --stdio
 
 # 2. Inspect tools inside Antigravity
 agy mcp list

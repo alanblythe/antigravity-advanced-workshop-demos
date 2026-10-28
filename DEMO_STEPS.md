@@ -223,7 +223,7 @@ agy --agent spec-adversary -p "Audit git diff main...feat/reconcile against .age
 cd demo3-database-guardrails
 source scripts/set_env.sh
 ./start_demo.sh
-agy mcp add bq-toolbox -- toolbox --tools-file tools.yaml --stdio
+agy mcp add bq-toolbox -- toolbox --tools-file "$PWD/tools.yaml" --stdio
 ```
 * **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile (`antigravity-workshop`), while the MCP server is instantly registered in `.mcp.json` without restarting the IDE or CLI.
 
