@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "deny": [
+      "read_file(src/**/*.py)",
+      "read_file(demo2-spec-driven-sdlc/src/**/*.py)"
+    ],
+    "allow": [
+      "mcp(ast-graph/*)",
+      "run_command(python3 scripts/ast_mcp.py*)"
+    ]
+  }
+}
