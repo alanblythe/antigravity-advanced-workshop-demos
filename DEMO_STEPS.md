@@ -206,11 +206,15 @@ python3 app.py
 ### Demo 2D: Immediate Multi-Model Adversarial PR Audit (Claude 3.5 Sonnet)
 * **Goal:** Catch the subtle invariant flaw that unit tests and browser tests missed *before* merging the worktree.
 
-#### Step 1: Run Claude 3.5 Sonnet Adversarial Reviewer Subagent
-* **Where to run:** Workstation Terminal (`demo2-spec-driven-sdlc/`)
-* **Command:**
+#### Step 1: Run Adversarial Reviewer Subagent
+* **Where to run:** Interactive Antigravity TUI (`agy`) in `demo2-spec-driven-sdlc/`
+* **Commands:**
 ```bash
-agy --agent spec-adversary -p "Audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants"
+agy
+```
+* **Prompt inside `agy`:**
+```text
+Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
 ```
 * **Highlight:** The reviewer subagent—running **Claude 3.5 Sonnet on Vertex AI**—flags a **SEV-2 invariant violation**:
   `reconciler.py:42 uses time.sleep(1.0) linear backoff instead of the mandatory exponential backoff with full jitter specified in .agents/rules/backend.md §4.2.`

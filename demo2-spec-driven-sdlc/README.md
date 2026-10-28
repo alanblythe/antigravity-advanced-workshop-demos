@@ -33,5 +33,9 @@ Prompt inside `agy`:
 
 3. Run the adversarial review against the completed worktree diff:
 ```bash
-agy --agent spec-adversary -p "Audit git diff main...feat/reconcile against AGENTS.md"
+agy
+```
+Prompt inside `agy`:
+```text
+Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against AGENTS.md.
 ```

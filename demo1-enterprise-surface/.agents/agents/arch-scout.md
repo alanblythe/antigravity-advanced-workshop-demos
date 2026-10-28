@@ -3,8 +3,7 @@ name: arch-scout
 subagent: true
 description: Fast, token-efficient architecture scout running on Flash with restricted source reads.
 model: flash
-tools:
-  - mcp(ast-graph/*)
+inheritMcp: true
 ---
 
 # Architecture Scout

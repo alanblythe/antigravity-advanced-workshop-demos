@@ -31,3 +31,12 @@ python3 scripts/standardize.py
 ```bash
 agy -p "Trace all callers of reconcile_transactions using the symbol graph"
 ```
+
+4. Execute ArchScout subagent to map dependencies:
+```bash
+agy
+```
+Prompt inside `agy`:
+```text
+Use invoke subagent to execute the arch-scout to map dependencies.
+```
