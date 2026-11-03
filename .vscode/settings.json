@@ -1,0 +1,49 @@
+{
+  "terminal.integrated.profiles.osx": {
+    "Demo 1: Enterprise Surface": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo1-enterprise-surface/workspace' && printf '\\033]2;Demo 1: Enterprise Surface\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "shield"
+    },
+    "Demo 2: Spec-Driven SDLC": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo2-spec-driven-sdlc/workspace' && printf '\\033]2;Demo 2: Spec-Driven SDLC\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "git-branch"
+    },
+    "Demo 3: Database Guardrails": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo3-database-guardrails/workspace' && printf '\\033]2;Demo 3: Database Guardrails\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "database"
+    },
+    "Demo 4: Cloud Agent Platform": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo4-cloud-agent-platform/workspace' && printf '\\033]2;Demo 4: Cloud Agent Platform\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "cloud"
+    },
+    "Demo 5: EGM Architecture RFC": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo5-egm-architecture-rfc/workspace' && printf '\\033]2;Demo 5: EGM Architecture RFC\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "book"
+    },
+    "Demo 6: Linked Design & Boost": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo6-linked-design-boost/workspace' && printf '\\033]2;Demo 6: Linked Design & Boost\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "zap"
+    },
+    "Demo 7: Contract Spec TDD": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo7-contract-spec-tdd/workspace' && printf '\\033]2;Demo 7: Contract Spec TDD\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "beaker"
+    },
+    "Demo 8: Teamwork Monolith Refactor": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo8-teamwork-monolith-refactor/workspace' && printf '\\033]2;Demo 8: Teamwork Monolith Refactor\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "organization"
+    },
+    "Demo 9: Adversarial Review Loop": {
+      "path": "/bin/zsh",
+      "args": ["-c", "cd '${workspaceFolder}/demo9-adversarial-review-loop/workspace' && printf '\\033]2;Demo 9: Adversarial Review Loop\\007' && agy --dangerously-skip-permissions; exec zsh -l"],
+      "icon": "eye"
+    }
+  }
+}

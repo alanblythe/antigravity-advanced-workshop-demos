@@ -1,0 +1,14 @@
+# Presenter & instructor runbooks (prevents agents from discovering test answers/cheat sheets)
+DEMO_STEPS.md
+demo*/README.md
+demo*/.seed/
+
+# Environment & credentials
+.env
+.env.local
+*.env
+application_default_credentials.json
+
+# Scratch & worktrees
+.scratch/
+.worktrees/
