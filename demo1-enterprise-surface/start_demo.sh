@@ -2,7 +2,8 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
+mkdir -p "$SCRIPT_DIR/workspace"
+cd "$SCRIPT_DIR/workspace"
 
 echo "==> [Demo 1] Resetting workspace to brownfield state (Cursor + Claude)..."
 rm -f AGENTS.md GEMINI.md

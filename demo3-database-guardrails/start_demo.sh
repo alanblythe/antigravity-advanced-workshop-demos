@@ -5,7 +5,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 echo "==> Preparing Demo 3: Database MCP Toolbox Guardrails..."
-mkdir -p .agents .gemini
+mkdir -p "$SCRIPT_DIR/workspace/.agents" "$SCRIPT_DIR/workspace/.gemini"
+cd "$SCRIPT_DIR/workspace"
 cat << 'EOF' > .agents/mcp_config.json
 {
   "mcpServers": {

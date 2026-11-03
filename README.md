@@ -44,6 +44,27 @@ TRACK B: ANTIGRAVITY 201 — SPEC-DRIVEN SDLC & MULTI-AGENT WORKFLOWS (Demos 6�
 
 ---
 
+### Harness vs. Workspace Execution Architecture
+
+To prevent coding agents from cheating or suffering prompt dilution by discovering presenter cheat sheets, defect notes, or runbooks (`DEMO_STEPS.md`), every demo directory enforces a two-tier boundary:
+
+```
+demoX-.../
+├── README.md               # Presenter & student guide (harness level)
+├── start_demo.sh           # Deterministic workspace reset script
+├── .seed/                  # Pristine seed template restored by start_demo.sh
+└── workspace/              # 🎯 Dedicated Agent Execution Surface
+    ├── AGENTS.md           # Local domain constitution & standards
+    ├── src/                # Brownfield source code under development
+    ├── tests/              # Contract tests / verification suite
+    └── .agents/            # Path-scoped rules & custom subagent definitions
+```
+
+* **Presenter Harness (`demoX/`):** Contains the demo's `README.md`, `.seed/` pristine assets, and the `./start_demo.sh` reset engine.
+* **Agent Execution Surface (`demoX/workspace/`):** The isolated working directory where the presenter/student executes `pytest`, launches `agy`, and where coding subagents write code and run test loops.
+
+---
+
 ## Presenter Runbook & Step-by-Step Instructions
 
 For exact command blocks, where to execute them (IDE vs. TUI vs. terminal), and what to highlight on screen during live presentation, see:

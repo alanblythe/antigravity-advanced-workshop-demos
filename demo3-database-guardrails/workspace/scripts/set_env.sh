@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Sourced helper to activate workshop ADC and environment for Demo 3
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || (cd "${SCRIPT_DIR}/../.." && pwd))"
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     echo "ERROR: This script must be SOURCED, not executed directly."

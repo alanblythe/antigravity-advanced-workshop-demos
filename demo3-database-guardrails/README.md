@@ -48,9 +48,14 @@ source scripts/set_env.sh
 ```bash
 ./start_demo.sh
 ```
-*(The Database MCP Toolbox is already registered and committed via `.mcp.json` and `.gemini/mcp_config.json`.)*
 
-2. Query telemetry in Antigravity TUI:
+2. Open the clean agent workspace (`workspace/`):
+```bash
+cd workspace
+```
+*(The Database MCP Toolbox is already registered and committed via `.mcp.json` and `.gemini/mcp_config.json` inside `workspace/`.)*
+
+3. Query telemetry in Antigravity TUI inside `workspace/`:
 ```bash
 agy
 ```

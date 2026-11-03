@@ -17,22 +17,28 @@
 
 ## Quickstart
 
-1. Verify enterprise authentication:
+1. Reset to initial brownfield state:
 ```bash
-agy auth status
+./start_demo.sh
 ```
 
-2. Harmonize workspace standards:
+2. Open the clean agent workspace (`workspace/`):
 ```bash
-python3 scripts/standardize.py
+cd workspace
 ```
 
-3. Test symbol navigation via AST:
+3. Harmonize workspace standards:
+```bash
+python3 scripts/standardize.py --dry-run --strategy merge
+python3 scripts/standardize.py --apply --strategy merge
+```
+
+4. Test symbol navigation via AST inside `workspace/`:
 ```bash
 agy -p "Trace all callers of reconcile_transactions using the symbol graph"
 ```
 
-4. Execute ArchScout subagent to map dependencies:
+5. Execute ArchScout subagent to map dependencies:
 ```bash
 agy
 ```

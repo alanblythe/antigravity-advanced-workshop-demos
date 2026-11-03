@@ -35,12 +35,22 @@ source scripts/set_env.sh
 
 ## Quickstart
 
-1. Inspect the pre-deployed agent's A2A Agent Card:
+1. Start and verify Demo 4 environment:
+```bash
+./start_demo.sh
+```
+
+2. Open the clean agent workspace (`workspace/`):
+```bash
+cd workspace
+```
+
+3. Inspect the pre-deployed agent's A2A Agent Card:
 ```bash
 bash scripts/test_invoke.sh --card
 ```
 
-2. Invoke the deployed GEAP agent from Antigravity TUI:
+4. Invoke the deployed GEAP agent from Antigravity TUI inside `workspace/`:
 ```bash
 agy
 ```

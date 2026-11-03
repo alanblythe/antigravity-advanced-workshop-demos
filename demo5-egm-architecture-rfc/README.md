@@ -53,7 +53,12 @@ The **[Elephant-Goldfish Model (EGM)](https://github.com/google/elephant-goldfis
 ./start_demo.sh
 ```
 
-2. Install & verify the open-source EGM plugin:
+2. Open the clean agent workspace (`workspace/`):
+```bash
+cd workspace
+```
+
+3. Install & verify the open-source EGM plugin:
 ```bash
 agy plugin install https://github.com/google/elephant-goldfish-model
 ```
@@ -61,7 +66,7 @@ agy plugin install https://github.com/google/elephant-goldfish-model
 agy plugin list
 ```
 
-3. Launch Antigravity TUI:
+4. Launch Antigravity TUI inside `workspace/`:
 ```bash
 agy
 ```

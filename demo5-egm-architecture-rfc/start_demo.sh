@@ -2,7 +2,8 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$DIR"
+mkdir -p "$DIR/workspace"
+cd "$DIR/workspace"
 
 echo "==> [Demo 5] Resetting Elephant-Goldfish Model (EGM) workspace..."
 rm -f concepts_brief.md design_draft.md goldfish_review_report.md

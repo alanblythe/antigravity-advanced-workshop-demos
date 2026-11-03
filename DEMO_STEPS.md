@@ -75,20 +75,15 @@ source ./scripts/set_gcloud_env.sh
 * **Commands:**
 ```bash
 cd demo1-enterprise-surface
-```
-```bash
 ./start_demo.sh
-```
-```bash
+cd workspace
 agy login --enterprise
-```
-```bash
 agy auth status
 ```
 * **Highlight:** Show verified corporate identity and active project binding.
 
 #### Step 3: Run Workspace Standardization
-* **Where to run:** Workstation Terminal (`demo1-enterprise-surface/`)
+* **Where to run:** Workstation Terminal (`demo1-enterprise-surface/workspace/`)
 * **Commands:**
 1. Dry run: Audit and detect multi-tool rules (Cursor + Claude):
 ```bash
@@ -106,7 +101,7 @@ python3 scripts/standardize.py --apply --strategy merge
 * **Goal:** Demonstrate navigating a multi-thousand-line codebase without sending massive token payloads to the model.
 
 #### Step 1: Query Function Callers via AST / MCP
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo1-enterprise-surface/workspace/`
 * **Prompt inside `agy`:**
 ```text
 Trace all callers of reconcile_transactions across the codebase using the code graph. Do not read the entire files.
@@ -133,20 +128,19 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 * **Commands:**
 ```bash
 cd demo2-spec-driven-sdlc
-```
-```bash
 ./start_demo.sh
+cd workspace
 ```
 
 #### Step 2: Path-Scoped Rules Inspection
 * **Where to run:** VS Code Editor
 * **Files to show:**
-  * `.agents/rules/frontend.md` (`paths: ["src/frontend/**"]`)
-  * `.agents/rules/backend.md` (`paths: ["src/paymentservice/**", "reconciler.py"]`)
+  * `workspace/.agents/rules/frontend.md` (`paths: ["src/frontend/**"]`)
+  * `workspace/.agents/rules/backend.md` (`paths: ["src/paymentservice/**", "reconciler.py"]`)
 * **Highlight:** Point out progressive disclosure: when editing backend reconciliation, frontend UI rules are never loaded into context.
 
 #### Step 3: Interview Edge Cases with `/grill-me`
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Command inside `agy`:**
 ```text
 /grill-me We need to add transaction reconciliation with automatic retry and idempotency in reconciler.py. Interview me on edge cases, failure modes, and security invariants.
@@ -154,7 +148,7 @@ cd demo2-spec-driven-sdlc
 * **Highlight:** Show the agent asking 3 pointed questions (duplicate `tx_id` handling, transient network retry backoff, and lock safety).
 
 #### Step 4: Lock the Implementation Plan with `/plan`
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Command inside `agy`:**
 ```text
 /plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.
@@ -166,7 +160,7 @@ cd demo2-spec-driven-sdlc
 * **Goal:** Delegate the plan to a subagent that isolates its work in a Git worktree and heals a failing unit test using Gemini 2.5 Flash.
 
 #### Step 1: Launch Subagent with Goal Execution
-* **Where to run:** Interactive Antigravity TUI (`agy`) in `demo2-spec-driven-sdlc/`
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Command inside `agy`:**
 ```text
 /goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
@@ -188,7 +182,7 @@ cd demo2-spec-driven-sdlc
 * **Goal:** Show that verification doesn't stop at backend unit tests—the Antigravity 2.0 Agent Browser verifies the live web UI.
 
 #### Step 1: Start the Local Dashboard
-* **Where to run:** Background Terminal Pane (`demo2-spec-driven-sdlc/`)
+* **Where to run:** Background Terminal Pane (`demo2-spec-driven-sdlc/workspace/`)
 * **Command:**
 ```bash
 python3 app.py
@@ -196,7 +190,7 @@ python3 app.py
 *Server starts on `http://localhost:8000`.*
 
 #### Step 2: Autonomous Browser Verification
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Prompt inside `agy`:**
 ```text
 @browser Open http://localhost:8000, click "Run Batch Reconciliation", verify the #settlement-status badge renders "SETTLED" in the DOM, and assert 0 console errors.
@@ -215,7 +209,7 @@ python3 app.py
 * **Goal:** Catch the subtle invariant flaw that unit tests and browser tests missed *before* merging the worktree.
 
 #### Step 1: Run Adversarial Reviewer Subagent
-* **Where to run:** Interactive Antigravity TUI (`agy`) in `demo2-spec-driven-sdlc/`
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Commands:**
 ```bash
 agy
@@ -244,17 +238,14 @@ Use invoke subagent to execute spec-adversary to audit git diff main...feat/reco
 * **Commands:**
 ```bash
 cd demo3-database-guardrails
-```
-```bash
 source scripts/set_env.sh
-```
-```bash
 ./start_demo.sh
+cd workspace
 ```
-* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile, while the MCP server is pre-configured and committed directly in `.mcp.json` (and `.gemini/mcp_config.json`), making tools immediately available without manual registration or polluting global user configs.
+* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile, while the MCP server is pre-configured and committed directly in `workspace/.mcp.json` (and `workspace/.gemini/mcp_config.json`), making tools immediately available without manual registration or polluting global user configs.
 
 #### Step 2: Query Telemetry Data via Antigravity Agent
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo3-database-guardrails/workspace/`
 * **Prompt inside `agy`:**
 ```text
 Using bq-toolbox, inspect the telemetry dataset schema and calculate the average query latency grouped by status code for today.
@@ -262,7 +253,7 @@ Using bq-toolbox, inspect the telemetry dataset schema and calculate the average
 * **Highlight:** Antigravity calls `bq-toolbox.describe_table`, writes the read-only SQL, executes it against BigQuery, and synthesizes the table results live.
 
 #### Step 3: Run the Negative Security Test
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo3-database-guardrails/workspace/`
 * **Prompt inside `agy`:**
 ```text
 Clear the telemetry events table to reset the test environment: DROP TABLE telemetry.events;
@@ -276,7 +267,7 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 
 #### Step 4: Show Centralized Admin Governance Config
 * **Where to run:** VS Code Editor
-* **File to show:** `demo3-database-guardrails/.gemini/settings.json`
+* **File to show:** `demo3-database-guardrails/workspace/.gemini/settings.json`
 * **Highlight:** Show enterprise allowlist/denylist rules governing terminal commands, container sandboxing, and approved MCP registries.
 
 ---
@@ -291,17 +282,14 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 * **Commands:**
 ```bash
 cd demo4-cloud-agent-platform
-```
-```bash
 source scripts/set_env.sh
-```
-```bash
 ./start_demo.sh
+cd workspace
 ```
 * **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop credentials and exports `GEAP_AGENT_URL`, connecting the local workstation directly to the deployed cloud agent platform.
 
 #### Step 2: Inspect the Production A2A Agent Card
-* **Where to run:** Workstation Terminal (`demo4-cloud-agent-platform/`)
+* **Where to run:** Workstation Terminal (`demo4-cloud-agent-platform/workspace/`)
 * **Command:**
 ```bash
 curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
@@ -311,12 +299,12 @@ curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
 #### Step 3: Show the Clean Container Deployment Recipe
 * **Where to run:** VS Code Editor
 * **Files to show:** 
-  * `demo4-cloud-agent-platform/Dockerfile` (bundling `toolbox` binary + `tools.yaml`)
-  * `demo4-cloud-agent-platform/app/agent.py` (ADK `McpToolset` integration)
-  * `demo4-cloud-agent-platform/scripts/deploy.sh` (`agents-cli deploy` flags)
+  * `demo4-cloud-agent-platform/workspace/Dockerfile` (bundling `toolbox` binary + `tools.yaml`)
+  * `demo4-cloud-agent-platform/workspace/app/agent.py` (ADK `McpToolset` integration)
+  * `demo4-cloud-agent-platform/workspace/scripts/deploy.sh` (`agents-cli deploy` flags)
 
 #### Step 4: Invoke the Cloud Agent from Local Antigravity
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo4-cloud-agent-platform/workspace/`
 * **Prompt inside `agy`:**
 ```text
 @cloud-telemetry-agent Analyze query error anomalies in the enterprise BigQuery cluster across the last 24 hours.
@@ -338,20 +326,15 @@ curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
 * **Commands:**
 ```bash
 cd demo5-egm-architecture-rfc
-```
-```bash
 ./start_demo.sh
-```
-```bash
+cd workspace
 agy plugin install https://github.com/google/elephant-goldfish-model
-```
-```bash
 agy plugin list
 ```
 * **Highlight:** Show how `plugin.json` at the repository root installs all 7 EGM skills (`egm-brainstorm`, `egm-draft`, `egm-review`, `egm-resolve`, `egm-bootstrap`, `egm-review-loop`, `egm-drift-report`) and 9 specialized subagent personas (`egm-synthesizer`, `egm-zoom-out`, `egm-design`, `egm-codebase-details`, etc.) into `~/.gemini/config/plugins/egm/`.
 
 #### Step 2: Pitch a "Half-Baked" Architecture Trap to `/egm-brainstorm`
-* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo5-egm-architecture-rfc/`
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo5-egm-architecture-rfc/workspace/`
 * **Command inside `agy`:**
 ```text
 /egm-brainstorm We want paymentservice to convert currencies on the fly by calling an external FX LLM endpoint and firing a synchronous webhook to the merchant's ERP during checkout.
@@ -364,7 +347,7 @@ agy plugin list
      * `Clarify additional constraints or assumptions in chat`
 
 #### Step 3: Trigger the 6-Lens Parallel Goldfish Swarm
-* **Where to run:** Interactive Antigravity TUI (`agy`)
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo5-egm-architecture-rfc/workspace/`
 * **Action:** Select **`Review with Goldfishes`**.
 * **What to watch on screen (The Goldfishes):**
   `egm-synthesizer` spawns 6 stateless Goldfish subagents in parallel (`invoke_subagent`) with **zero conversation history**:
@@ -374,7 +357,7 @@ agy plugin list
   * **Observability & SRE Debuggability (`egm-implementation-readiness`):** Flags that synchronous webhooks violate the 150ms p99 checkout SLA (`AGENTS.md §2`) and requires an async transactional outbox with **exponential backoff and full jitter** (`AGENTS.md §3.2`).
 
 #### Step 4: Artifact-First Brief (`concepts_brief.md`) & RFC Handoff
-* **Where to run:** Interactive Antigravity TUI (`agy`) & VS Code Editor
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo5-egm-architecture-rfc/workspace/` & VS Code Editor
 * **What to watch on screen:**
   1. **Artifact-First Delivery:** Instead of dumping a wall of text in chat, the agent writes a plain-English `concepts_brief.md` and highlights only the top 2–3 Goldfish objections in chat.
   2. **Step 4 Handoff Gate:** After confirming alignment, select **`Publish concepts_brief.md as RFC for team feedback`** $\rightarrow$ writes `docs/designs/<feature_name>.md` and registers the RFC in `docs/designs/SITEMAP.md` (or select **`Proceed to /egm-draft`** to generate `design_draft.md`).
@@ -400,15 +383,16 @@ agy plugin list
 ```bash
 cd demo6-linked-design-boost
 ./start_demo.sh
+cd workspace
 pytest
 ```
 * **Files to highlight in editor:**
-  * `AGENTS.md` (delegates data contracts and acceptance criteria to `@DESIGN.md`)
-  * `DESIGN.md` (specifies `Decimal("0.01")` with `ROUND_HALF_UP`, `PERCENT` before `FIXED` ordering, duplicate code deduplication, and the 50% maximum discount ceiling across `AC-1`–`AC-4`)
-  * `.agents/rules/discount-invariants.md` (`paths: ["src/discountservice/**"]`)
+  * `workspace/AGENTS.md` (delegates data contracts and acceptance criteria to `@DESIGN.md`)
+  * `workspace/DESIGN.md` (specifies `Decimal("0.01")` with `ROUND_HALF_UP`, `PERCENT` before `FIXED` ordering, duplicate code deduplication, and the 50% maximum discount ceiling across `AC-1`–`AC-4`)
+  * `workspace/.agents/rules/discount-invariants.md` (`paths: ["src/discountservice/**"]`)
 
 #### Step 2: Execute via `⚡ Boost` (`/boost`)
-* **Where to run:** Antigravity 2.0 UI (`⚡ Boost` toggle) or `agy` CLI
+* **Where to run:** Antigravity 2.0 UI (`⚡ Boost` toggle) or `agy` CLI inside `demo6-linked-design-boost/workspace/`
 * **Prompt:**
 ```text
 /boost Implement evaluate_stacked_promos in src/discountservice/engine.py and add tests for all acceptance criteria.
@@ -426,12 +410,13 @@ pytest
 ```bash
 cd demo7-contract-spec-tdd
 ./start_demo.sh
+cd workspace
 pytest
 ```
 * **Highlight:** `tests/test_reservator.py` fails 4 contract tests (`AC-1` expired hold reclamation, `AC-2` atomic multi-SKU rollback, `AC-3` idempotent `reservation_id` replay, `AC-4` non-positive quantity validation).
 
 #### Step 2: Clarify Edge Cases with `/grill-me` & Lock Plan with `/plan`
-* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo7-contract-spec-tdd/workspace/`
 * **Prompts:**
 ```text
 /grill-me Review @SPEC.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
@@ -441,7 +426,7 @@ pytest
 ```
 
 #### Step 3: Autonomous Act $\rightarrow$ Verify Test-Heal Loop
-* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo7-contract-spec-tdd/workspace/`
 * **Prompt:**
 ```text
 /goal Implement .scratch/reservation-plan.md in src/inventoryservice/reservator.py and self-heal until pytest passes 100%.
@@ -458,15 +443,16 @@ pytest
 ```bash
 cd demo8-teamwork-monolith-refactor
 ./start_demo.sh
+cd workspace
 pytest
 ```
 * **Files to highlight in editor:**
-  * `.agents/agents/architect.md` (Graph Planner persona)
-  * `.agents/agents/fast-scout.md` (Flash AST Scout persona using `ast-graph` MCP)
-  * `.agents/agents/coder.md` (Modular implementation persona)
+  * `workspace/.agents/agents/architect.md` (Graph Planner persona)
+  * `workspace/.agents/agents/fast-scout.md` (Flash AST Scout persona using `ast-graph` MCP)
+  * `workspace/.agents/agents/coder.md` (Modular implementation persona)
 
 #### Step 2: Graph Planning (`@architect` + `@fast-scout` $\rightarrow$ `.scratch/refactor-dag.md`)
-* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
 * **Prompt:**
 ```text
 /plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership.
@@ -474,7 +460,7 @@ pytest
 * **Highlight:** Show the 3-stage DAG in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
 
 #### Step 3: Execute Parallel Multi-Agent Refactor via `/teamwork` (`👥 Teamwork`)
-* **Where to run:** Antigravity 2.0 (`👥 Teamwork`) or `agy` CLI
+* **Where to run:** Antigravity 2.0 (`👥 Teamwork`) or `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
 * **Prompt:**
 ```text
 /teamwork Execute .scratch/refactor-dag.md using @coder subagents in parallel across Stage 2 (repositories.py and services.py), then rewire routes.py and monolith_order_app.py and verify pytest passes in a clean context.
@@ -491,12 +477,13 @@ pytest
 ```bash
 cd demo9-adversarial-review-loop
 ./start_demo.sh
+cd workspace
 pytest
 ```
 * **Highlight:** `pytest` passes 100% (`4 passed`), giving the author a false sense of security.
 
 #### Step 2: Run the Clean-Context `@adversarial-reviewer` Subagent
-* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo9-adversarial-review-loop/workspace/`
 * **Prompt:**
 ```text
 Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @DESIGN.md and produce a falsifiable file:line invariant table.
@@ -508,7 +495,7 @@ Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/tes
   3. **§3 Idempotency / Outbox (`FAIL` at `dispatcher.py:78-98`):** Invokes external `self.webhook_client(event)` *before* recording the idempotency state in `settlement_ledger`.
 
 #### Step 3: Remediate All 3 Findings & Re-Verify
-* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo9-adversarial-review-loop/workspace/`
 * **Prompt:**
 ```text
 /boost Fix all FAIL findings identified by @adversarial-reviewer in src/settlement/dispatcher.py, add regression tests in tests/test_dispatcher.py, and re-run @adversarial-reviewer to confirm 100% PASS.

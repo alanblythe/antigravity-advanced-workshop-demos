@@ -17,12 +17,18 @@
 
 ## Quickstart
 
-1. Inspect the failing test case:
+1. Reset to initial clean worktree state:
 ```bash
-pytest test_reconciler.py
+./start_demo.sh
 ```
 
-2. Run the spec-driven worktree subagent via Antigravity:
+2. Open the clean agent workspace (`workspace/`) and inspect tests:
+```bash
+cd workspace
+pytest src/paymentservice/test_reconciler.py
+```
+
+3. Run the spec-driven worktree subagent via Antigravity inside `workspace/`:
 ```bash
 agy
 ```
@@ -31,7 +37,7 @@ Prompt inside `agy`:
 /goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
 ```
 
-3. Run the adversarial review against the completed worktree diff:
+4. Run the adversarial review against the completed worktree diff:
 ```bash
 agy
 ```
