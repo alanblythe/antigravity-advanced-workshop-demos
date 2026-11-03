@@ -1,20 +1,23 @@
 # Presenter Runbook — Live Demonstration Steps (Pattern A)
 
 > **Flight Plan for Instructor & Presenter**  
-> Every command block, target execution surface, and key highlight across all 4 workshop modules.  
-> **Pattern A Architecture:** Host IDE & native Antigravity 2.0 UI backed by sub-second Git Worktree resets (`start_demo.sh`).
+> Every command block, target execution surface, and key highlight across all workshop modules (Demos 1–5) and the **Antigravity 201: Spec-Driven Development & Multi-Agent Workflows** track (Demos 6–9).  
+> **Pattern A Architecture:** Host IDE & native Antigravity 2.0 UI backed by sub-second deterministic resets (`./start_demo.sh`).
 
 ---
 
 ## Master Demo Reset (Pattern A)
 
-Before starting the workshop or between dry-runs, run this single command to reset all demo folders to a pristine state:
+Before starting a session or between dry-runs, run this single command to reset all demo folders to a pristine state:
 
 ```bash
-# Where to run: Workstation Terminal (Repo Root)
+# Reset all 9 demos (Demos 1-9):
 ./start_demo.sh all
+
+# Or reset only the 4 Antigravity 201 demos (Demos 6-9):
+./start_demo.sh 201
 ```
-*Resets all git worktrees, feature branches, test caches, and symlinks in <1 second.*
+*Resets all source files, git worktrees, feature branches, `.scratch/` plans, test caches, and symlinks in <1 second.*
 
 ### One-Time GCloud ADC & Profile Setup
 
@@ -49,6 +52,11 @@ source ./scripts/set_gcloud_env.sh
   * [Demo 4: Local Antigravity Invoking Deployed Cloud Agent via A2A](#demo-4-local-antigravity-invoking-deployed-cloud-agent-via-a2a)
 * [Module 5: Multi-Lens Architecture Ideation & Zero-Context RFC Stress-Testing (EGM)](#module-5-multi-lens-architecture-ideation--zero-context-rfc-stress-testing-egm)
   * [Demo 5: Elephant-Goldfish Model (`/egm-brainstorm`) & 6-Lens Parallel Subagent Review](#demo-5-elephant-goldfish-model-egm-brainstorm--6-lens-parallel-subagent-review)
+* [Antigravity 201 Track: Spec-Driven Development & Multi-Agent Workflows (Demos 6–9)](#antigravity-201-track-spec-driven-development--multi-agent-workflows-demos-69)
+  * [Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-designmd--boost-demo6-linked-design-boost)
+  * [Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)](#demo-7-contract-first-spec-clarification--test-heal-loop-demo7-contract-spec-tdd)
+  * [Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)](#demo-8-graph-planning--multi-agent-teamwork-monolith-refactoring-demo8-teamwork-monolith-refactor)
+  * [Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)](#demo-9-clean-context-adversarial-review-loop-demo9-adversarial-review-loop)
 
 ---
 
@@ -90,7 +98,7 @@ python3 scripts/standardize.py --dry-run --strategy merge
 ```bash
 python3 scripts/standardize.py --apply --strategy merge
 ```
-* **Highlight:** Point out how Antigravity detects existing **Cursor** (`.cursorrules`) and **Claude Code** (`CLAUDE.md`) configurations, merges them into the open Linux Foundation **`AGENTS.md`**, and generates backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`). This proves Antigravity doesn't disrupt your organization's Cursor developers—it gives the entire team a single source of truth without configuration drift.
+* **Highlight:** Point out how Antigravity detects existing **Cursor** (`.cursorrules`) and **Claude Code** (`CLAUDE.md`) configurations, merges them into the open Linux Foundation **`AGENTS.md`**, and generates backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`).
 
 ---
 
@@ -243,7 +251,7 @@ source scripts/set_env.sh
 ```bash
 ./start_demo.sh
 ```
-* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile (`antigravity-workshop`), while the MCP server is pre-configured and committed directly in `.mcp.json` (and `.gemini/mcp_config.json`), making tools immediately available without manual registration or polluting global user configs.
+* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile, while the MCP server is pre-configured and committed directly in `.mcp.json` (and `.gemini/mcp_config.json`), making tools immediately available without manual registration or polluting global user configs.
 
 #### Step 2: Query Telemetry Data via Antigravity Agent
 * **Where to run:** Interactive Antigravity TUI (`agy`)
@@ -370,3 +378,138 @@ agy plugin list
 * **What to watch on screen:**
   1. **Artifact-First Delivery:** Instead of dumping a wall of text in chat, the agent writes a plain-English `concepts_brief.md` and highlights only the top 2–3 Goldfish objections in chat.
   2. **Step 4 Handoff Gate:** After confirming alignment, select **`Publish concepts_brief.md as RFC for team feedback`** $\rightarrow$ writes `docs/designs/<feature_name>.md` and registers the RFC in `docs/designs/SITEMAP.md` (or select **`Proceed to /egm-draft`** to generate `design_draft.md`).
+
+---
+
+## Antigravity 201 Track: Spec-Driven Development & Multi-Agent Workflows (Demos 6–9)
+
+> **60-Minute Developer Session Focus:**
+> 1. Moving beyond single-loop prompts to explicit technical specs (`AGENTS.md` $\rightarrow$ `@DESIGN.md`) and executable acceptance criteria (`⚡ Boost`).
+> 2. Translating product requirements (`SPEC.md` + failing contract tests) into structured implementation plans (`/grill-me` $\rightarrow$ `/plan`) and autonomous test-heal loops.
+> 3. Multi-agent execution patterns: coordinating AST scouting (`@fast-scout`), Graph Planning (`@architect`), and parallel authoring (`@coder` via `/teamwork`).
+> 4. Clean-context adversarial review loops (`@adversarial-reviewer`) that stress-test "false-green" code and catch regressions before human review.
+
+---
+
+### Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)
+* **Goal:** Show how separating `AGENTS.md` (concise project constitution) from `@DESIGN.md` (domain data contracts & executable acceptance criteria) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex business rules from a 1-sentence prompt.
+
+#### Step 1: Reset & Inspect Linked Spec Hierarchy
+* **Where to run:** Workstation Terminal (`demo6-linked-design-boost/`)
+* **Commands:**
+```bash
+cd demo6-linked-design-boost
+./start_demo.sh
+pytest
+```
+* **Files to highlight in editor:**
+  * `AGENTS.md` (delegates data contracts and acceptance criteria to `@DESIGN.md`)
+  * `DESIGN.md` (specifies `Decimal("0.01")` with `ROUND_HALF_UP`, `PERCENT` before `FIXED` ordering, duplicate code deduplication, and the 50% maximum discount ceiling across `AC-1`–`AC-4`)
+  * `.agents/rules/discount-invariants.md` (`paths: ["src/discountservice/**"]`)
+
+#### Step 2: Execute via `⚡ Boost` (`/boost`)
+* **Where to run:** Antigravity 2.0 UI (`⚡ Boost` toggle) or `agy` CLI
+* **Prompt:**
+```text
+/boost Implement evaluate_stacked_promos in src/discountservice/engine.py and add tests for all acceptance criteria.
+```
+* **Highlight:** The prompt never mentions `Decimal`, `ROUND_HALF_UP`, `PERCENT` before `FIXED`, or the 50% cap—Antigravity automatically enforces `AGENTS.md` $\rightarrow$ `@DESIGN.md` and verifies all `AC-1`–`AC-4` tests pass.
+
+---
+
+### Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)
+* **Goal:** Start from a `SPEC.md` and pre-written failing `pytest` contract tests (`Red` state: `1 passed, 4 failed`), clarify edge cases via `/grill-me`, lock the task breakdown via `/plan`, and self-heal to `Green`.
+
+#### Step 1: Reset & Show the Failing Contract Suite (`Red` State)
+* **Where to run:** Workstation Terminal (`demo7-contract-spec-tdd/`)
+* **Commands:**
+```bash
+cd demo7-contract-spec-tdd
+./start_demo.sh
+pytest
+```
+* **Highlight:** `tests/test_reservator.py` fails 4 contract tests (`AC-1` expired hold reclamation, `AC-2` atomic multi-SKU rollback, `AC-3` idempotent `reservation_id` replay, `AC-4` non-positive quantity validation).
+
+#### Step 2: Clarify Edge Cases with `/grill-me` & Lock Plan with `/plan`
+* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Prompts:**
+```text
+/grill-me Review @SPEC.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
+```
+```text
+/plan Write the implementation plan and task breakdown to .scratch/reservation-plan.md
+```
+
+#### Step 3: Autonomous Act $\rightarrow$ Verify Test-Heal Loop
+* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Prompt:**
+```text
+/goal Implement .scratch/reservation-plan.md in src/inventoryservice/reservator.py and self-heal until pytest passes 100%.
+```
+
+---
+
+### Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)
+* **Goal:** Decompose a 220-line monolithic Online Boutique Order Processor (`src/order_app/monolith_order_app.py`) into `models.py`, `repositories.py`, `services.py`, and `routes.py` using **Graph Planning** (`@architect` + `@fast-scout`) and **`/teamwork`** (`👥 Teamwork`) parallel `@coder` execution.
+
+#### Step 1: Reset & Verify Monolith Baseline (`4 passed`)
+* **Where to run:** Workstation Terminal (`demo8-teamwork-monolith-refactor/`)
+* **Commands:**
+```bash
+cd demo8-teamwork-monolith-refactor
+./start_demo.sh
+pytest
+```
+* **Files to highlight in editor:**
+  * `.agents/agents/architect.md` (Graph Planner persona)
+  * `.agents/agents/fast-scout.md` (Flash AST Scout persona using `ast-graph` MCP)
+  * `.agents/agents/coder.md` (Modular implementation persona)
+
+#### Step 2: Graph Planning (`@architect` + `@fast-scout` $\rightarrow$ `.scratch/refactor-dag.md`)
+* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Prompt:**
+```text
+/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership.
+```
+* **Highlight:** Show the 3-stage DAG in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
+
+#### Step 3: Execute Parallel Multi-Agent Refactor via `/teamwork` (`👥 Teamwork`)
+* **Where to run:** Antigravity 2.0 (`👥 Teamwork`) or `agy` CLI
+* **Prompt:**
+```text
+/teamwork Execute .scratch/refactor-dag.md using @coder subagents in parallel across Stage 2 (repositories.py and services.py), then rewire routes.py and monolith_order_app.py and verify pytest passes in a clean context.
+```
+
+---
+
+### Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)
+* **Goal:** Demonstrate why passing unit tests (`4 passed` — "False Green") are not enough, and how a clean-context **`@adversarial-reviewer`** subagent catches 3 subtle security, resiliency, and outbox ordering regressions against `@DESIGN.md` before human code review.
+
+#### Step 1: Reset & Show the "False-Green" Test Suite (`4 passed`)
+* **Where to run:** Workstation Terminal (`demo9-adversarial-review-loop/`)
+* **Commands:**
+```bash
+cd demo9-adversarial-review-loop
+./start_demo.sh
+pytest
+```
+* **Highlight:** `pytest` passes 100% (`4 passed`), giving the author a false sense of security.
+
+#### Step 2: Run the Clean-Context `@adversarial-reviewer` Subagent
+* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Prompt:**
+```text
+Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @DESIGN.md and produce a falsifiable file:line invariant table.
+```
+* **What to watch on screen:**
+  `@adversarial-reviewer` inspects `src/settlement/dispatcher.py` with zero authoring bias and flags **3 `FAIL` rows** in its falsifiable invariant table:
+  1. **§1 Resiliency (`FAIL` at `dispatcher.py:85`):** Linear `self.sleep_fn(self.base_delay_sec)` instead of exponential backoff with full randomized jitter.
+  2. **§2 Security (`FAIL` at `dispatcher.py:55`):** `provided_signature != expected` instead of constant-time `hmac.compare_digest()`.
+  3. **§3 Idempotency / Outbox (`FAIL` at `dispatcher.py:78-98`):** Invokes external `self.webhook_client(event)` *before* recording the idempotency state in `settlement_ledger`.
+
+#### Step 3: Remediate All 3 Findings & Re-Verify
+* **Where to run:** Antigravity 2.0 / `agy` CLI
+* **Prompt:**
+```text
+/boost Fix all FAIL findings identified by @adversarial-reviewer in src/settlement/dispatcher.py, add regression tests in tests/test_dispatcher.py, and re-run @adversarial-reviewer to confirm 100% PASS.
+```

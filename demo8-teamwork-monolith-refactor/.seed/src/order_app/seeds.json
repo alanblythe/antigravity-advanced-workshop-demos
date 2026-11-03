@@ -1,0 +1,37 @@
+{
+  "fx_rates_from_usd": {
+    "USD": "1.00",
+    "EUR": "0.92",
+    "GBP": "0.79",
+    "JPY": "150.00"
+  },
+  "tax_rates_by_state": {
+    "CA": "0.0825",
+    "NY": "0.08875",
+    "TX": "0.0625",
+    "DEFAULT": "0.0500"
+  },
+  "products": [
+    {
+      "sku": "OLJCESPC7Z",
+      "name": "Vintage Typewriter",
+      "price_usd": "67.99",
+      "weight_kg": "3.50",
+      "stock_qty": 10
+    },
+    {
+      "sku": "66VCHSJNUP",
+      "name": "Vintage Record Player",
+      "price_usd": "65.50",
+      "weight_kg": "4.20",
+      "stock_qty": 4
+    },
+    {
+      "sku": "1YMWWN1N4O",
+      "name": "Home Barista Kit",
+      "price_usd": "124.00",
+      "weight_kg": "2.10",
+      "stock_qty": 2
+    }
+  ]
+}

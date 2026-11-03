@@ -1,0 +1,16 @@
+{
+  "products": [
+    {"sku": "OLJCESPC7Z", "name": "Vintage Typewriter", "available_qty": 5},
+    {"sku": "66VCHSJNUP", "name": "Vintage Record Player", "available_qty": 2},
+    {"sku": "1YMWWN1N4O", "name": "Home Barista Kit", "available_qty": 0}
+  ],
+  "active_holds": [
+    {
+      "reservation_id": "res_expired_001",
+      "sku": "1YMWWN1N4O",
+      "quantity": 3,
+      "status": "ACTIVE",
+      "expires_at": 1700000100
+    }
+  ]
+}
