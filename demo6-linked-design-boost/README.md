@@ -22,12 +22,13 @@
 ./start_demo.sh
 ```
 
-2. Run baseline tests:
+2. Open the clean agent workspace (`workspace/`) and verify baseline tests:
 ```bash
+cd workspace
 pytest
 ```
 
-3. In Antigravity 2.0 (or `agy` CLI), invoke **`/boost`** (`⚡ Boost` mode):
+3. In Antigravity 2.0 (or `agy` CLI inside `workspace/`), invoke **`/boost`** (`⚡ Boost` mode):
 ```text
 /boost Implement evaluate_stacked_promos in src/discountservice/engine.py and add tests for all acceptance criteria.
 ```

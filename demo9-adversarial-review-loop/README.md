@@ -21,12 +21,13 @@ However, `src/settlement/dispatcher.py` contains **3 critical production regress
 ./start_demo.sh
 ```
 
-2. Run `pytest` to show the "False-Green" test suite passing (`4 passed`):
+2. Open the clean agent workspace (`workspace/`) and verify the "False-Green" test suite passes (`4 passed`):
 ```bash
+cd workspace
 pytest
 ```
 
-3. Invoke the clean-context **`@adversarial-reviewer`** subagent:
+3. Inside `workspace/`, invoke the clean-context **`@adversarial-reviewer`** subagent:
 ```text
 Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @DESIGN.md and produce a falsifiable file:line invariant table.
 ```

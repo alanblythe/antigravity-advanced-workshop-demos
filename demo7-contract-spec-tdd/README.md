@@ -20,12 +20,13 @@
 ./start_demo.sh
 ```
 
-2. Show the pre-written contract tests failing (`1 passed, 4 failed`):
+2. Open the clean agent workspace (`workspace/`) and verify the failing contract suite (`1 passed, 4 failed`):
 ```bash
+cd workspace
 pytest
 ```
 
-3. Clarify ambiguities with **`/grill-me`**:
+3. Inside `workspace/`, clarify ambiguities with **`/grill-me`**:
 ```text
 /grill-me Review @SPEC.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
 ```

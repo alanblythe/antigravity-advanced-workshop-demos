@@ -22,12 +22,13 @@
 ./start_demo.sh
 ```
 
-2. Verify baseline monolith tests pass (`4 passed`):
+2. Open the clean agent workspace (`workspace/`) and verify baseline monolith tests pass (`4 passed`):
 ```bash
+cd workspace
 pytest
 ```
 
-3. Run **Graph Planning** with `@architect` and `@fast-scout`:
+3. Inside `workspace/`, run **Graph Planning** with `@architect` and `@fast-scout`:
 ```text
 /plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership.
 ```
