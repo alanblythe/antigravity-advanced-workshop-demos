@@ -18,7 +18,7 @@ def apply_single_promo(
 ) -> DiscountResult:
     """Apply a single promotional code to an order subtotal.
 
-    Note: Stacked promo evaluation (`evaluate_stacked_promos`) defined in @DESIGN.md
+    Note: Stacked promo evaluation (`evaluate_stacked_promos`) specified in @SPEC.md
     has not been implemented yet.
     """
     if not isinstance(subtotal, Decimal):

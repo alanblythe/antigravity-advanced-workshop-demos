@@ -8,5 +8,5 @@ description: Enforces DESIGN.md decimal precision, frozen dataclasses, and 50% m
 # Discount Service Path-Scoped Invariants
 
 - Reject `float` inputs immediately with `TypeError("Monetary inputs must be Decimal")`.
-- Use `Decimal("0.01")` and `ROUND_HALF_UP` for all currency calculations.
-- Enforce the `@DESIGN.md` §2 stacking order: `PERCENT` rules (sorted by code) before `FIXED` rules (sorted by code), capped at 50% of `subtotal`.
+- Use `Decimal("0.01")` and `ROUND_HALF_UP` (via `quantize_money()`) for all currency calculations per `@DESIGN.md`.
+- Enforce the `@DESIGN.md` §2.2 service-wide ceiling: total discount must never exceed 50% of `subtotal` (`cap_applied = True` when clamped).

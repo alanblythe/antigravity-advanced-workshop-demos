@@ -375,29 +375,30 @@ agy plugin list
 ---
 
 ### Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)
-* **Goal:** Show how separating `AGENTS.md` (concise project constitution) from `@DESIGN.md` (domain data contracts & executable acceptance criteria) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex business rules from a 1-sentence prompt.
+* **Goal:** Show how separating `AGENTS.md` (concise project constitution) and `@DESIGN.md` (long-lived architectural guardrails, 50% ceiling, & testing procedures) from `@SPEC.md` (the single-conversation feature specification) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex features from a 1-sentence prompt.
 
-#### Step 1: Reset & Inspect Linked Spec Hierarchy
+#### Step 1: Reset & Inspect the 3-Tier Context Hierarchy (`AGENTS.md` $\rightarrow$ `@DESIGN.md` + `@SPEC.md`)
 * **Where to run:** Workstation Terminal (`demo6-linked-design-boost/`)
 * **Commands:**
 ```bash
 cd demo6-linked-design-boost
 ./start_demo.sh
 cd workspace
-pytest
+uv run pytest
 ```
 * **Files to highlight in editor:**
-  * `workspace/AGENTS.md` (delegates data contracts and acceptance criteria to `@DESIGN.md`)
-  * `workspace/DESIGN.md` (specifies `Decimal("0.01")` with `ROUND_HALF_UP`, `PERCENT` before `FIXED` ordering, duplicate code deduplication, and the 50% maximum discount ceiling across `AC-1`–`AC-4`)
+  * `workspace/AGENTS.md` (concise entry point linking to `@DESIGN.md` for standing guardrails)
+  * `workspace/DESIGN.md` (long-lived service architecture & testing procedures: `Decimal("0.01")` with `ROUND_HALF_UP`, `float` rejection with `TypeError`, `@dataclass(frozen=True)`, and the service-wide 50% maximum discount ceiling)
+  * `workspace/SPEC.md` (task-specific feature specification for `evaluate_stacked_promos`: `PERCENT` before `FIXED` ordering, `min_subtotal` filtering, duplicate code deduplication, and `AC-1`–`AC-4`)
   * `workspace/.agents/rules/discount-invariants.md` (`paths: ["src/discountservice/**"]`)
 
-#### Step 2: Execute via `⚡ Boost` (`/boost`)
+#### Step 2: Execute `@SPEC.md` via `⚡ Boost` (`/boost`)
 * **Where to run:** Antigravity 2.0 UI (`⚡ Boost` toggle) or `agy` CLI inside `demo6-linked-design-boost/workspace/`
 * **Prompt:**
 ```text
-/boost Implement evaluate_stacked_promos in src/discountservice/engine.py and add tests for all acceptance criteria.
+/boost Implement @SPEC.md in src/discountservice/engine.py and add unit tests for all acceptance criteria.
 ```
-* **Highlight:** The prompt never mentions `Decimal`, `ROUND_HALF_UP`, `PERCENT` before `FIXED`, or the 50% cap—Antigravity automatically enforces `AGENTS.md` $\rightarrow$ `@DESIGN.md` and verifies all `AC-1`–`AC-4` tests pass.
+* **Highlight:** Point out how `@SPEC.md` focuses purely on the feature being built in this conversation (`evaluate_stacked_promos`), while Antigravity automatically enforces all standing architectural and testing guardrails from `AGENTS.md` $\rightarrow$ `@DESIGN.md` and `.agents/rules/discount-invariants.md` and verifies `AC-1`–`AC-4` pass via `pytest`.
 
 ---
 
