@@ -55,21 +55,13 @@ class InventoryReservator:
         return int(row["available_qty"])
 
     def reserve_cart(self, request: ReservationRequest, now_epoch: int) -> ReservationResult:
-        """Naive stub implementation — fails contract tests on edge cases!
-
-        Missing from @SPEC.md:
-        1. Input validation for empty items or quantity <= 0.
-        2. Expired hold reclamation (expires_at <= now_epoch) before checking stock.
-        3. Idempotent replay detection when reservation_id is already ACTIVE.
-        4. All-or-nothing rollback when the 2nd item in a cart lacks stock.
-        """
+        """Reserve inventory items for the given cart request."""
         expires_at = now_epoch + request.ttl_seconds
         reserved: list[str] = []
         for item in request.items:
             avail = self.get_available_qty(item.sku)
             if avail < item.quantity:
                 raise InsufficientStockError(item.sku, item.quantity, avail)
-            # BUG: Commits each item individually instead of atomically!
             self.conn.execute(
                 "UPDATE products SET available_qty = available_qty - ? WHERE sku = ?",
                 (item.quantity, item.sku),
