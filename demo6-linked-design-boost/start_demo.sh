@@ -5,8 +5,11 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$DIR"
 
 echo "==> [Demo 6] Resetting Linked ADRs & Boost workspace..."
-rm -rf workspace
 mkdir -p workspace
+(
+    shopt -s nullglob dotglob
+    rm -rf workspace/*
+)
 find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
 cp -R .seed/. workspace/

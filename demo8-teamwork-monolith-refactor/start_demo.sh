@@ -10,8 +10,11 @@ if [[ -d "workspace/.worktrees" ]]; then
         [[ -d "$wt" ]] && (git worktree remove -f "$wt" 2>/dev/null || rm -rf "$wt")
     done
 fi
-rm -rf workspace
 mkdir -p workspace
+(
+    shopt -s nullglob dotglob
+    rm -rf workspace/*
+)
 find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
 cp -R .seed/. workspace/
