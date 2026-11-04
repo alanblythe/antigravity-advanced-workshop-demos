@@ -461,10 +461,10 @@ Run pytest.
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
 * **Prompt:**
 ```text
-/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership.
+/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) with a Mermaid diagram in .scratch/refactor-dag.md with non-overlapping file ownership.
 ```
-* **Expected Result:** Wrote `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs parallel `@coder` subagents on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
-* **Highlight:** Show the 3-stage DAG in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
+* **Expected Result:** Wrote `.scratch/refactor-dag.md` with an embedded Mermaid DAG flowchart: Stage 1 extracts `models.py`; Stage 2 runs parallel `@coder` subagents on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
+* **Highlight:** Show the 3-stage DAG and Mermaid flowchart in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
 
 #### Step 3: Execute Parallel Multi-Agent Refactor via `/teamwork` (`👥 Teamwork`)
 * **Where to run:** Antigravity 2.0 (`👥 Teamwork`) or `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
