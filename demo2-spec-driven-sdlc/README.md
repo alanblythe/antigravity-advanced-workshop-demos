@@ -6,10 +6,11 @@
 
 ## Files in This Demo
 
-* **`reconciler.py`**: Transaction reconciliation module containing a seeded edge-case bug (`KeyError: 'tx_id'` on legacy payload formats) and an invariant flaw (`time.sleep(1.0)` linear backoff).
-* **`test_reconciler.py`**: Pytest suite catching transaction processing failures.
+* **`src/paymentservice/reconciler.py`**: Transaction reconciliation module containing a seeded edge-case bug (`KeyError: 'tx_id'` on legacy payload formats) and an invariant flaw (`time.sleep(1.0)` linear backoff).
+* **`src/paymentservice/test_reconciler.py`**: Pytest suite catching transaction processing failures.
 * **`.scratch/reconcile-plan.md`**: Implementation specification and dependency DAG generated via `/grill-me` and `/plan`.
 * **`.agents/agents/worktree-implementer.md`**: Subagent definition with strict Git worktree isolation instructions.
+* **`.agents/agents/backend-engineer.md`**: Senior backend systems engineer subagent persona owning `src/paymentservice`.
 * **`.agents/agents/spec-adversary.md`**: Adversarial reviewer subagent prompt auditing git diffs against `AGENTS.md`.
 * **`AGENTS.md`**: Project invariants, including the mandatory exponential backoff with full jitter rule.
 
@@ -24,7 +25,7 @@
 
 2. Interview edge cases and lock the implementation plan inside `agy`:
 ```text
-/grill-me We need to add transaction reconciliation with automatic retry and idempotency in reconciler.py. Interview me on edge cases, failure modes, and security invariants.
+/grill-me We need to add transaction reconciliation with automatic retry and idempotency in src/paymentservice/reconciler.py. Interview me on edge cases, failure modes, and security invariants.
 ```
 ```text
 /plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.

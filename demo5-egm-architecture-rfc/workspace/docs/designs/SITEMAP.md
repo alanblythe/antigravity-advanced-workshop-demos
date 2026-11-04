@@ -4,4 +4,4 @@ This index tracks approved and draft Request for Comments (RFCs) and design spec
 
 | RFC / Design Document | Status | Owner | Summary |
 | :--- | :--- | :--- | :--- |
-| `docs/designs/baseline-microservices.md` | APPROVED | Architecture COE | Baseline gRPC contracts for `PaymentService`, `CurrencyService`, and `ProductCatalogService`. |
+| [`baseline-microservices.md`](baseline-microservices.md) | APPROVED | Architecture COE | Baseline gRPC contracts for `PaymentService`, `CurrencyService`, and `ProductCatalogService`. |

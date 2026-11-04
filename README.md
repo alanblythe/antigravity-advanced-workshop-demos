@@ -25,7 +25,8 @@ TRACK A: 3-HOUR ADVANCED DEVELOPER WORKSHOP (Demos 1–5)
 ├── demo2-spec-driven-sdlc/
 │   ├── Demo 2A: Spec-Driven Planning (/grill-me & /plan -> .scratch/reconcile-plan.md)
 │   ├── Demo 2B: Subagent Isolation via Git Worktrees & Test-Heal Loop (/goal -> pytest -> ruff)
-│   └── Demo 2C: Immediate Multi-Model Adversarial PR Audit (staff-reviewer vs. AGENTS.md invariants)
+│   ├── Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification (@browser -> localhost:8000)
+│   └── Demo 2D: Immediate Multi-Model Adversarial PR Audit (@spec-adversary / Claude 3.5 Sonnet vs. AGENTS.md invariants)
 ├── demo3-database-guardrails/
 │   └── Demo 3: Live Database MCP Toolbox Addition & Safe Querying (BigQuery schema & blocked DROP TABLE)
 └── demo4-cloud-agent-platform/

@@ -1,6 +1,8 @@
 import os
+import sys
 import json
 from http.server import HTTPServer, SimpleHTTPRequestHandler
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src", "paymentservice"))
 from reconciler import TransactionReconciler
 
 reconciler = TransactionReconciler()

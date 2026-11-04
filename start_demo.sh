@@ -18,14 +18,7 @@ reset_demo1() {
 reset_demo2() {
     echo "==> Resetting Demo 2: Spec-Driven Coding, Worktrees & Browser..."
     cd "$ROOT_DIR/demo2-spec-driven-sdlc"
-    if [[ -d ".worktrees/feat-reconcile" ]]; then
-        git worktree remove -f .worktrees/feat-reconcile 2>/dev/null || rm -rf .worktrees/feat-reconcile
-    fi
-    git branch -D feat/reconcile 2>/dev/null || true
-    rm -rf .worktrees .scratch/browser-verification.png
-    if [[ -f "$ROOT_DIR/.git/info/exclude" ]]; then
-        grep -v '\.worktrees' "$ROOT_DIR/.git/info/exclude" > "$ROOT_DIR/.git/info/exclude.tmp" 2>/dev/null && mv "$ROOT_DIR/.git/info/exclude.tmp" "$ROOT_DIR/.git/info/exclude" || true
-    fi
+    ./start_demo.sh >/dev/null
     echo "    ✔ Demo 2 clean."
 }
 

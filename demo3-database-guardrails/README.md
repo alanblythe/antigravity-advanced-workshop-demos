@@ -22,7 +22,7 @@ Ensure workshop credentials and profile are active before starting:
 
 1. One-time login (from repository root) if not already authenticated:
 ```bash
-../../scripts/gcloud_login.sh
+../scripts/gcloud_login.sh
 ```
 
 2. Provision BigQuery dataset, schema, and idempotent seed telemetry data:

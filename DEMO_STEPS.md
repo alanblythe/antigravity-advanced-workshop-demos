@@ -110,7 +110,7 @@ Run scripts/standardize.py in dry-run mode to audit existing Cursor and Claude r
 ```text
 Trace all callers of reconcile_transactions across the codebase using the code graph. Do not read the entire files.
 ```
-* **Expected Result:** AST graph query returns 3 callers (`reconciler.py:48`, `server.py:112`, `test_reconciler.py:24`) in <2k tokens without reading full files.
+* **Expected Result:** AST graph query returns 3 callers (`audit/dispute_handler.py:35`, `batch/nightly_sync.py:27`, `billing/checkout.py:35`) in <2k tokens without reading full files.
 * **Highlight:** Antigravity calls the symbol graph tool (`ast-graph` / LSP), returning callers in <2k tokens instead of reading 50k tokens of whole files.
 
 #### Step 2: Switch Model Tier for Fast vs. Complex Tasks
@@ -171,9 +171,9 @@ Trace all callers of reconcile_transactions across the codebase using the code g
   1. Subagent uses **Gemini 2.5 Flash** for rapid execution.
   2. Runs `git worktree add .worktrees/feat-reconcile -b feat/reconcile`.
   3. Registers `.worktrees/` in `.git/info/exclude`.
-  4. Runs `pytest test_reconciler.py` $\rightarrow$ hits seeded failure: `KeyError: 'tx_id'`.
-  5. Analyzes traceback, patches `reconciler.py` inside `.worktrees/feat-reconcile/`.
-  6. Re-runs `pytest` $\rightarrow$ **PASSED (3 tests)**.
+  4. Runs `pytest` (or `pytest src/paymentservice/test_reconciler.py` / `cd src/paymentservice && pytest`, with root discovery configured in `pyproject.toml`) $\rightarrow$ hits seeded failure: `KeyError: 'tx_id'`.
+  5. Analyzes traceback, patches `src/paymentservice/reconciler.py` inside `.worktrees/feat-reconcile/`.
+  6. Re-runs `pytest` (or `pytest src/paymentservice/test_reconciler.py`) $\rightarrow$ **PASSED (3 tests)**.
   7. Runs `ruff check .` $\rightarrow$ **0 lint errors**.
   8. Commits clean diff to `feat/reconcile`.
 * **Highlight:** The main checkout was untouched; the developer's working state remained pristine.
@@ -218,11 +218,12 @@ Start the local dashboard server (python3 app.py) in the background on port 8000
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Prompt inside `agy`:**
 ```text
-Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
+@spec-adversary Audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
 ```
-* **Expected Result:** Claude 3.5 Sonnet subagent reports SEV-2 invariant violation at `reconciler.py:42` (linear `sleep(1.0)` violates mandatory exponential backoff with full jitter).
-* **Highlight:** The reviewer subagent—running **Claude 3.5 Sonnet on Vertex AI**—flags a **SEV-2 invariant violation**:
-  `reconciler.py:42 uses time.sleep(1.0) linear backoff instead of the mandatory exponential backoff with full jitter specified in .agents/rules/backend.md §4.2.`
+*(Alternatively: `Use invoke subagent to execute @spec-adversary (or @staff-reviewer, powered by Claude 3.5 Sonnet on Vertex AI) to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.`)*
+* **Expected Result:** Subagent running **Claude 3.5 Sonnet on Vertex AI** (`@spec-adversary` or `@staff-reviewer`) reports SEV-2 invariant violation at `src/paymentservice/reconciler.py:38` (linear `time.sleep(1.0)` violates mandatory exponential backoff with full jitter).
+* **Highlight:** The reviewer subagent—running **Claude 3.5 Sonnet on Vertex AI** via `@spec-adversary` (or `@staff-reviewer`)—flags a **SEV-2 invariant violation**:
+  `src/paymentservice/reconciler.py:38 uses time.sleep(1.0) linear backoff instead of the mandatory exponential backoff with full jitter specified in .agents/rules/backend.md §4.2.`
 * **The Climax:** 
   1. Gemini 2.5 Flash implemented and healed unit tests.
   2. Antigravity 2.0 Browser Subagent verified the live DOM.
@@ -283,7 +284,7 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo4-cloud-agent-platform/workspace/`
 * **Prompt inside `agy`:**
 ```text
-Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
+Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
 ```
 * **Expected Result:** Agent card parsed: lists agent capabilities, BigQuery query schemas, input/output schemas, and required ADC OAuth scopes.
 * **Highlight:** Point out the open A2A contract: the cloud agent's declared capabilities, input schemas, and authentication scopes.
@@ -418,10 +419,10 @@ Run pytest.
 ```
 * **Expected Result:**
 ```text
-FAILED tests/test_reservator.py::test_hold_expiration_releases_stock
-FAILED tests/test_reservator.py::test_atomic_multi_sku_rollback_on_insufficient_stock
-FAILED tests/test_reservator.py::test_idempotent_reservation_replay
-FAILED tests/test_reservator.py::test_rejects_negative_or_zero_quantity
+FAILED tests/test_reservator.py::test_reclaims_expired_holds_before_checking_stock
+FAILED tests/test_reservator.py::test_atomic_rollback_when_second_sku_insufficient
+FAILED tests/test_reservator.py::test_idempotent_replay_does_not_double_deduct_stock
+FAILED tests/test_reservator.py::test_rejects_non_positive_quantity_or_empty_cart
 ==================== 4 failed, 1 passed in 0.04s ====================
 ```
 * **Highlight:** `tests/test_reservator.py` fails 4 contract tests (`AC-1` expired hold reclamation, `AC-2` atomic multi-SKU rollback, `AC-3` idempotent `reservation_id` replay, `AC-4` non-positive quantity validation).

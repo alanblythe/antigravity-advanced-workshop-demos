@@ -23,7 +23,7 @@ Ensure workshop credentials and profile are active before starting:
 
 1. One-time login (from repository root) if not already authenticated:
 ```bash
-../../scripts/gcloud_login.sh
+../scripts/gcloud_login.sh
 ```
 
 2. Source workshop environment in presentation shell:
@@ -42,7 +42,7 @@ source scripts/set_env.sh && ./start_demo.sh && cd workspace && agy
 
 2. Inspect the pre-deployed agent's A2A Agent Card inside `agy`:
 ```text
-Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
+Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
 ```
 
 3. Invoke the deployed GEAP agent from Antigravity inside `agy`:

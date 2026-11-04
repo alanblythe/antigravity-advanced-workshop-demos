@@ -9,5 +9,5 @@ When the developer invokes `@cloud-telemetry-agent`:
 
 1. Format the request as an A2A task payload.
 2. Send an authenticated HTTP POST query to the GEAP reasoning engine endpoint:
-   `${GEAP_AGENT_URL}/a2a/app/query`
+   `${GEAP_AGENT_URL}/query`
 3. Stream the remote agent's structured reasoning and BigQuery telemetry findings back into the local session.
