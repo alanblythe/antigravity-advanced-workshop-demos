@@ -1,4 +1,4 @@
-# Payment Webhook & Settlement Invariants (`DESIGN.md`)
+# Architectural Decision Record: Payment Webhook & Settlement Guardrails (`0001-payment-webhook-and-settlement-guardrails.md`)
 
 **Component:** Online Boutique — Payment Webhook & Settlement Dispatcher (`src/settlement/dispatcher.py`)  
 **Status:** Mandatory Production Security & Resiliency Specification

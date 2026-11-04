@@ -51,7 +51,7 @@ reset_demo5() {
 }
 
 reset_demo6() {
-    echo "==> Resetting Demo 6: Grounding Specs, Linked @DESIGN.md & Boost..."
+    echo "==> Resetting Demo 6: Grounding Specs, Linked ADRs & Boost..."
     cd "$ROOT_DIR/demo6-linked-design-boost"
     ./start_demo.sh >/dev/null
     echo "    ✔ Demo 6 clean."

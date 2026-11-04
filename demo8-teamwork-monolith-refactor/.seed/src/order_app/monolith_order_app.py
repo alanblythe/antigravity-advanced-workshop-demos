@@ -63,7 +63,7 @@ class OrderSummary:
 class MonolithOrderApp:
     """Tightly coupled monolithic order processor mixing persistence, pricing, and routes.
 
-    Refactor target in @DESIGN.md:
+    Refactor target in @docs/adr/0001-order-service-layered-decomposition.md:
       - src/order_app/models.py
       - src/order_app/repositories.py
       - src/order_app/services.py

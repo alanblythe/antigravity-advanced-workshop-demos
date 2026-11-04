@@ -33,7 +33,7 @@ TRACK A: 3-HOUR ADVANCED DEVELOPER WORKSHOP (Demos 1–5)
 
 TRACK B: ANTIGRAVITY 201 — SPEC-DRIVEN SDLC & MULTI-AGENT WORKFLOWS (Demos 6–9 | 60-Min Session)
 ├── demo6-linked-design-boost/
-│   └── Demo 6: Grounding Specs, Linked @DESIGN.md, Path-Scoped Rules & ⚡ Boost (/boost)
+│   └── Demo 6: Grounding Specs, Linked ADRs, Path-Scoped Rules & ⚡ Boost (/boost)
 ├── demo7-contract-spec-tdd/
 │   └── Demo 7: Contract-First Spec Clarification (/grill-me -> /plan) & Autonomous Test-Heal Loop (Red -> Green)
 ├── demo8-teamwork-monolith-refactor/
@@ -80,10 +80,10 @@ For exact command blocks, where to execute them (IDE vs. TUI vs. terminal), and 
 * **[`demo3-database-guardrails/`](./demo3-database-guardrails/)**: Database MCP Toolbox configuration (`tools.yaml`), BigQuery telemetry schema, read-only query templates, and negative security testing configurations.
 * **[`demo4-cloud-agent-platform/`](./demo4-cloud-agent-platform/)**: Containerized ADK agent (`bq-telemetry-agent`), Dockerfile bundling MCP Toolbox, `agents-cli deploy` scripts, and local Antigravity subagent definition calling the deployed cloud agent over A2A.
 * **[`demo5-egm-architecture-rfc/`](./demo5-egm-architecture-rfc/)**: Open-source **Elephant-Goldfish Model (`egm`)** plugin demonstration (`/egm-brainstorm`), pitting a deep-context Elephant session against 6 parallel zero-context Goldfish subagents to stress-test a flawed checkout webhook proposal and publish an RFC (`concepts_brief.md` $\rightarrow$ `docs/designs/`).
-* **[`demo6-linked-design-boost/`](./demo6-linked-design-boost/)**: Online Boutique **Order Discount & Promo Engine** demonstrating `AGENTS.md` linking to long-lived architectural guardrails in `@DESIGN.md`, path-scoped `.agents/rules/discount-invariants.md`, a single-conversation feature specification (`@SPEC.md`), and autonomous **`⚡ Boost`** (`/boost`) execution.
-* **[`demo7-contract-spec-tdd/`](./demo7-contract-spec-tdd/)**: Online Boutique **Cart Inventory Reservation Service** starting with a pre-written failing 5-test contract suite (`Red` state) and `SPEC.md` ambiguities, driving `/grill-me` clarification, `/plan` task breakdown, and an autonomous **Act $\rightarrow$ Verify** test-heal loop (`Green` state).
+* **[`demo6-linked-design-boost/`](./demo6-linked-design-boost/)**: Online Boutique **Order Discount & Promo Engine** demonstrating `AGENTS.md` linking to long-lived architectural guardrails in `@docs/adr/0001-decimal-currency-and-discount-caps.md`, path-scoped `.agents/rules/discount-invariants.md`, a single-conversation feature specification (`@docs/specs/0001-stacked-promo-engine.md`), and autonomous **`⚡ Boost`** (`/boost`) execution.
+* **[`demo7-contract-spec-tdd/`](./demo7-contract-spec-tdd/)**: Online Boutique **Cart Inventory Reservation Service** starting with a pre-written failing 5-test contract suite (`Red` state) and `docs/specs/0001-stock-reservation-holds.md` edge cases, driving `/grill-me` clarification, `/plan` task breakdown, and an autonomous **Act $\rightarrow$ Verify** test-heal loop (`Green` state).
 * **[`demo8-teamwork-monolith-refactor/`](./demo8-teamwork-monolith-refactor/)**: Online Boutique **Monolith Order Processor** (`monolith_order_app.py`) decomposed into `models.py`, `repositories.py`, `services.py`, and `routes.py` using `@fast-scout` (`ast-graph` MCP), `@architect` **Graph Planning** (`.scratch/refactor-dag.md`), and parallel **`/teamwork`** (`👥 Teamwork`) execution across `@coder` subagents.
-* **[`demo9-adversarial-review-loop/`](./demo9-adversarial-review-loop/)**: Online Boutique **Payment Webhook & Settlement Dispatcher** in a "False-Green" state (`pytest` passes 100%, but 3 seeded security/resiliency/outbox regressions violate `@DESIGN.md`), audited by a clean-context **`@adversarial-reviewer`** subagent that outputs a falsifiable `file:line` invariant table before human PR review.
+* **[`demo9-adversarial-review-loop/`](./demo9-adversarial-review-loop/)**: Online Boutique **Payment Webhook & Settlement Dispatcher** in a "False-Green" state (`pytest` passes 100%, but 3 seeded security/resiliency/outbox regressions violate `@docs/adr/0001-payment-webhook-and-settlement-guardrails.md`), audited by a clean-context **`@adversarial-reviewer`** subagent that outputs a production guardrail table with `file:line` proof before human PR review.
 
 ---
 

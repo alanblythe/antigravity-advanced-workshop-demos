@@ -58,7 +58,7 @@ source ./scripts/set_gcloud_env.sh
   * [Demo 5: Elephant-Goldfish Model (`/egm-brainstorm`) & 6-Lens Parallel Subagent Review](#demo-5-elephant-goldfish-model-egm-brainstorm--6-lens-parallel-subagent-review) — **~15 mins**
 * [Antigravity 201 Track: Spec-Driven Development & Multi-Agent Workflows (Demos 7 $\rightarrow$ 6 $\rightarrow$ 8/9 Concurrent Pipeline)](#antigravity-201-track-suggested-presentation-order--timing-4550-min-slot) *(~45 mins total)*
   * [Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)](#demo-7-contract-first-spec-clarification--test-heal-loop-demo7-contract-spec-tdd) — **~10 mins**
-  * [Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-designmd--boost-demo6-linked-design-boost) — **~9 mins**
+  * [Demo 6: Grounding Specs, Linked ADRs & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-adrs--boost-demo6-linked-design-boost) — **~9 mins**
   * [Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)](#demo-8-graph-planning--multi-agent-teamwork-monolith-refactoring-demo8-teamwork-monolith-refactor) — **~8 mins live front-end + background execution**
   * [Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)](#demo-9-clean-context-adversarial-review-loop-demo9-adversarial-review-loop) — **~10 mins (run during Demo 8 background refactor)**
   * [Demo 8 Finale: Monolith Refactor Completion & Clean Verification](#step-4-return-to-demo-8-for-finale--verification) — **~3 mins wrap-up**
@@ -368,18 +368,18 @@ Installed plugin: egm (7 skills, 9 subagents registered in ~/.gemini/config/plug
 > Total wall-clock runtime: **~42–45 minutes** (safely fitting within a 50-minute slot with buffer for live Q&A).
 >
 > 1. **Demo 7 (Contract-First TDD & `/grill-me`):** ~10 mins (Red $\rightarrow$ Grill-Me $\rightarrow$ Plan $\rightarrow$ Green test-heal).
-> 2. **Demo 6 (Grounding Specs, `@DESIGN.md` & `⚡ Boost`):** ~9 mins (Context hierarchy walkthrough $\rightarrow$ `/boost` single-turn implementation).
+> 2. **Demo 6 (Grounding Specs, Linked ADRs & `⚡ Boost`):** ~9 mins (Context hierarchy walkthrough $\rightarrow$ `/boost` single-turn implementation).
 > 3. **Demo 8 Kickoff (Graph Planning & Launch `/teamwork`):** ~8 mins (Baseline check $\rightarrow$ `@architect` + `@fast-scout` Mermaid DAG $\rightarrow$ launch `/teamwork`).
 > 4. **Demo 9 (Clean-Context Adversarial Review):** ~10 mins (*Run concurrently while Demo 8's parallel `@coder` workers execute in the background*).
 > 5. **Demo 8 Finale (Return for Verification):** ~3 mins (Inspect decomposed modules, re-exports facade, and final green `pytest`).
 
 ---
 
-### Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)
-* **Suggested Timing:** ~10 minutes (4m walkthrough of `AGENTS.md` $\rightarrow$ `@DESIGN.md` vs. `@SPEC.md` & path-scoped rules, 6m `/boost` execution & test verification)
-* **Goal:** Show how separating `AGENTS.md` (concise project constitution) and `@DESIGN.md` (long-lived architectural guardrails, 50% ceiling, & testing procedures) from `@SPEC.md` (the single-conversation feature specification) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex features from a 1-sentence prompt.
+### Demo 6: Grounding Specs, Linked ADRs & `⚡ Boost` (`demo6-linked-design-boost`)
+* **Suggested Timing:** ~10 minutes (4m walkthrough of `AGENTS.md` $\rightarrow$ `docs/adr/` vs. `docs/specs/` & path-scoped rules, 6m `/boost` execution & test verification)
+* **Goal:** Show how separating `AGENTS.md` (concise project constitution) and `docs/adr/` (long-lived architectural decision records: 50% discount ceiling, Decimal rounding, typing contracts) from `docs/specs/` (the single-conversation feature specification) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex features from a 1-sentence prompt.
 
-#### Step 1: Verify Baseline Tests & Inspect the 3-Tier Context Hierarchy (`AGENTS.md` $\rightarrow$ `@DESIGN.md` + `@SPEC.md`)
+#### Step 1: Verify Baseline Tests & Inspect the 3-Tier Context Hierarchy (`AGENTS.md` $\rightarrow$ `docs/adr/` + `docs/specs/`)
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo6-linked-design-boost/workspace/`
 * **Prompt:**
 ```text
@@ -387,28 +387,28 @@ Run pytest.
 ```
 * **Expected Result:**
 ```text
-==================== 4 passed in 0.04s ====================
+==================== 2 passed in 0.02s ====================
 ```
 * **Files to highlight in editor:**
-  * `workspace/AGENTS.md` (concise entry point linking to `@DESIGN.md` for standing guardrails)
-  * `workspace/DESIGN.md` (long-lived service architecture & testing procedures: `Decimal("0.01")` with `ROUND_HALF_UP`, `float` rejection with `TypeError`, `@dataclass(frozen=True)`, and the service-wide 50% maximum discount ceiling)
-  * `workspace/SPEC.md` (task-specific feature specification for `evaluate_stacked_promos`: `PERCENT` before `FIXED` ordering, `min_subtotal` filtering, duplicate code deduplication, and `AC-1`–`AC-4`)
+  * `workspace/AGENTS.md` (concise entry point linking to `@docs/adr/` for standing guardrails)
+  * `workspace/docs/adr/0001-decimal-currency-and-discount-caps.md` (long-lived ADR & testing procedures: `Decimal("0.01")` with `ROUND_HALF_UP`, `float` rejection with `TypeError`, `@dataclass(frozen=True)`, and the service-wide 50% maximum discount ceiling)
+  * `workspace/docs/specs/0001-stacked-promo-engine.md` (task-specific feature specification for `evaluate_stacked_promos`: `PERCENT` before `FIXED` ordering, `min_subtotal` filtering, duplicate code deduplication, and `AC-1`–`AC-4`)
   * `workspace/.agents/rules/discount-invariants.md` (`paths: ["src/discountservice/**"]`)
 
-#### Step 2: Execute `@SPEC.md` via `⚡ Boost` (`/boost`)
+#### Step 2: Execute Feature Spec via `⚡ Boost` (`/boost`)
 * **Where to run:** Antigravity 2.0 UI (`⚡ Boost` toggle) or `agy` CLI inside `demo6-linked-design-boost/workspace/`
 * **Prompt:**
 ```text
-/boost Implement @SPEC.md in src/discountservice/engine.py and add unit tests for all acceptance criteria.
+/boost Implement @docs/specs/0001-stacked-promo-engine.md in src/discountservice/engine.py and add unit tests for all acceptance criteria.
 ```
-* **Expected Result:** Implements `evaluate_stacked_promos` in `engine.py` adhering to `DESIGN.md` (Decimal rounding, 50% cap, TypeError on float); adds `tests/test_engine.py`; passes all tests (`8 passed in 0.06s`).
-* **Highlight:** Point out how `@SPEC.md` focuses purely on the feature being built in this conversation (`evaluate_stacked_promos`), while Antigravity automatically enforces all standing architectural and testing guardrails from `AGENTS.md` $\rightarrow$ `@DESIGN.md` and `.agents/rules/discount-invariants.md` and verifies `AC-1`–`AC-4` pass via `pytest`.
+* **Expected Result:** Implements `evaluate_stacked_promos` in `engine.py` adhering to the ADR (Decimal rounding, 50% cap, TypeError on float); adds tests in `tests/test_engine.py`; passes all tests.
+* **Highlight:** Point out how `@docs/specs/0001-stacked-promo-engine.md` focuses purely on the feature being built in this conversation (`evaluate_stacked_promos`), while Antigravity automatically enforces all standing architectural guardrails from `AGENTS.md` $\rightarrow$ `@docs/adr/0001-decimal-currency-and-discount-caps.md` and `.agents/rules/discount-invariants.md` and verifies `AC-1`–`AC-4` pass via `pytest`.
 
 ---
 
 ### Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)
 * **Suggested Timing:** ~12 minutes (2m initial `Red` test suite, 4m `/grill-me` edge-case clarification, 2m `/plan` task breakdown, 4m autonomous `/goal` test-heal loop to `Green`)
-* **Goal:** Start from a `SPEC.md` and pre-written failing `pytest` contract tests (`Red` state: `1 passed, 4 failed`), clarify edge cases via `/grill-me`, lock the task breakdown via `/plan`, and self-heal to `Green`.
+* **Goal:** Start from a feature spec (`docs/specs/0001-stock-reservation-holds.md`) and pre-written failing `pytest` contract tests (`Red` state: `1 passed, 4 failed`), clarify edge cases against the ADR (`docs/adr/0001-inventory-reservation-invariants.md`) via `/grill-me`, lock the task breakdown via `/plan`, and self-heal to `Green`.
 
 #### Step 1: Show the Failing Contract Suite (`Red` State)
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo7-contract-spec-tdd/workspace/`
@@ -430,7 +430,7 @@ FAILED tests/test_reservator.py::test_rejects_negative_or_zero_quantity
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo7-contract-spec-tdd/workspace/`
 * **Prompts:**
 ```text
-/grill-me Review @SPEC.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
+/grill-me Review @docs/specs/0001-stock-reservation-holds.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
 ```
 * **Expected Result:** Clarifies clock drift, Redis lock lease durations, and idempotency key retention periods before writing plan.
 
@@ -509,8 +509,8 @@ Parallel @coder subagents complete without file collisions; monolith delegates c
 ---
 
 ### Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)
-* **Suggested Timing:** ~12 minutes (2m "False-Green" `pytest` demonstration, 5m `@adversarial-reviewer` clean-context audit & `file:line` invariant table, 5m `/boost` remediation & re-verification)
-* **Goal:** Demonstrate why passing unit tests (`4 passed` — "False Green") are not enough, and how a clean-context **`@adversarial-reviewer`** subagent catches 3 subtle security, resiliency, and outbox ordering regressions against `@DESIGN.md` before human code review.
+* **Suggested Timing:** ~12 minutes (2m "False-Green" `pytest` demonstration, 5m `@adversarial-reviewer` clean-context audit & production guardrail table, 5m `/boost` remediation & re-verification)
+* **Goal:** Demonstrate why passing unit tests (`4 passed` — "False Green") are not enough, and how a clean-context **`@adversarial-reviewer`** subagent catches 3 subtle security, resiliency, and outbox ordering regressions against `docs/adr/0001-payment-webhook-and-settlement-guardrails.md` before human code review.
 
 #### Step 1: Show the "False-Green" Test Suite (`4 passed`)
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo9-adversarial-review-loop/workspace/`
@@ -528,11 +528,11 @@ Run pytest.
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo9-adversarial-review-loop/workspace/`
 * **Prompt:**
 ```text
-Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @DESIGN.md and produce a falsifiable file:line invariant table.
+Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @docs/adr/0001-payment-webhook-and-settlement-guardrails.md and produce a production guardrail table with file:line proof.
 ```
-* **Expected Result:** Audit outputs invariant table with 3 FAIL findings: linear backoff (`dispatcher.py:85`), non-constant-time HMAC compare (`dispatcher.py:55`), and outbox order reversal (`dispatcher.py:78-98`).
+* **Expected Result:** Audit outputs production guardrail table with 3 FAIL findings: linear backoff (`dispatcher.py:85`), non-constant-time HMAC compare (`dispatcher.py:55`), and outbox order reversal (`dispatcher.py:78-98`).
 * **What to watch on screen:**
-  `@adversarial-reviewer` inspects `src/settlement/dispatcher.py` with zero authoring bias and flags **3 `FAIL` rows** in its falsifiable invariant table:
+  `@adversarial-reviewer` inspects `src/settlement/dispatcher.py` with zero authoring bias and flags **3 `FAIL` rows** in its production guardrail table:
   1. **§1 Resiliency (`FAIL` at `dispatcher.py:85`):** Linear `self.sleep_fn(self.base_delay_sec)` instead of exponential backoff with full randomized jitter.
   2. **§2 Security (`FAIL` at `dispatcher.py:55`):** `provided_signature != expected` instead of constant-time `hmac.compare_digest()`.
   3. **§3 Idempotency / Outbox (`FAIL` at `dispatcher.py:78-98`):** Invokes external `self.webhook_client(event)` *before* recording the idempotency state in `settlement_ledger`.

@@ -1,6 +1,7 @@
-# Feature Specification: Stacked Promotional Code Evaluation (`SPEC.md`)
+# Feature Specification: Stacked Promotional Code Evaluation (`0001-stacked-promo-engine.md`)
 
 **Target Module:** `src/discountservice/engine.py`  
+**Governing ADR:** `@docs/adr/0001-decimal-currency-and-discount-caps.md`  
 **Function Signature:**
 ```python
 def evaluate_stacked_promos(
@@ -23,7 +24,7 @@ Implement `evaluate_stacked_promos(subtotal, codes, catalog)` to evaluate multip
 3. **Duplicate Code Deduplication:**
    - If the same promo code appears multiple times in `codes`, evaluate and record it in `applied_codes` at most once.
 4. **Architectural Guardrail Compliance:**
-   - Enforce all currency quantization, `float` rejection, and 50% maximum discount cap invariants defined in `@DESIGN.md`.
+   - Enforce all currency quantization, `float` rejection, and 50% maximum discount cap guardrails defined in `@docs/adr/0001-decimal-currency-and-discount-caps.md`.
 
 ---
 
@@ -31,4 +32,4 @@ Implement `evaluate_stacked_promos(subtotal, codes, catalog)` to evaluate multip
 - **AC-1 (Stacked Precedence — `PERCENT` before `FIXED`):** Applying `["TAKE15", "SAVE10"]` (`SAVE10` = `10%`, `TAKE15` = `$15.00` fixed) on a `$100.00` subtotal evaluates `SAVE10` before `TAKE15`, yielding `discount_amount == Decimal("25.00")`, `final_total == Decimal("75.00")`, `applied_codes == ("SAVE10", "TAKE15")`, and `cap_applied is False`.
 - **AC-2 (50% Ceiling Clamp):** Applying `["VIP40", "TAKE25"]` (`VIP40` = `40%`, `TAKE25` = `$25.00` fixed) on a `$100.00` subtotal clamps the `$65.00` combined discount to `discount_amount == Decimal("50.00")`, `final_total == Decimal("50.00")`, `applied_codes == ("VIP40", "TAKE25")`, and `cap_applied is True`.
 - **AC-3 (Minimum Subtotal & Deduplication):** Codes whose `min_subtotal` exceeds `subtotal` are skipped, and duplicate codes in input (e.g., `["SAVE10", "SAVE10"]`) are applied only once.
-- **AC-4 (Input Guardrails):** Passing a `float` (e.g., `100.00`) as `subtotal` raises `TypeError`, and passing a negative `Decimal` raises `ValueError` per `@DESIGN.md`.
+- **AC-4 (Input Guardrails):** Passing a `float` (e.g., `100.00`) as `subtotal` raises `TypeError`, and passing a negative `Decimal` raises `ValueError` per `@docs/adr/0001-decimal-currency-and-discount-caps.md`.

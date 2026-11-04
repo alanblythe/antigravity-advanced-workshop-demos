@@ -1,4 +1,4 @@
-# Product Requirement Specification: Cart Inventory Reservation (`SPEC.md`)
+# Product Requirement Specification: Cart Inventory Reservation (`docs/specs/0001-stock-reservation-holds.md`)
 
 **Service:** Online Boutique — Inventory Hold & Reservation Service (`src/inventoryservice/`)  
 **Target Function:** `InventoryReservator.reserve_cart(request: ReservationRequest, now_epoch: int) -> ReservationResult`

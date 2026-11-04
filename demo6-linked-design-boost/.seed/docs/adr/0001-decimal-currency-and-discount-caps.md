@@ -1,4 +1,4 @@
-# Architectural Guardrails & Testing Standards (`DESIGN.md`)
+# Architectural Decision Record: Decimal Precision & Discount Cap Guardrails (`0001-decimal-currency-and-discount-caps.md`)
 
 **Component:** Online Boutique — Order Discount & Promo Service (`src/discountservice/`)  
 **Scope:** Long-Lived Service Architecture, Domain Invariants & Verification Procedures

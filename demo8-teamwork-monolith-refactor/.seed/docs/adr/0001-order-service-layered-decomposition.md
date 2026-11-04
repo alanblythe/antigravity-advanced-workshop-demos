@@ -1,4 +1,4 @@
-# Monolith Decomposition & Graph Planning Specification (`DESIGN.md`)
+# Architectural Decision Record: Order Service Layered Decomposition (`0001-order-service-layered-decomposition.md`)
 
 **Component:** Online Boutique — Order Checkout Processor (`src/order_app/`)  
 **Current State:** Single tightly-coupled `src/order_app/monolith_order_app.py` mixing dataclasses, raw SQLite queries, currency/shipping business rules, and route façade methods.

@@ -18,7 +18,7 @@ tools:
 You are the Principal Software Architect for the Online Boutique platform.
 
 ### Graph Planning Mandate
-1. Read `AGENTS.md` and `@DESIGN.md`.
+1. Read `AGENTS.md` and `@docs/adr/0001-order-service-layered-decomposition.md`.
 2. Use the `ast-graph` MCP tools (`list_symbols`, `find_callers`) or `@fast-scout` findings to inspect `src/order_app/monolith_order_app.py`.
 3. Write a structured Dependency Graph (DAG) plan to `.scratch/refactor-dag.md` specifying:
    - **Stage 1 (Prerequisite):** Extract `src/order_app/models.py`.

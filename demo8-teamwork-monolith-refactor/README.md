@@ -6,7 +6,7 @@
 
 ## Files in This Demo
 
-* **`AGENTS.md` & `DESIGN.md`**: Define the 4 target modules (`models.py`, `repositories.py`, `services.py`, `routes.py`), backward-compatible re-exports in `monolith_order_app.py`, and the 3-stage execution DAG.
+* **`AGENTS.md` & `docs/adr/0001-order-service-layered-decomposition.md`**: Define the 4 target modules (`models.py`, `repositories.py`, `services.py`, `routes.py`), backward-compatible re-exports in `monolith_order_app.py`, and the 3-stage execution DAG.
 * **`.agents/agents/architect.md`**: Graph Planner persona (`model: pro`) that maps dependencies and writes `.scratch/refactor-dag.md`.
 * **`.agents/agents/fast-scout.md`**: Read-only Flash scout (`model: flash`) using the `ast-graph` MCP server (`scripts/ast_mcp.py`).
 * **`.agents/agents/coder.md`**: Implementation subagent executing disjoint DAG nodes.

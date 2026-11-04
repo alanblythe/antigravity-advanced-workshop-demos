@@ -1,8 +1,8 @@
 # Online Boutique — Order Processor Service Guidelines
 
-## §1. Architectural Contract (`@DESIGN.md`)
-- Target module boundaries, dependency layering, and backward-compatibility requirements for `src/order_app/` are defined in `@DESIGN.md`.
-- Always consult `@DESIGN.md` before planning or refactoring `src/order_app/monolith_order_app.py`.
+## §1. Standing Architectural Decision Records (`docs/adr/`)
+- Target module boundaries, dependency layering, and backward-compatibility requirements for `src/order_app/` are defined in `@docs/adr/0001-order-service-layered-decomposition.md`.
+- Always consult `@docs/adr/0001-order-service-layered-decomposition.md` before planning or refactoring `src/order_app/monolith_order_app.py`.
 
 ## §2. Testing & Verification
 - Run the test suite using `.venv/bin/pytest`.
