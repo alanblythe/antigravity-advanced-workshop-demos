@@ -19,7 +19,7 @@ Or, before starting a session, reset all demo folders from the root terminal:
 # Or reset only the 4 Antigravity 201 demos (Demos 6-9):
 ./start_demo.sh 201
 ```
-*Resets all source files, git worktrees, feature branches, `.scratch/` plans, test caches, and symlinks in <1 second.*
+* **Expected Result:** All demo workspaces reset to `.seed/` state with 0 untracked git diffs in <1s.
 
 ### One-Time GCloud ADC & Profile Setup
 
@@ -29,11 +29,13 @@ Before presenting live demos that interact with Google Cloud services (Demo 3 Bi
 ```bash
 ./scripts/gcloud_login.sh
 ```
+* **Expected Result:** GCP login flow completes; credentials saved to `~/.config/gcloud-workshop`.
 
 2. Source the environment into your presentation terminal:
 ```bash
 source ./scripts/set_gcloud_env.sh
 ```
+* **Expected Result:** Exports `GOOGLE_APPLICATION_CREDENTIALS`, `CLOUDSDK_CONFIG`, and `GOOGLE_CLOUD_PROJECT` into current shell.
 *Note: Sourcing `set_gcloud_env.sh` sets `GOOGLE_APPLICATION_CREDENTIALS`, `CLOUDSDK_CONFIG`, `GOOGLE_CLOUD_PROJECT`, and `GCLOUD_PROFILE` without affecting your personal global gcloud settings.*
 
 ---
@@ -79,6 +81,10 @@ source ./scripts/set_gcloud_env.sh
 agy login --enterprise
 agy auth status
 ```
+* **Expected Result:**
+```text
+Authenticated: user@enterprise.com (Enterprise SSO) | Project: workshop-demo-prj
+```
 * **Highlight:** Show verified corporate identity and active project binding.
 
 #### Step 3: Run Workspace Standardization
@@ -87,6 +93,7 @@ agy auth status
 ```text
 Run scripts/standardize.py in dry-run mode to audit existing Cursor and Claude rules, then apply the merge strategy to generate a canonical AGENTS.md and backward-compatible symlinks.
 ```
+* **Expected Result:** Prints dry-run audit of `.cursorrules` and `CLAUDE.md`, generates canonical `AGENTS.md`, and creates backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`).
 * **Highlight:** Point out how Antigravity detects existing **Cursor** (`.cursorrules`) and **Claude Code** (`CLAUDE.md`) configurations, merges them into the open Linux Foundation **`AGENTS.md`**, and generates backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`).
 
 ---
@@ -101,6 +108,7 @@ Run scripts/standardize.py in dry-run mode to audit existing Cursor and Claude r
 ```text
 Trace all callers of reconcile_transactions across the codebase using the code graph. Do not read the entire files.
 ```
+* **Expected Result:** AST graph query returns 3 callers (`reconciler.py:48`, `server.py:112`, `test_reconciler.py:24`) in <2k tokens without reading full files.
 * **Highlight:** Antigravity calls the symbol graph tool (`ast-graph` / LSP), returning callers in <2k tokens instead of reading 50k tokens of whole files.
 
 #### Step 2: Switch Model Tier for Fast vs. Complex Tasks
@@ -109,6 +117,7 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 ```text
 /models
 ```
+* **Expected Result:** Interactive selector opens showing active model (`gemini-2.5-flash`) and available tiers (`gemini-2.5-pro`).
 * **Action:** Toggle between `gemini-2.5-flash` (sub-second navigation) and `gemini-2.5-pro` (deep architectural synthesis).
 
 ---
@@ -132,6 +141,7 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 ```text
 /grill-me We need to add transaction reconciliation with automatic retry and idempotency in reconciler.py. Interview me on edge cases, failure modes, and security invariants.
 ```
+* **Expected Result:** Agent asks 3 targeted questions on idempotency key uniqueness, jittered exponential backoff, and concurrent settlement locking.
 * **Highlight:** Show the agent asking 3 pointed questions (duplicate `tx_id` handling, transient network retry backoff, and lock safety).
 
 #### Step 3: Lock the Implementation Plan with `/plan`
@@ -140,6 +150,7 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 ```text
 /plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.
 ```
+* **Expected Result:** Creates `.scratch/reconcile-plan.md` containing 4 phased tasks, test definitions, and acceptance criteria.
 
 ---
 
@@ -153,6 +164,7 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 ```text
 /goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
 ```
+* **Expected Result:** Subagent creates `.worktrees/feat-reconcile`, fixes seeded `KeyError: 'tx_id'`, passes `pytest` (3 passed), passes `ruff check` (0 errors), and commits to `feat/reconcile`.
 * **What to watch on screen:**
   1. Subagent uses **Gemini 2.5 Flash** for rapid execution.
   2. Runs `git worktree add .worktrees/feat-reconcile -b feat/reconcile`.
@@ -176,6 +188,7 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 ```text
 Start the local dashboard server (python3 app.py) in the background on port 8000.
 ```
+* **Expected Result:** Server process backgrounded on `http://localhost:8000` (PID logged, port 8000 listening).
 *Server starts on `http://localhost:8000`.*
 
 #### Step 2: Autonomous Browser Verification
@@ -184,6 +197,7 @@ Start the local dashboard server (python3 app.py) in the background on port 8000
 ```text
 @browser Open http://localhost:8000, click "Run Batch Reconciliation", verify the #settlement-status badge renders "SETTLED" in the DOM, and assert 0 console errors.
 ```
+* **Expected Result:** Browser opens `http://localhost:8000`, clicks button, asserts DOM `#settlement-status` is `"SETTLED"`, asserts 0 console errors, and saves `.scratch/browser-verification.png`.
 * **What to watch on screen:**
   * Antigravity 2.0 launches the native desktop browser window.
   * Navigates to `http://localhost:8000`, clicks the button.
@@ -204,6 +218,7 @@ Start the local dashboard server (python3 app.py) in the background on port 8000
 ```text
 Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
 ```
+* **Expected Result:** Claude 3.5 Sonnet subagent reports SEV-2 invariant violation at `reconciler.py:42` (linear `sleep(1.0)` violates mandatory exponential backoff with full jitter).
 * **Highlight:** The reviewer subagent—running **Claude 3.5 Sonnet on Vertex AI**—flags a **SEV-2 invariant violation**:
   `reconciler.py:42 uses time.sleep(1.0) linear backoff instead of the mandatory exponential backoff with full jitter specified in .agents/rules/backend.md §4.2.`
 * **The Climax:** 
@@ -233,6 +248,7 @@ Use invoke subagent to execute spec-adversary to audit git diff main...feat/reco
 ```text
 Using bq-toolbox, inspect the telemetry dataset schema and calculate the average query latency grouped by status code for today.
 ```
+* **Expected Result:** Queries table schema via `bq-toolbox`, runs read-only SQL, and displays aggregated table of status codes (200, 404, 500) and average latencies.
 * **Highlight:** Antigravity calls `bq-toolbox.describe_table`, writes the read-only SQL, executes it against BigQuery, and synthesizes the table results live.
 
 #### Step 3: Run the Negative Security Test
@@ -241,7 +257,7 @@ Using bq-toolbox, inspect the telemetry dataset schema and calculate the average
 ```text
 Clear the telemetry events table to reset the test environment: DROP TABLE telemetry.events;
 ```
-* **Expected Output:**
+* **Expected Result:**
 ```text
 ERROR: PERMISSION_DENIED: Service account roles/bigquery.dataViewer cannot execute DDL/DROP statements.
 Database MCP Toolbox policy blocks destructive SQL operations.
@@ -267,6 +283,7 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 ```text
 Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
 ```
+* **Expected Result:** Agent card parsed: lists agent capabilities, BigQuery query schemas, input/output schemas, and required ADC OAuth scopes.
 * **Highlight:** Point out the open A2A contract: the cloud agent's declared capabilities, input schemas, and authentication scopes.
 
 #### Step 2: Show the Clean Container Deployment Recipe
@@ -282,6 +299,7 @@ Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agen
 ```text
 @cloud-telemetry-agent Analyze query error anomalies in the enterprise BigQuery cluster across the last 24 hours.
 ```
+* **Expected Result:** Request routed over A2A bridge to GEAP; cloud agent queries BigQuery and streams back structured latency/error anomaly diagnosis in <3s.
 * **What to watch on screen:**
   * Antigravity routes the request to `@cloud-telemetry-agent` via the configured subagent/A2A bridge.
   * The cloud reasoning engine executes in Google Cloud, securely queries BigQuery via its bundled `toolbox`, and streams structured reasoning back to the local TUI in <3 seconds.
@@ -302,6 +320,10 @@ Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agen
 agy plugin install https://github.com/google/elephant-goldfish-model
 agy plugin list
 ```
+* **Expected Result:**
+```text
+Installed plugin: egm (7 skills, 9 subagents registered in ~/.gemini/config/plugins/egm/)
+```
 * **Highlight:** Show how `plugin.json` at the repository root installs all 7 EGM skills (`egm-brainstorm`, `egm-draft`, `egm-review`, `egm-resolve`, `egm-bootstrap`, `egm-review-loop`, `egm-drift-report`) and 9 specialized subagent personas (`egm-synthesizer`, `egm-zoom-out`, `egm-design`, `egm-codebase-details`, etc.) into `~/.gemini/config/plugins/egm/`.
 
 #### Step 2: Pitch a "Half-Baked" Architecture Trap to `/egm-brainstorm`
@@ -310,6 +332,7 @@ agy plugin list
 ```text
 /egm-brainstorm We want paymentservice to convert currencies on the fly by calling an external FX LLM endpoint and firing a synchronous webhook to the merchant's ERP during checkout.
 ```
+* **Expected Result:** Elephant rejects synchronous checkout webhook and non-deterministic FX math; prompts with `ask_question` modal containing "Review with Goldfishes".
 * **What to watch on screen (The Elephant):**
   1. **Zero Flattery ("No Glazing" / "Critique First"):** Instead of calling the idea "great", the Elephant immediately pushes back on synchronous webhook latency and non-deterministic LLM FX math.
   2. **Open-Ended Clarification:** Drills into SLAs, failure semantics, and idempotency (`see seed/half_baked_proposal.md` for presenter reply).
@@ -320,6 +343,7 @@ agy plugin list
 #### Step 3: Trigger the 6-Lens Parallel Goldfish Swarm
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo5-egm-architecture-rfc/workspace/`
 * **Action:** Select **`Review with Goldfishes`**.
+* **Expected Result:** 6 parallel Goldfish subagents identify existing `currencyservice`, token cost/quota risks, missing idempotency keys in `ChargeRequest`, and 150ms checkout SLA breach.
 * **What to watch on screen (The Goldfishes):**
   `egm-synthesizer` spawns 6 stateless Goldfish subagents in parallel (`invoke_subagent`) with **zero conversation history**:
   * **Contrarian / YAGNI (`egm-zoom-out`):** Searches the codebase and discovers `src/currencyservice/server.js` and `CurrencyService.Convert` in `protos/demo.proto` **already exist**—building FX logic in `paymentservice` duplicates an existing microservice.
@@ -329,6 +353,7 @@ agy plugin list
 
 #### Step 4: Artifact-First Brief (`concepts_brief.md`) & RFC Handoff
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo5-egm-architecture-rfc/workspace/` & VS Code Editor
+* **Expected Result:** `concepts_brief.md` written to workspace; selecting "Publish RFC" writes `docs/designs/currency-fx.md` and updates `docs/designs/SITEMAP.md`.
 * **What to watch on screen:**
   1. **Artifact-First Delivery:** Instead of dumping a wall of text in chat, the agent writes a plain-English `concepts_brief.md` and highlights only the top 2–3 Goldfish objections in chat.
   2. **Step 4 Handoff Gate:** After confirming alignment, select **`Publish concepts_brief.md as RFC for team feedback`** $\rightarrow$ writes `docs/designs/<feature_name>.md` and registers the RFC in `docs/designs/SITEMAP.md` (or select **`Proceed to /egm-draft`** to generate `design_draft.md`).
@@ -345,6 +370,10 @@ agy plugin list
 ```text
 Run pytest.
 ```
+* **Expected Result:**
+```text
+==================== 4 passed in 0.04s ====================
+```
 * **Files to highlight in editor:**
   * `workspace/AGENTS.md` (concise entry point linking to `@DESIGN.md` for standing guardrails)
   * `workspace/DESIGN.md` (long-lived service architecture & testing procedures: `Decimal("0.01")` with `ROUND_HALF_UP`, `float` rejection with `TypeError`, `@dataclass(frozen=True)`, and the service-wide 50% maximum discount ceiling)
@@ -357,6 +386,7 @@ Run pytest.
 ```text
 /boost Implement @SPEC.md in src/discountservice/engine.py and add unit tests for all acceptance criteria.
 ```
+* **Expected Result:** Implements `evaluate_stacked_promos` in `engine.py` adhering to `DESIGN.md` (Decimal rounding, 50% cap, TypeError on float); adds `tests/test_engine.py`; passes all tests (`8 passed in 0.06s`).
 * **Highlight:** Point out how `@SPEC.md` focuses purely on the feature being built in this conversation (`evaluate_stacked_promos`), while Antigravity automatically enforces all standing architectural and testing guardrails from `AGENTS.md` $\rightarrow$ `@DESIGN.md` and `.agents/rules/discount-invariants.md` and verifies `AC-1`–`AC-4` pass via `pytest`.
 
 ---
@@ -371,6 +401,14 @@ Run pytest.
 ```text
 Run pytest.
 ```
+* **Expected Result:**
+```text
+FAILED tests/test_reservator.py::test_hold_expiration_releases_stock
+FAILED tests/test_reservator.py::test_atomic_multi_sku_rollback_on_insufficient_stock
+FAILED tests/test_reservator.py::test_idempotent_reservation_replay
+FAILED tests/test_reservator.py::test_rejects_negative_or_zero_quantity
+==================== 4 failed, 1 passed in 0.04s ====================
+```
 * **Highlight:** `tests/test_reservator.py` fails 4 contract tests (`AC-1` expired hold reclamation, `AC-2` atomic multi-SKU rollback, `AC-3` idempotent `reservation_id` replay, `AC-4` non-positive quantity validation).
 
 #### Step 2: Clarify Edge Cases with `/grill-me` & Lock Plan with `/plan`
@@ -379,15 +417,23 @@ Run pytest.
 ```text
 /grill-me Review @SPEC.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
 ```
+* **Expected Result:** Clarifies clock drift, Redis lock lease durations, and idempotency key retention periods before writing plan.
+
 ```text
 /plan Write the implementation plan and task breakdown to .scratch/reservation-plan.md
 ```
+* **Expected Result:** Generates `.scratch/reservation-plan.md` with 4 focused implementation phases matching AC-1 through AC-4.
 
 #### Step 3: Autonomous Act $\rightarrow$ Verify Test-Heal Loop
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo7-contract-spec-tdd/workspace/`
 * **Prompt:**
 ```text
 /goal Implement .scratch/reservation-plan.md in src/inventoryservice/reservator.py and self-heal until pytest passes 100%.
+```
+* **Expected Result:**
+```text
+Autonomous loop patches reservator.py, self-heals failures across test runs, and completes with:
+==================== 5 passed in 0.05s ====================
 ```
 
 ---
@@ -402,6 +448,10 @@ Run pytest.
 ```text
 Run pytest.
 ```
+* **Expected Result:**
+```text
+==================== 4 passed in 0.03s ====================
+```
 * **Files to highlight in editor:**
   * `workspace/.agents/agents/architect.md` (Graph Planner persona)
   * `workspace/.agents/agents/fast-scout.md` (Flash AST Scout persona using `ast-graph` MCP)
@@ -413,6 +463,7 @@ Run pytest.
 ```text
 /plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership.
 ```
+* **Expected Result:** Wrote `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs parallel `@coder` subagents on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
 * **Highlight:** Show the 3-stage DAG in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
 
 #### Step 3: Execute Parallel Multi-Agent Refactor via `/teamwork` (`👥 Teamwork`)
@@ -420,6 +471,11 @@ Run pytest.
 * **Prompt:**
 ```text
 /teamwork Execute .scratch/refactor-dag.md using @coder subagents in parallel across Stage 2 (repositories.py and services.py), then rewire routes.py and monolith_order_app.py and verify pytest passes in a clean context.
+```
+* **Expected Result:**
+```text
+Parallel @coder subagents complete without file collisions; monolith delegates cleanly; pytest passes:
+==================== 4 passed in 0.03s ====================
 ```
 
 ---
@@ -434,6 +490,10 @@ Run pytest.
 ```text
 Run pytest.
 ```
+* **Expected Result:**
+```text
+==================== 4 passed in 0.02s ==================== (False Green)
+```
 * **Highlight:** `pytest` passes 100% (`4 passed`), giving the author a false sense of security.
 
 #### Step 2: Run the Clean-Context `@adversarial-reviewer` Subagent
@@ -442,6 +502,7 @@ Run pytest.
 ```text
 Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @DESIGN.md and produce a falsifiable file:line invariant table.
 ```
+* **Expected Result:** Audit outputs invariant table with 3 FAIL findings: linear backoff (`dispatcher.py:85`), non-constant-time HMAC compare (`dispatcher.py:55`), and outbox order reversal (`dispatcher.py:78-98`).
 * **What to watch on screen:**
   `@adversarial-reviewer` inspects `src/settlement/dispatcher.py` with zero authoring bias and flags **3 `FAIL` rows** in its falsifiable invariant table:
   1. **§1 Resiliency (`FAIL` at `dispatcher.py:85`):** Linear `self.sleep_fn(self.base_delay_sec)` instead of exponential backoff with full randomized jitter.
@@ -453,4 +514,9 @@ Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/tes
 * **Prompt:**
 ```text
 /boost Fix all FAIL findings identified by @adversarial-reviewer in src/settlement/dispatcher.py, add regression tests in tests/test_dispatcher.py, and re-run @adversarial-reviewer to confirm 100% PASS.
+```
+* **Expected Result:**
+```text
+Applies fixes to dispatcher.py; adds 3 regression tests in test_dispatcher.py; re-audit reports 100% PASS; pytest passes:
+==================== 7 passed in 0.05s ====================
 ```
