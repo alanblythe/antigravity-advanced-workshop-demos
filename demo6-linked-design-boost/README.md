@@ -18,18 +18,12 @@
 
 ## Live Demo Steps
 
-1. Reset to initial state:
-```bash
-./start_demo.sh
+1. In Antigravity (`agy` inside `workspace/`, launched via VS Code Task **`Reset & Open: Demo 6`**), verify the baseline test suite:
+```text
+Run pytest.
 ```
 
-2. Open the clean agent workspace (`workspace/`) and verify baseline tests:
-```bash
-cd workspace
-uv run pytest
-```
-
-3. In Antigravity 2.0 (or `agy` CLI inside `workspace/`), invoke **`/boost`** (`⚡ Boost` mode) referencing `@SPEC.md`:
+2. Invoke **`/boost`** (`⚡ Boost` mode) referencing `@SPEC.md`:
 ```text
 /boost Implement @SPEC.md in src/discountservice/engine.py and add unit tests for all acceptance criteria.
 ```

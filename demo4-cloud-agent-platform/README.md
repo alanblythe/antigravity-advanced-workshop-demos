@@ -35,34 +35,17 @@ source scripts/set_env.sh
 
 ## Quickstart
 
-1. Start and verify Demo 4 environment:
+1. Reset and launch `agy` inside `workspace/` (or use VS Code Task **`Reset & Open: Demo 4`**):
 ```bash
-./start_demo.sh
+source scripts/set_env.sh && ./start_demo.sh && cd workspace && agy
 ```
 
-2. Open the clean agent workspace (`workspace/`):
-```bash
-cd workspace
-```
-
-3. Inspect the pre-deployed agent's A2A Agent Card:
-```bash
-bash scripts/test_invoke.sh --card
-```
-
-4. Invoke the deployed GEAP agent from Antigravity TUI inside `workspace/`:
-```bash
-agy
-```
-Prompt inside `agy`:
+2. Inspect the pre-deployed agent's A2A Agent Card inside `agy`:
 ```text
-@cloud-telemetry-agent Analyze query error spikes across the cluster over the last 24h.
+Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
 ```
 
-3. Inspect deployment recipe:
-```bash
-cat Dockerfile
-```
-```bash
-cat scripts/deploy.sh
+3. Invoke the deployed GEAP agent from Antigravity inside `agy`:
+```text
+@cloud-telemetry-agent Analyze query error anomalies in the enterprise BigQuery cluster across the last 24 hours.
 ```

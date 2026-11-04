@@ -16,11 +16,7 @@ def apply_single_promo(
     code: str,
     catalog: dict[str, PromoRule],
 ) -> DiscountResult:
-    """Apply a single promotional code to an order subtotal.
-
-    Note: Stacked promo evaluation (`evaluate_stacked_promos`) specified in @SPEC.md
-    has not been implemented yet.
-    """
+    """Apply a single promotional code to an order subtotal."""
     if not isinstance(subtotal, Decimal):
         raise TypeError("Monetary inputs must be Decimal")
     if subtotal < Decimal("0.00"):

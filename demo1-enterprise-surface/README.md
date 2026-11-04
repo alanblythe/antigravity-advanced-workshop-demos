@@ -17,32 +17,22 @@
 
 ## Quickstart
 
-1. Reset to initial brownfield state:
+1. Reset and launch `agy` inside `workspace/` (or use VS Code Task **`Reset & Open: Demo 1`**):
 ```bash
-./start_demo.sh
+./start_demo.sh && cd workspace && agy
 ```
 
-2. Open the clean agent workspace (`workspace/`):
-```bash
-cd workspace
+2. Harmonize workspace standards inside `agy`:
+```text
+Run scripts/standardize.py in dry-run mode to audit existing Cursor and Claude rules, then apply the merge strategy to generate a canonical AGENTS.md and backward-compatible symlinks.
 ```
 
-3. Harmonize workspace standards:
-```bash
-python3 scripts/standardize.py --dry-run --strategy merge
-python3 scripts/standardize.py --apply --strategy merge
+3. Test symbol navigation via AST inside `agy`:
+```text
+Trace all callers of reconcile_transactions across the codebase using the code graph. Do not read the entire files.
 ```
 
-4. Test symbol navigation via AST inside `workspace/`:
-```bash
-agy -p "Trace all callers of reconcile_transactions using the symbol graph"
-```
-
-5. Execute ArchScout subagent to map dependencies:
-```bash
-agy
-```
-Prompt inside `agy`:
+4. Execute `arch-scout` subagent to map dependencies inside `agy`:
 ```text
 Use invoke subagent to execute the arch-scout to map dependencies.
 ```

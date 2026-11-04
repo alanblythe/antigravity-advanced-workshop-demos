@@ -19,11 +19,7 @@ SCHEMA_PATH = BASE_DIR / "schema.sql"
 
 
 class SettlementDispatcher:
-    """Processes signed settlement events and dispatches merchant webhooks.
-
-    NOTE: Unit tests in tests/test_dispatcher.py pass 100% ("False Green"),
-    but this implementation contains 3 seeded @DESIGN.md invariant violations!
-    """
+    """Processes signed settlement events and dispatches merchant webhooks."""
 
     def __init__(
         self,
@@ -57,8 +53,6 @@ class SettlementDispatcher:
 
     def verify_signature(self, payload_json: str, provided_signature: str) -> None:
         expected = self.compute_signature(payload_json)
-        # SEEDED DEFECT #1 (Violates @DESIGN.md §2 Security Invariant):
-        # Uses standard '!=' string comparison instead of hmac.compare_digest()!
         if provided_signature != expected:
             raise SignatureVerificationError("Invalid webhook signature")
 
@@ -83,16 +77,12 @@ class SettlementDispatcher:
         for attempt in range(self.max_retries):
             attempts = attempt + 1
             try:
-                # SEEDED DEFECT #2 (Violates @DESIGN.md §3 Idempotency / Outbox Invariant):
-                # Fires external webhook BEFORE persisting idempotency record to SQLite!
                 self.webhook_client(event)
                 last_err = None
                 break
             except WebhookDeliveryError as exc:
                 last_err = exc
                 if attempt < self.max_retries - 1:
-                    # SEEDED DEFECT #3 (Violates @DESIGN.md §1 Resiliency Invariant):
-                    # Uses fixed/linear sleep instead of exponential backoff with full jitter!
                     self.sleep_fn(self.base_delay_sec)
 
         if last_err is not None:

@@ -6,9 +6,11 @@
 
 ---
 
-## Master Demo Reset (Pattern A)
+## Master Demo Reset & Workspace Launch (Pattern A)
 
-Before starting a session or between dry-runs, run this single command to reset all demo folders to a pristine state:
+Each demo can be reset and launched in a single step using the VS Code Command Palette (**`Tasks: Run Task`** $\rightarrow$ **`Reset & Open: Demo 1`** through **`Reset & Open: Demo 9`**), which resets the demo workspace to `.seed/` and opens a dedicated terminal running `agy` inside `workspace/`.
+
+Or, before starting a session, reset all demo folders from the root terminal:
 
 ```bash
 # Reset all 9 demos (Demos 1-9):
@@ -71,27 +73,19 @@ source ./scripts/set_gcloud_env.sh
 * **Highlight:** Point out that enterprise SSO uses corporate Google Cloud credentials, not consumer Google accounts.
 
 #### Step 2: Enterprise CLI Login & Token Check
-* **Where to run:** Workstation Terminal (`demo1-enterprise-surface/`)
+* **Where to run:** Workstation Terminal (`demo1-enterprise-surface/workspace/`)
 * **Commands:**
 ```bash
-cd demo1-enterprise-surface
-./start_demo.sh
-cd workspace
 agy login --enterprise
 agy auth status
 ```
 * **Highlight:** Show verified corporate identity and active project binding.
 
 #### Step 3: Run Workspace Standardization
-* **Where to run:** Workstation Terminal (`demo1-enterprise-surface/workspace/`)
-* **Commands:**
-1. Dry run: Audit and detect multi-tool rules (Cursor + Claude):
-```bash
-python3 scripts/standardize.py --dry-run --strategy merge
-```
-2. Apply canonical AGENTS.md and symlinks:
-```bash
-python3 scripts/standardize.py --apply --strategy merge
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo1-enterprise-surface/workspace/`
+* **Prompt inside `agy`:**
+```text
+Run scripts/standardize.py in dry-run mode to audit existing Cursor and Claude rules, then apply the merge strategy to generate a canonical AGENTS.md and backward-compatible symlinks.
 ```
 * **Highlight:** Point out how Antigravity detects existing **Cursor** (`.cursorrules`) and **Claude Code** (`CLAUDE.md`) configurations, merges them into the open Linux Foundation **`AGENTS.md`**, and generates backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`).
 
@@ -125,33 +119,24 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 * **Suggested Timing:** ~10 minutes (2m path-scoped rules, 5m `/grill-me` interview, 3m `/plan` generation)
 * **Goal:** Move from "vibe coding" to structured spec-driven engineering.
 
-#### Step 1: Prepare Clean Demo 2 Environment
-* **Where to run:** Workstation Terminal (`demo2-spec-driven-sdlc/`)
-* **Commands:**
-```bash
-cd demo2-spec-driven-sdlc
-./start_demo.sh
-cd workspace
-```
-
-#### Step 2: Path-Scoped Rules Inspection
+#### Step 1: Path-Scoped Rules Inspection
 * **Where to run:** VS Code Editor
 * **Files to show:**
   * `workspace/.agents/rules/frontend.md` (`paths: ["src/frontend/**"]`)
   * `workspace/.agents/rules/backend.md` (`paths: ["src/paymentservice/**", "reconciler.py"]`)
 * **Highlight:** Point out progressive disclosure: when editing backend reconciliation, frontend UI rules are never loaded into context.
 
-#### Step 3: Interview Edge Cases with `/grill-me`
+#### Step 2: Interview Edge Cases with `/grill-me`
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
-* **Command inside `agy`:**
+* **Prompt inside `agy`:**
 ```text
 /grill-me We need to add transaction reconciliation with automatic retry and idempotency in reconciler.py. Interview me on edge cases, failure modes, and security invariants.
 ```
 * **Highlight:** Show the agent asking 3 pointed questions (duplicate `tx_id` handling, transient network retry backoff, and lock safety).
 
-#### Step 4: Lock the Implementation Plan with `/plan`
+#### Step 3: Lock the Implementation Plan with `/plan`
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
-* **Command inside `agy`:**
+* **Prompt inside `agy`:**
 ```text
 /plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.
 ```
@@ -185,11 +170,11 @@ cd workspace
 * **Suggested Timing:** ~7 minutes (2m dashboard startup, 5m live browser DOM & console verification)
 * **Goal:** Show that verification doesn't stop at backend unit tests—the Antigravity 2.0 Agent Browser verifies the live web UI.
 
-#### Step 1: Start the Local Dashboard
-* **Where to run:** Background Terminal Pane (`demo2-spec-driven-sdlc/workspace/`)
-* **Command:**
-```bash
-python3 app.py
+#### Step 1: Start the Local Dashboard via Antigravity
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
+* **Prompt inside `agy`:**
+```text
+Start the local dashboard server (python3 app.py) in the background on port 8000.
 ```
 *Server starts on `http://localhost:8000`.*
 
@@ -215,10 +200,6 @@ python3 app.py
 
 #### Step 1: Run Adversarial Reviewer Subagent
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
-* **Commands:**
-```bash
-agy
-```
 * **Prompt inside `agy`:**
 ```text
 Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
@@ -239,16 +220,12 @@ Use invoke subagent to execute spec-adversary to audit git diff main...feat/reco
 * **Suggested Timing:** ~12 minutes (3m MCP config walkthrough, 4m read-only BigQuery query, 3m blocked `DROP TABLE` negative test, 2m enterprise settings)
 * **Goal:** Demonstrate repository-committed MCP configuration, querying BigQuery read-only, and verifying negative security controls.
 
-#### Step 1: Reset & Start Demo 3
-* **Where to run:** Workstation Terminal (`demo3-database-guardrails/`)
-* **Commands:**
-```bash
-cd demo3-database-guardrails
-source scripts/set_env.sh
-./start_demo.sh
-cd workspace
-```
-* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop ADC profile, while the MCP server is pre-configured and committed directly in `workspace/.mcp.json` (and `workspace/.gemini/mcp_config.json`), making tools immediately available without manual registration or polluting global user configs.
+#### Step 1: Inspect Repository-Scoped MCP Configuration
+* **Where to run:** VS Code Editor (`demo3-database-guardrails/workspace/`)
+* **Files to show:**
+  * `workspace/.mcp.json` (and `workspace/.gemini/mcp_config.json`)
+  * `workspace/tools.yaml`
+* **Highlight:** Point out that the MCP server (`bq-toolbox`) is pre-configured and committed directly in `workspace/.mcp.json`, making read-only BigQuery tools immediately available to Antigravity without manual CLI registration or polluting global user configs.
 
 #### Step 2: Query Telemetry Data via Antigravity Agent
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo3-database-guardrails/workspace/`
@@ -284,33 +261,22 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 * **Suggested Timing:** ~12 minutes (3m A2A agent card inspection, 4m container & ADK recipe walkthrough, 5m live `@cloud-telemetry-agent` invocation)
 * **Goal:** Connect the developer workstation to a pre-warmed production agent deployed on Gemini Enterprise Agent Platform (GEAP).
 
-#### Step 1: Reset & Verify Pre-Deployed Cloud Agent
-* **Where to run:** Workstation Terminal (`demo4-cloud-agent-platform/`)
-* **Commands:**
-```bash
-cd demo4-cloud-agent-platform
-source scripts/set_env.sh
-./start_demo.sh
-cd workspace
-```
-* **Highlight:** Point out that `scripts/set_env.sh` binds the isolated workshop credentials and exports `GEAP_AGENT_URL`, connecting the local workstation directly to the deployed cloud agent platform.
-
-#### Step 2: Inspect the Production A2A Agent Card
-* **Where to run:** Workstation Terminal (`demo4-cloud-agent-platform/workspace/`)
-* **Command:**
-```bash
-curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
+#### Step 1: Inspect the Production A2A Agent Card via Antigravity
+* **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo4-cloud-agent-platform/workspace/`
+* **Prompt inside `agy`:**
+```text
+Fetch and inspect the A2A agent card at $GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json and summarize its capabilities, input schemas, and authentication scopes.
 ```
 * **Highlight:** Point out the open A2A contract: the cloud agent's declared capabilities, input schemas, and authentication scopes.
 
-#### Step 3: Show the Clean Container Deployment Recipe
+#### Step 2: Show the Clean Container Deployment Recipe
 * **Where to run:** VS Code Editor
 * **Files to show:** 
   * `demo4-cloud-agent-platform/workspace/Dockerfile` (bundling `toolbox` binary + `tools.yaml`)
   * `demo4-cloud-agent-platform/workspace/app/agent.py` (ADK `McpToolset` integration)
   * `demo4-cloud-agent-platform/workspace/scripts/deploy.sh` (`agents-cli deploy` flags)
 
-#### Step 4: Invoke the Cloud Agent from Local Antigravity
+#### Step 3: Invoke the Cloud Agent from Local Antigravity
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo4-cloud-agent-platform/workspace/`
 * **Prompt inside `agy`:**
 ```text
@@ -329,13 +295,10 @@ curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
 * **Suggested Timing:** ~15 minutes (2m plugin setup, 4m Elephant critique-first brainstorm, 6m 6-lens parallel Goldfish swarm, 3m `concepts_brief.md` RFC handoff)
 * **Goal:** Eliminate LLM sycophancy ("glazing") and conversational echo chambers during upstream system design using the open-source **[Elephant-Goldfish Model (`egm`)](https://github.com/google/elephant-goldfish-model)** plugin.
 
-#### Step 1: Reset Demo 5 & Install the Open-Source EGM Plugin
-* **Where to run:** Workstation Terminal (`demo5-egm-architecture-rfc/`)
+#### Step 1: Install the Open-Source EGM Plugin
+* **Where to run:** Workstation Terminal (`demo5-egm-architecture-rfc/workspace/`)
 * **Commands:**
 ```bash
-cd demo5-egm-architecture-rfc
-./start_demo.sh
-cd workspace
 agy plugin install https://github.com/google/elephant-goldfish-model
 agy plugin list
 ```
@@ -376,14 +339,11 @@ agy plugin list
 * **Suggested Timing:** ~10 minutes (4m walkthrough of `AGENTS.md` $\rightarrow$ `@DESIGN.md` vs. `@SPEC.md` & path-scoped rules, 6m `/boost` execution & test verification)
 * **Goal:** Show how separating `AGENTS.md` (concise project constitution) and `@DESIGN.md` (long-lived architectural guardrails, 50% ceiling, & testing procedures) from `@SPEC.md` (the single-conversation feature specification) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex features from a 1-sentence prompt.
 
-#### Step 1: Reset & Inspect the 3-Tier Context Hierarchy (`AGENTS.md` $\rightarrow$ `@DESIGN.md` + `@SPEC.md`)
-* **Where to run:** Workstation Terminal (`demo6-linked-design-boost/`)
-* **Commands:**
-```bash
-cd demo6-linked-design-boost
-./start_demo.sh
-cd workspace
-uv run pytest
+#### Step 1: Verify Baseline Tests & Inspect the 3-Tier Context Hierarchy (`AGENTS.md` $\rightarrow$ `@DESIGN.md` + `@SPEC.md`)
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo6-linked-design-boost/workspace/`
+* **Prompt:**
+```text
+Run pytest.
 ```
 * **Files to highlight in editor:**
   * `workspace/AGENTS.md` (concise entry point linking to `@DESIGN.md` for standing guardrails)
@@ -405,14 +365,11 @@ uv run pytest
 * **Suggested Timing:** ~12 minutes (2m initial `Red` test suite, 4m `/grill-me` edge-case clarification, 2m `/plan` task breakdown, 4m autonomous `/goal` test-heal loop to `Green`)
 * **Goal:** Start from a `SPEC.md` and pre-written failing `pytest` contract tests (`Red` state: `1 passed, 4 failed`), clarify edge cases via `/grill-me`, lock the task breakdown via `/plan`, and self-heal to `Green`.
 
-#### Step 1: Reset & Show the Failing Contract Suite (`Red` State)
-* **Where to run:** Workstation Terminal (`demo7-contract-spec-tdd/`)
-* **Commands:**
-```bash
-cd demo7-contract-spec-tdd
-./start_demo.sh
-cd workspace
-pytest
+#### Step 1: Show the Failing Contract Suite (`Red` State)
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo7-contract-spec-tdd/workspace/`
+* **Prompt:**
+```text
+Run pytest.
 ```
 * **Highlight:** `tests/test_reservator.py` fails 4 contract tests (`AC-1` expired hold reclamation, `AC-2` atomic multi-SKU rollback, `AC-3` idempotent `reservation_id` replay, `AC-4` non-positive quantity validation).
 
@@ -439,14 +396,11 @@ pytest
 * **Suggested Timing:** ~15 minutes (3m subagent persona walkthrough, 5m `@architect` + `@fast-scout` AST Graph Planning to `.scratch/refactor-dag.md`, 7m parallel `/teamwork` `@coder` execution & verification)
 * **Goal:** Decompose a 220-line monolithic Online Boutique Order Processor (`src/order_app/monolith_order_app.py`) into `models.py`, `repositories.py`, `services.py`, and `routes.py` using **Graph Planning** (`@architect` + `@fast-scout`) and **`/teamwork`** (`👥 Teamwork`) parallel `@coder` execution.
 
-#### Step 1: Reset & Verify Monolith Baseline (`4 passed`)
-* **Where to run:** Workstation Terminal (`demo8-teamwork-monolith-refactor/`)
-* **Commands:**
-```bash
-cd demo8-teamwork-monolith-refactor
-./start_demo.sh
-cd workspace
-pytest
+#### Step 1: Verify Monolith Baseline (`4 passed`)
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
+* **Prompt:**
+```text
+Run pytest.
 ```
 * **Files to highlight in editor:**
   * `workspace/.agents/agents/architect.md` (Graph Planner persona)
@@ -474,14 +428,11 @@ pytest
 * **Suggested Timing:** ~12 minutes (2m "False-Green" `pytest` demonstration, 5m `@adversarial-reviewer` clean-context audit & `file:line` invariant table, 5m `/boost` remediation & re-verification)
 * **Goal:** Demonstrate why passing unit tests (`4 passed` — "False Green") are not enough, and how a clean-context **`@adversarial-reviewer`** subagent catches 3 subtle security, resiliency, and outbox ordering regressions against `@DESIGN.md` before human code review.
 
-#### Step 1: Reset & Show the "False-Green" Test Suite (`4 passed`)
-* **Where to run:** Workstation Terminal (`demo9-adversarial-review-loop/`)
-* **Commands:**
-```bash
-cd demo9-adversarial-review-loop
-./start_demo.sh
-cd workspace
-pytest
+#### Step 1: Show the "False-Green" Test Suite (`4 passed`)
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo9-adversarial-review-loop/workspace/`
+* **Prompt:**
+```text
+Run pytest.
 ```
 * **Highlight:** `pytest` passes 100% (`4 passed`), giving the author a false sense of security.
 

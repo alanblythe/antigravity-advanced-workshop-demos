@@ -16,23 +16,17 @@ However, `src/settlement/dispatcher.py` contains **3 critical production regress
 
 ## Live Demo Steps
 
-1. Reset to the seeded "False-Green" state:
-```bash
-./start_demo.sh
+1. In Antigravity (`agy` inside `workspace/`, launched via VS Code Task **`Reset & Open: Demo 9`**), verify the "False-Green" test suite passes (`4 passed`):
+```text
+Run pytest.
 ```
 
-2. Open the clean agent workspace (`workspace/`) and verify the "False-Green" test suite passes (`4 passed`):
-```bash
-cd workspace
-pytest
-```
-
-3. Inside `workspace/`, invoke the clean-context **`@adversarial-reviewer`** subagent:
+2. Invoke the clean-context **`@adversarial-reviewer`** subagent:
 ```text
 Invoke @adversarial-reviewer to audit src/settlement/dispatcher.py and tests/test_dispatcher.py against @DESIGN.md and produce a falsifiable file:line invariant table.
 ```
 
-4. Remediate all 3 blocking findings and add regression tests:
+3. Remediate all 3 blocking findings and add regression tests:
 ```text
 /boost Fix all FAIL findings identified by @adversarial-reviewer in src/settlement/dispatcher.py, add regression tests in tests/test_dispatcher.py, and re-run @adversarial-reviewer to confirm 100% PASS.
 ```

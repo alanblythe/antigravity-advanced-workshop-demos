@@ -17,31 +17,25 @@
 
 ## Quickstart
 
-1. Reset to initial clean worktree state:
+1. Reset and launch `agy` inside `workspace/` (or use VS Code Task **`Reset & Open: Demo 2`**):
 ```bash
-./start_demo.sh
+./start_demo.sh && cd workspace && agy
 ```
 
-2. Open the clean agent workspace (`workspace/`) and inspect tests:
-```bash
-cd workspace
-pytest src/paymentservice/test_reconciler.py
+2. Interview edge cases and lock the implementation plan inside `agy`:
+```text
+/grill-me We need to add transaction reconciliation with automatic retry and idempotency in reconciler.py. Interview me on edge cases, failure modes, and security invariants.
+```
+```text
+/plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.
 ```
 
-3. Run the spec-driven worktree subagent via Antigravity inside `workspace/`:
-```bash
-agy
-```
-Prompt inside `agy`:
+3. Delegate the plan to the isolated Git worktree subagent inside `agy`:
 ```text
 /goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
 ```
 
-4. Run the adversarial review against the completed worktree diff:
-```bash
-agy
-```
-Prompt inside `agy`:
+4. Run the adversarial review against the completed worktree diff inside `agy`:
 ```text
-Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against AGENTS.md.
+Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
 ```

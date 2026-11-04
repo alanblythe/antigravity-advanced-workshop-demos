@@ -1,10 +1,14 @@
-# Online Boutique — Monolith Decomposition & Multi-Agent Teamwork Guidelines
+# Online Boutique — Order Processor Service Guidelines
 
 ## §1. Architectural Contract (`@DESIGN.md`)
-- All target module boundaries, dependency DAG stages, and backward-compatibility requirements are defined in `@DESIGN.md`.
-- Always read `@DESIGN.md` before planning or executing any refactoring of `src/order_app/monolith_order_app.py`.
+- Target module boundaries, dependency layering, and backward-compatibility requirements for `src/order_app/` are defined in `@DESIGN.md`.
+- Always consult `@DESIGN.md` before planning or refactoring `src/order_app/monolith_order_app.py`.
 
-## §2. Multi-Agent Persona Roster & Non-Overlapping Ownership
-1. **`@architect` (`.agents/agents/architect.md`):** Performs **Graph Planning**—invokes `@fast-scout` to map AST symbols and outputs the 3-stage execution DAG to `.scratch/refactor-dag.md`.
-2. **`@fast-scout` (`.agents/agents/fast-scout.md`):** Read-only Flash scout that uses the `ast-graph` MCP server (`list_symbols`, `find_callers`) to map coupling without reading full files into the main context.
-3. **`@coder` (`.agents/agents/coder.md`):** Executes assigned DAG slices with strict non-overlapping file ownership (`models.py`, `repositories.py`, `services.py`, `routes.py`) and verifies `.venv/bin/pytest` passes 100%.
+## §2. Testing & Verification
+- Run the test suite using `.venv/bin/pytest`.
+- Do not install packages or modify the environment when running tests.
+
+## §3. Specialized Subagents (`.agents/agents/`)
+- **`@architect`:** Architectural planner that uses `@fast-scout` to map symbol dependencies and design non-overlapping module boundaries.
+- **`@fast-scout`:** Read-only Flash scout that uses the `ast-graph` MCP server (`list_symbols`, `find_callers`) to inspect symbol coupling without reading full files into context.
+- **`@coder`:** Implementation subagent that executes assigned module extractions with strict file ownership and verifies `.venv/bin/pytest`.

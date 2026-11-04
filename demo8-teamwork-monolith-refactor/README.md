@@ -17,23 +17,17 @@
 
 ## Live Demo Steps
 
-1. Reset to initial monolithic state:
-```bash
-./start_demo.sh
+1. In Antigravity (`agy` inside `workspace/`, launched via VS Code Task **`Reset & Open: Demo 8`**), verify the baseline monolith tests pass (`4 passed`):
+```text
+Run pytest.
 ```
 
-2. Open the clean agent workspace (`workspace/`) and verify baseline monolith tests pass (`4 passed`):
-```bash
-cd workspace
-pytest
-```
-
-3. Inside `workspace/`, run **Graph Planning** with `@architect` and `@fast-scout`:
+2. Run **Graph Planning** with `@architect` and `@fast-scout`:
 ```text
 /plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership.
 ```
 
-4. Execute parallel multi-agent refactoring via **`/teamwork`** (`👥 Teamwork`):
+3. Execute parallel multi-agent refactoring via **`/teamwork`** (`👥 Teamwork`):
 ```text
 /teamwork Execute .scratch/refactor-dag.md using @coder subagents in parallel across Stage 2 (repositories.py and services.py), then rewire routes.py and monolith_order_app.py and verify pytest passes in a clean context.
 ```

@@ -15,28 +15,22 @@
 
 ## Live Demo Steps
 
-1. Reset to initial `Red` state:
-```bash
-./start_demo.sh
+1. In Antigravity (`agy` inside `workspace/`, launched via VS Code Task **`Reset & Open: Demo 7`**), run the failing contract suite (`1 passed, 4 failed`):
+```text
+Run pytest.
 ```
 
-2. Open the clean agent workspace (`workspace/`) and verify the failing contract suite (`1 passed, 4 failed`):
-```bash
-cd workspace
-pytest
-```
-
-3. Inside `workspace/`, clarify ambiguities with **`/grill-me`**:
+2. Clarify ambiguities with **`/grill-me`**:
 ```text
 /grill-me Review @SPEC.md and tests/test_reservator.py. Ask me about any edge cases before we lock the implementation plan.
 ```
 
-4. Generate the task breakdown with **`/plan`**:
+3. Generate the task breakdown with **`/plan`**:
 ```text
 /plan Write the implementation plan and task breakdown to .scratch/reservation-plan.md
 ```
 
-5. Execute the autonomous Test-Heal Loop (`⚡ Boost` / `/goal`):
+4. Execute the autonomous Test-Heal Loop (`⚡ Boost` / `/goal`):
 ```text
 /goal Implement .scratch/reservation-plan.md in src/inventoryservice/reservator.py and self-heal until pytest passes 100%.
 ```

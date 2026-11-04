@@ -37,7 +37,7 @@
     {
       "label": "Demo 3: Database Guardrails",
       "type": "shell",
-      "command": "printf '\\033]2;Demo 3: Database Guardrails\\007'; agy --dangerously-skip-permissions; exec zsh -l",
+      "command": "printf '\\033]2;Demo 3: Database Guardrails\\007'; source ../scripts/set_env.sh >/dev/null 2>&1 || true; agy --dangerously-skip-permissions; exec zsh -l",
       "options": {
         "cwd": "${workspaceFolder}/demo3-database-guardrails/workspace"
       },
@@ -52,7 +52,7 @@
     {
       "label": "Demo 4: Cloud Agent Platform",
       "type": "shell",
-      "command": "printf '\\033]2;Demo 4: Cloud Agent Platform\\007'; agy --dangerously-skip-permissions; exec zsh -l",
+      "command": "printf '\\033]2;Demo 4: Cloud Agent Platform\\007'; source ../scripts/set_env.sh >/dev/null 2>&1 || true; agy --dangerously-skip-permissions; exec zsh -l",
       "options": {
         "cwd": "${workspaceFolder}/demo4-cloud-agent-platform/workspace"
       },
