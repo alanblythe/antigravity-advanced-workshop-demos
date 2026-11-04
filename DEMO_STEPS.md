@@ -36,33 +36,33 @@ source ./scripts/set_gcloud_env.sh
 
 ---
 
-## Quick Navigation
+## Quick Navigation & Suggested Timings
 
-* [Module 1: Enterprise Surface, Standards & Context Hygiene](#module-1-enterprise-surface-standards--context-hygiene)
-  * [Demo 1A: Enterprise Auth & Workspace Standardization](#demo-1a-enterprise-auth--workspace-standardization)
-  * [Demo 1B: AST Code Graph & Model Routing](#demo-1b-ast-code-graph--model-routing)
-* [Module 2: Spec-Driven Coding, Git Worktrees, Browser Subagent & Multi-Model Review](#module-2-spec-driven-coding-git-worktrees-browser-subagent--multi-model-review)
-  * [Demo 2A: Spec Drafting & Plan Lock](#demo-2a-spec-drafting--plan-lock)
-  * [Demo 2B: Subagent Worktree Isolation & Test-Heal Loop (Gemini 2.5 Flash)](#demo-2b-subagent-worktree-isolation--test-heal-loop-gemini-25-flash)
-  * [Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification](#demo-2c-antigravity-20-browser-subagent-e2e-dom-verification)
-  * [Demo 2D: Immediate Multi-Model Adversarial PR Audit (Claude 3.5 Sonnet)](#demo-2d-immediate-multi-model-adversarial-pr-audit-claude-35-sonnet)
-* [Module 3: Enterprise Data Guardrails & Admin Governance](#module-3-enterprise-data-guardrails--admin-governance)
-  * [Demo 3: Live Database MCP Toolbox Addition & Safe Querying](#demo-3-live-database-mcp-toolbox-addition--safe-querying)
-* [Module 4: Production Cloud Agent Platform & A2A Collaboration](#module-4-production-cloud-agent-platform--a2a-collaboration)
-  * [Demo 4: Local Antigravity Invoking Deployed Cloud Agent via A2A](#demo-4-local-antigravity-invoking-deployed-cloud-agent-via-a2a)
-* [Module 5: Multi-Lens Architecture Ideation & Zero-Context RFC Stress-Testing (EGM)](#module-5-multi-lens-architecture-ideation--zero-context-rfc-stress-testing-egm)
-  * [Demo 5: Elephant-Goldfish Model (`/egm-brainstorm`) & 6-Lens Parallel Subagent Review](#demo-5-elephant-goldfish-model-egm-brainstorm--6-lens-parallel-subagent-review)
-* [Antigravity 201 Track: Spec-Driven Development & Multi-Agent Workflows (Demos 6–9)](#antigravity-201-track-spec-driven-development--multi-agent-workflows-demos-69)
-  * [Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-designmd--boost-demo6-linked-design-boost)
-  * [Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)](#demo-7-contract-first-spec-clarification--test-heal-loop-demo7-contract-spec-tdd)
-  * [Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)](#demo-8-graph-planning--multi-agent-teamwork-monolith-refactoring-demo8-teamwork-monolith-refactor)
-  * [Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)](#demo-9-clean-context-adversarial-review-loop-demo9-adversarial-review-loop)
+* [Module 1: Enterprise Surface, Standards & Context Hygiene](#module-1-enterprise-surface-standards--context-hygiene) *(~15 mins total)*
+  * [Demo 1A: Enterprise Auth & Workspace Standardization](#demo-1a-enterprise-auth--workspace-standardization) — **~8 mins**
+  * [Demo 1B: AST Code Graph & Model Routing](#demo-1b-ast-code-graph--model-routing) — **~7 mins**
+* [Module 2: Spec-Driven Coding, Git Worktrees, Browser Subagent & Multi-Model Review](#module-2-spec-driven-coding-git-worktrees-browser-subagent--multi-model-review) *(~35 mins total)*
+  * [Demo 2A: Spec Drafting & Plan Lock](#demo-2a-spec-drafting--plan-lock) — **~10 mins**
+  * [Demo 2B: Subagent Worktree Isolation & Test-Heal Loop (Gemini 2.5 Flash)](#demo-2b-subagent-worktree-isolation--test-heal-loop-gemini-25-flash) — **~10 mins**
+  * [Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification](#demo-2c-antigravity-20-browser-subagent-e2e-dom-verification) — **~7 mins**
+  * [Demo 2D: Immediate Multi-Model Adversarial PR Audit (Claude 3.5 Sonnet)](#demo-2d-immediate-multi-model-adversarial-pr-audit-claude-35-sonnet) — **~8 mins**
+* [Module 3: Enterprise Data Guardrails & Admin Governance](#module-3-enterprise-data-guardrails--admin-governance) *(~12 mins total)*
+  * [Demo 3: Live Database MCP Toolbox Addition & Safe Querying](#demo-3-in-repo-database-mcp-toolbox--safe-querying) — **~12 mins**
+* [Module 4: Production Cloud Agent Platform & A2A Collaboration](#module-4-production-cloud-agent-platform--a2a-collaboration) *(~12 mins total)*
+  * [Demo 4: Local Antigravity Invoking Deployed Cloud Agent via A2A](#demo-4-local-antigravity-invoking-deployed-cloud-agent-via-a2a) — **~12 mins**
+* [Module 5: Multi-Lens Architecture Ideation & Zero-Context RFC Stress-Testing (EGM)](#module-5-multi-lens-architecture-ideation--zero-context-rfc-stress-testing-egm) *(~15 mins total)*
+  * [Demo 5: Elephant-Goldfish Model (`/egm-brainstorm`) & 6-Lens Parallel Subagent Review](#demo-5-elephant-goldfish-model-egm-brainstorm--6-lens-parallel-subagent-review) — **~15 mins**
+* [Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-designmd--boost-demo6-linked-design-boost) — **~10 mins**
+* [Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)](#demo-7-contract-first-spec-clarification--test-heal-loop-demo7-contract-spec-tdd) — **~12 mins**
+* [Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)](#demo-8-graph-planning--multi-agent-teamwork-monolith-refactoring-demo8-teamwork-monolith-refactor) — **~15 mins**
+* [Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)](#demo-9-clean-context-adversarial-review-loop-demo9-adversarial-review-loop) — **~12 mins**
 
 ---
 
 ## Module 1: Enterprise Surface, Standards & Context Hygiene
 
 ### Demo 1A: Enterprise Auth & Workspace Standardization
+* **Suggested Timing:** ~8 minutes (2m Enterprise SSO, 2m CLI auth, 4m multi-tool rule harmonization)
 * **Goal:** Resolve Oct 12 consumer IDE confusion by demonstrating enterprise login and establishing open standards (`AGENTS.md` and `.agents/rules/`).
 
 #### Step 1: Enterprise Login in VS Code
@@ -98,6 +98,7 @@ python3 scripts/standardize.py --apply --strategy merge
 ---
 
 ### Demo 1B: AST Code Graph & Model Routing
+* **Suggested Timing:** ~7 minutes (4m AST symbol graph query, 3m model tier switching)
 * **Goal:** Demonstrate navigating a multi-thousand-line codebase without sending massive token payloads to the model.
 
 #### Step 1: Query Function Callers via AST / MCP
@@ -121,6 +122,7 @@ Trace all callers of reconcile_transactions across the codebase using the code g
 ## Module 2: Spec-Driven Coding, Git Worktrees, Browser Subagent & Multi-Model Review
 
 ### Demo 2A: Spec Drafting & Plan Lock
+* **Suggested Timing:** ~10 minutes (2m path-scoped rules, 5m `/grill-me` interview, 3m `/plan` generation)
 * **Goal:** Move from "vibe coding" to structured spec-driven engineering.
 
 #### Step 1: Prepare Clean Demo 2 Environment
@@ -157,6 +159,7 @@ cd workspace
 ---
 
 ### Demo 2B: Subagent Worktree Isolation & Test-Heal Loop (Gemini 2.5 Flash)
+* **Suggested Timing:** ~10 minutes (2m worktree setup, 5m autonomous test-heal loop, 3m diff & lint review)
 * **Goal:** Delegate the plan to a subagent that isolates its work in a Git worktree and heals a failing unit test using Gemini 2.5 Flash.
 
 #### Step 1: Launch Subagent with Goal Execution
@@ -179,6 +182,7 @@ cd workspace
 ---
 
 ### Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification
+* **Suggested Timing:** ~7 minutes (2m dashboard startup, 5m live browser DOM & console verification)
 * **Goal:** Show that verification doesn't stop at backend unit tests—the Antigravity 2.0 Agent Browser verifies the live web UI.
 
 #### Step 1: Start the Local Dashboard
@@ -206,6 +210,7 @@ python3 app.py
 ---
 
 ### Demo 2D: Immediate Multi-Model Adversarial PR Audit (Claude 3.5 Sonnet)
+* **Suggested Timing:** ~8 minutes (5m cross-model adversarial diff audit, 3m invariant violation debrief)
 * **Goal:** Catch the subtle invariant flaw that unit tests and browser tests missed *before* merging the worktree.
 
 #### Step 1: Run Adversarial Reviewer Subagent
@@ -231,6 +236,7 @@ Use invoke subagent to execute spec-adversary to audit git diff main...feat/reco
 ## Module 3: Enterprise Data Guardrails & Admin Governance
 
 ### Demo 3: In-Repo Database MCP Toolbox & Safe Querying
+* **Suggested Timing:** ~12 minutes (3m MCP config walkthrough, 4m read-only BigQuery query, 3m blocked `DROP TABLE` negative test, 2m enterprise settings)
 * **Goal:** Demonstrate repository-committed MCP configuration, querying BigQuery read-only, and verifying negative security controls.
 
 #### Step 1: Reset & Start Demo 3
@@ -275,6 +281,7 @@ Database MCP Toolbox policy blocks destructive SQL operations.
 ## Module 4: Production Cloud Agent Platform & A2A Collaboration
 
 ### Demo 4: Local Antigravity Invoking Deployed Cloud Agent via A2A
+* **Suggested Timing:** ~12 minutes (3m A2A agent card inspection, 4m container & ADK recipe walkthrough, 5m live `@cloud-telemetry-agent` invocation)
 * **Goal:** Connect the developer workstation to a pre-warmed production agent deployed on Gemini Enterprise Agent Platform (GEAP).
 
 #### Step 1: Reset & Verify Pre-Deployed Cloud Agent
@@ -319,6 +326,7 @@ curl -s "$GEAP_AGENT_URL/a2a/app/.well-known/agent-card.json" | jq .
 ## Module 5: Multi-Lens Architecture Ideation & Zero-Context RFC Stress-Testing (EGM)
 
 ### Demo 5: Elephant-Goldfish Model (`/egm-brainstorm`) & 6-Lens Parallel Subagent Review
+* **Suggested Timing:** ~15 minutes (2m plugin setup, 4m Elephant critique-first brainstorm, 6m 6-lens parallel Goldfish swarm, 3m `concepts_brief.md` RFC handoff)
 * **Goal:** Eliminate LLM sycophancy ("glazing") and conversational echo chambers during upstream system design using the open-source **[Elephant-Goldfish Model (`egm`)](https://github.com/google/elephant-goldfish-model)** plugin.
 
 #### Step 1: Reset Demo 5 & Install the Open-Source EGM Plugin
@@ -364,17 +372,8 @@ agy plugin list
 
 ---
 
-## Antigravity 201 Track: Spec-Driven Development & Multi-Agent Workflows (Demos 6–9)
-
-> **60-Minute Developer Session Focus:**
-> 1. Moving beyond single-loop prompts to explicit technical specs (`AGENTS.md` $\rightarrow$ `@DESIGN.md`) and executable acceptance criteria (`⚡ Boost`).
-> 2. Translating product requirements (`SPEC.md` + failing contract tests) into structured implementation plans (`/grill-me` $\rightarrow$ `/plan`) and autonomous test-heal loops.
-> 3. Multi-agent execution patterns: coordinating AST scouting (`@fast-scout`), Graph Planning (`@architect`), and parallel authoring (`@coder` via `/teamwork`).
-> 4. Clean-context adversarial review loops (`@adversarial-reviewer`) that stress-test "false-green" code and catch regressions before human review.
-
----
-
 ### Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)
+* **Suggested Timing:** ~10 minutes (4m walkthrough of `AGENTS.md` $\rightarrow$ `@DESIGN.md` vs. `@SPEC.md` & path-scoped rules, 6m `/boost` execution & test verification)
 * **Goal:** Show how separating `AGENTS.md` (concise project constitution) and `@DESIGN.md` (long-lived architectural guardrails, 50% ceiling, & testing procedures) from `@SPEC.md` (the single-conversation feature specification) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex features from a 1-sentence prompt.
 
 #### Step 1: Reset & Inspect the 3-Tier Context Hierarchy (`AGENTS.md` $\rightarrow$ `@DESIGN.md` + `@SPEC.md`)
@@ -403,6 +402,7 @@ uv run pytest
 ---
 
 ### Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)
+* **Suggested Timing:** ~12 minutes (2m initial `Red` test suite, 4m `/grill-me` edge-case clarification, 2m `/plan` task breakdown, 4m autonomous `/goal` test-heal loop to `Green`)
 * **Goal:** Start from a `SPEC.md` and pre-written failing `pytest` contract tests (`Red` state: `1 passed, 4 failed`), clarify edge cases via `/grill-me`, lock the task breakdown via `/plan`, and self-heal to `Green`.
 
 #### Step 1: Reset & Show the Failing Contract Suite (`Red` State)
@@ -436,6 +436,7 @@ pytest
 ---
 
 ### Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)
+* **Suggested Timing:** ~15 minutes (3m subagent persona walkthrough, 5m `@architect` + `@fast-scout` AST Graph Planning to `.scratch/refactor-dag.md`, 7m parallel `/teamwork` `@coder` execution & verification)
 * **Goal:** Decompose a 220-line monolithic Online Boutique Order Processor (`src/order_app/monolith_order_app.py`) into `models.py`, `repositories.py`, `services.py`, and `routes.py` using **Graph Planning** (`@architect` + `@fast-scout`) and **`/teamwork`** (`👥 Teamwork`) parallel `@coder` execution.
 
 #### Step 1: Reset & Verify Monolith Baseline (`4 passed`)
@@ -470,6 +471,7 @@ pytest
 ---
 
 ### Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)
+* **Suggested Timing:** ~12 minutes (2m "False-Green" `pytest` demonstration, 5m `@adversarial-reviewer` clean-context audit & `file:line` invariant table, 5m `/boost` remediation & re-verification)
 * **Goal:** Demonstrate why passing unit tests (`4 passed` — "False Green") are not enough, and how a clean-context **`@adversarial-reviewer`** subagent catches 3 subtle security, resiliency, and outbox ordering regressions against `@DESIGN.md` before human code review.
 
 #### Step 1: Reset & Show the "False-Green" Test Suite (`4 passed`)
