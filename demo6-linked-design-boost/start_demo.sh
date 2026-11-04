@@ -10,5 +10,6 @@ mkdir -p workspace
 find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
 cp -R .seed/. workspace/
+(cd workspace && uv sync --quiet 2>/dev/null) || true
 
 echo "✔ Demo 6 clean: workspace ready for /boost."

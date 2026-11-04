@@ -4,5 +4,6 @@
 - All service-wide architectural invariants, currency precision rules, domain data contracts, and verification standards are defined in `@DESIGN.md`.
 - Always enforce `@DESIGN.md` and `.agents/rules/discount-invariants.md` when reading or modifying any code in `src/discountservice/`.
 
-## §2. Feature Specifications
+## §2. Feature Specifications & Verification Gate
 - Task-specific feature requirements and acceptance criteria are provided in dedicated specification files (e.g., `@SPEC.md`) referenced in the conversation.
+- Run `.venv/bin/pytest` and `python3 -m py_compile` before marking any task complete.

@@ -8,4 +8,4 @@
 ## §2. Engineering & Verification Standards
 - Keep SQL DDL in `src/inventoryservice/schema.sql` and seed data in `src/inventoryservice/seeds.json`.
 - Use context managers (`with conn:`) for atomic SQLite transactions.
-- Run `pytest` and self-heal until 100% of contract tests pass.
+- Run `.venv/bin/pytest` and self-heal until 100% of contract tests pass.

@@ -21,7 +21,7 @@
 ---
 
 ## 3. Verification & Testing Procedures
-1. **Test Runner:** Execute the unit test suite via `uv run pytest` (or `pytest`).
+1. **Test Runner:** Execute the unit test suite via `.venv/bin/pytest`.
 2. **Syntax & Bytecode Gate:** Run `python3 -m py_compile` on all modified source and test files.
 3. **Required Coverage:** Every new engine capability must include unit tests verifying:
    - Exact `Decimal("0.01")` quantization and `ROUND_HALF_UP` behavior.

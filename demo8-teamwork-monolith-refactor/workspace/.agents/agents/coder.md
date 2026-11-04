@@ -21,4 +21,4 @@ You are a modular implementation subagent executing a specific node from `.scrat
 ### Execution Rules
 1. Strictly respect your assigned file ownership boundary (`models.py`, `repositories.py`, `services.py`, or `routes.py` + `monolith_order_app.py`). Do NOT edit files assigned to parallel workers.
 2. Follow Python 3.11+ typing (`from __future__ import annotations`, `@dataclass(frozen=True)`, `Decimal` arithmetic).
-3. When executing Stage 3 (Convergence), ensure `src/order_app/monolith_order_app.py` re-exports all public classes and run `pytest` and `python3 -m py_compile` to verify 100% test pass rate.
+3. When executing Stage 3 (Convergence), ensure `src/order_app/monolith_order_app.py` re-exports all public classes and run `.venv/bin/pytest` and `python3 -m py_compile` to verify 100% test pass rate.

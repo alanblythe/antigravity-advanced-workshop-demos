@@ -6,4 +6,4 @@
 
 ## §2. Mandatory Adversarial Review Gate
 - Before human code review, invoke `@adversarial-reviewer` in a clean context to audit `src/settlement/dispatcher.py` line-by-line against `@DESIGN.md` and emit a falsifiable `file:line` invariant table.
-- Any `FAIL` row in the adversarial review table blocks merge until remediated and covered by a dedicated regression test in `tests/test_dispatcher.py`.
+- Any `FAIL` row in the adversarial review table blocks merge until remediated and covered by a dedicated regression test in `tests/test_dispatcher.py` (verified via `.venv/bin/pytest`).
