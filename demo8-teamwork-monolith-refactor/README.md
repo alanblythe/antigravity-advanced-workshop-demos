@@ -24,7 +24,7 @@ Run pytest.
 
 2. Run **Graph Planning** with `@architect` and `@fast-scout`:
 ```text
-/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) with a Mermaid diagram in .scratch/refactor-dag.md with non-overlapping file ownership.
+/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership. Include the assigned subagent for each step in both the stage breakdown and the Mermaid diagram.
 ```
 
 3. Execute parallel multi-agent refactoring via **`/teamwork`** (`👥 Teamwork`):

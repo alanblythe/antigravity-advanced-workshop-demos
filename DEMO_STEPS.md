@@ -56,10 +56,12 @@ source ./scripts/set_gcloud_env.sh
   * [Demo 4: Local Antigravity Invoking Deployed Cloud Agent via A2A](#demo-4-local-antigravity-invoking-deployed-cloud-agent-via-a2a) — **~12 mins**
 * [Module 5: Multi-Lens Architecture Ideation & Zero-Context RFC Stress-Testing (EGM)](#module-5-multi-lens-architecture-ideation--zero-context-rfc-stress-testing-egm) *(~15 mins total)*
   * [Demo 5: Elephant-Goldfish Model (`/egm-brainstorm`) & 6-Lens Parallel Subagent Review](#demo-5-elephant-goldfish-model-egm-brainstorm--6-lens-parallel-subagent-review) — **~15 mins**
-* [Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-designmd--boost-demo6-linked-design-boost) — **~10 mins**
-* [Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)](#demo-7-contract-first-spec-clarification--test-heal-loop-demo7-contract-spec-tdd) — **~12 mins**
-* [Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)](#demo-8-graph-planning--multi-agent-teamwork-monolith-refactoring-demo8-teamwork-monolith-refactor) — **~15 mins**
-* [Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)](#demo-9-clean-context-adversarial-review-loop-demo9-adversarial-review-loop) — **~12 mins**
+* [Antigravity 201 Track: Spec-Driven Development & Multi-Agent Workflows (Demos 7 $\rightarrow$ 6 $\rightarrow$ 8/9 Concurrent Pipeline)](#antigravity-201-track-suggested-presentation-order--timing-4550-min-slot) *(~45 mins total)*
+  * [Demo 7: Contract-First Spec Clarification & Test-Heal Loop (`demo7-contract-spec-tdd`)](#demo-7-contract-first-spec-clarification--test-heal-loop-demo7-contract-spec-tdd) — **~10 mins**
+  * [Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)](#demo-6-grounding-specs-linked-designmd--boost-demo6-linked-design-boost) — **~9 mins**
+  * [Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)](#demo-8-graph-planning--multi-agent-teamwork-monolith-refactoring-demo8-teamwork-monolith-refactor) — **~8 mins live front-end + background execution**
+  * [Demo 9: Clean-Context Adversarial Review Loop (`demo9-adversarial-review-loop`)](#demo-9-clean-context-adversarial-review-loop-demo9-adversarial-review-loop) — **~10 mins (run during Demo 8 background refactor)**
+  * [Demo 8 Finale: Monolith Refactor Completion & Clean Verification](#step-4-return-to-demo-8-for-finale--verification) — **~3 mins wrap-up**
 
 ---
 
@@ -360,6 +362,19 @@ Installed plugin: egm (7 skills, 9 subagents registered in ~/.gemini/config/plug
 
 ---
 
+### Antigravity 201 Track: Suggested Presentation Order & Timing (45–50 Min Slot)
+
+> **Optimized Presentation Sequence: 7 $\rightarrow$ 6 $\rightarrow$ 8 (kickoff) $\rightarrow$ 9 (during 8's refactor) $\rightarrow$ 8 (finale)**  
+> Total wall-clock runtime: **~42–45 minutes** (safely fitting within a 50-minute slot with buffer for live Q&A).
+>
+> 1. **Demo 7 (Contract-First TDD & `/grill-me`):** ~10 mins (Red $\rightarrow$ Grill-Me $\rightarrow$ Plan $\rightarrow$ Green test-heal).
+> 2. **Demo 6 (Grounding Specs, `@DESIGN.md` & `⚡ Boost`):** ~9 mins (Context hierarchy walkthrough $\rightarrow$ `/boost` single-turn implementation).
+> 3. **Demo 8 Kickoff (Graph Planning & Launch `/teamwork`):** ~8 mins (Baseline check $\rightarrow$ `@architect` + `@fast-scout` Mermaid DAG $\rightarrow$ launch `/teamwork`).
+> 4. **Demo 9 (Clean-Context Adversarial Review):** ~10 mins (*Run concurrently while Demo 8's parallel `@coder` workers execute in the background*).
+> 5. **Demo 8 Finale (Return for Verification):** ~3 mins (Inspect decomposed modules, re-exports facade, and final green `pytest`).
+
+---
+
 ### Demo 6: Grounding Specs, Linked `@DESIGN.md` & `⚡ Boost` (`demo6-linked-design-boost`)
 * **Suggested Timing:** ~10 minutes (4m walkthrough of `AGENTS.md` $\rightarrow$ `@DESIGN.md` vs. `@SPEC.md` & path-scoped rules, 6m `/boost` execution & test verification)
 * **Goal:** Show how separating `AGENTS.md` (concise project constitution) and `@DESIGN.md` (long-lived architectural guardrails, 50% ceiling, & testing procedures) from `@SPEC.md` (the single-conversation feature specification) plus path-scoped `.agents/rules/` lets **`⚡ Boost`** (`/boost`) implement complex features from a 1-sentence prompt.
@@ -439,7 +454,7 @@ Autonomous loop patches reservator.py, self-heals failures across test runs, and
 ---
 
 ### Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring (`demo8-teamwork-monolith-refactor`)
-* **Suggested Timing:** ~15 minutes (3m subagent persona walkthrough, 5m `@architect` + `@fast-scout` AST Graph Planning to `.scratch/refactor-dag.md`, 7m parallel `/teamwork` `@coder` execution & verification)
+* **Suggested Timing:** ~24 minutes (1m baseline pre-check, 3m `@architect` + `@fast-scout` AST Graph Planning & Mermaid generation to `.scratch/refactor-dag.md`, 4m `/teamwork` coordination & staging, 16m parallel `@coder` execution & pytest verification)
 * **Goal:** Decompose a 220-line monolithic Online Boutique Order Processor (`src/order_app/monolith_order_app.py`) into `models.py`, `repositories.py`, `services.py`, and `routes.py` using **Graph Planning** (`@architect` + `@fast-scout`) and **`/teamwork`** (`👥 Teamwork`) parallel `@coder` execution.
 
 #### Step 1: Verify Monolith Baseline (`4 passed`)
@@ -461,10 +476,10 @@ Run pytest.
 * **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
 * **Prompt:**
 ```text
-/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) with a Mermaid diagram in .scratch/refactor-dag.md with non-overlapping file ownership.
+/plan Use @architect and @fast-scout to inspect src/order_app/monolith_order_app.py via the ast-graph MCP tools and generate a 3-stage dependency graph (DAG) in .scratch/refactor-dag.md with non-overlapping file ownership. Include the assigned subagent for each step in both the stage breakdown and the Mermaid diagram.
 ```
-* **Expected Result:** Wrote `.scratch/refactor-dag.md` with an embedded Mermaid DAG flowchart: Stage 1 extracts `models.py`; Stage 2 runs parallel `@coder` subagents on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
-* **Highlight:** Show the 3-stage DAG and Mermaid flowchart in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
+* **Expected Result:** Wrote `.scratch/refactor-dag.md` with an embedded Mermaid DAG flowchart labeling assigned subagents: Stage 1 extracts `models.py`; Stage 2 runs parallel `@coder` subagents on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`.
+* **Highlight:** Show the 3-stage DAG and Mermaid flowchart in `.scratch/refactor-dag.md`: Stage 1 extracts `models.py`; Stage 2 runs two `@coder` subagents **in parallel** on disjoint files (`repositories.py` and `services.py`); Stage 3 rewires `routes.py` and `monolith_order_app.py`, with subagent assignments explicitly mapped per node.
 
 #### Step 3: Execute Parallel Multi-Agent Refactor via `/teamwork` (`👥 Teamwork`)
 * **Where to run:** Antigravity 2.0 (`👥 Teamwork`) or `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
@@ -477,6 +492,19 @@ Run pytest.
 Parallel @coder subagents complete without file collisions; monolith delegates cleanly; pytest passes:
 ==================== 4 passed in 0.03s ====================
 ```
+* **Presenter Flow Note ("Cooking Show" Overlap Pattern):**
+  Once the `/teamwork` parallel refactor is running and you have shown the active `@coder` workers in the Antigravity TUI (~2–3 minutes of observation), **do not wait 15 minutes in silence**. Leave terminal/workspace 8 running in the background, open a new terminal or VS Code window for **Demo 9 (`Reset & Open: Demo 9`)**, and run through Demo 9 end-to-end (~10 mins). When Demo 9 finishes, return to Demo 8 for Step 4.
+
+#### Step 4: Return to Demo 8 for Finale & Verification
+* **Where to run:** Antigravity 2.0 / `agy` CLI inside `demo8-teamwork-monolith-refactor/workspace/`
+* **Highlight:**
+  1. Inspect the decomposed modular architecture: `models.py`, `repositories.py`, `services.py`, and `routes.py`.
+  2. Show `monolith_order_app.py` functioning purely as a backward-compatible facade re-exporting the modules.
+  3. Verify the final clean test suite passes with `pytest`:
+  ```bash
+  pytest
+  ```
+  * **Expected Result:** `==================== 4 passed in 0.03s ====================`
 
 ---
 
