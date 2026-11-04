@@ -9,6 +9,6 @@ rm -rf workspace
 mkdir -p workspace
 find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
-cp -r .seed/* workspace/
+cp -R .seed/. workspace/
 
 echo "✔ Demo 6 clean: workspace ready for /boost."

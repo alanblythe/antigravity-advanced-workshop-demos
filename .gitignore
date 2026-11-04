@@ -25,6 +25,7 @@ build/
 .venv/
 env/
 venv/
+uv.lock
 
 # macOS
 .DS_Store
