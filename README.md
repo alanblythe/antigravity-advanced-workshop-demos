@@ -1,5 +1,9 @@
 # Advanced Antigravity Developer Workshop — Demonstration Workbench
 
+> [!IMPORTANT]
+> **Supported Platform: macOS Only**  
+> This workbench, including its VS Code integrated terminal profiles, automated reset tasks, and presenter flight paths, is tested and supported exclusively on **macOS** (Apple Silicon / Intel). Linux and Windows (WSL) environments are currently unsupported out of the box, though the underlying scripts and runtimes are largely platform-agnostic and can be adapted with minimal effort (e.g., adding Linux VS Code terminal profiles and ensuring Zsh availability).
+
 > **Live Technical Enablement & Presenter Repository**  
 > Complete runnable source code, configurations, subagents, and step-by-step presenter runbook for the **Advanced Antigravity Developer Workshop** and **Antigravity 201: Spec-Driven Development & Multi-Agent Workflows**.
 
@@ -90,8 +94,9 @@ For exact command blocks, where to execute them (IDE vs. TUI vs. terminal), and 
 
 ## Prerequisites
 
-1. **Antigravity CLI (`agy`):** Version 1.0+ logged in via enterprise Google Cloud credentials (`agy login`).
-2. **VS Code / Antigravity 2.0:** Installed and signed in (`Use business account`).
-3. **Google Cloud SDK (`gcloud`):** Authenticated with project access (`gcloud auth application-default login`).
-4. **Python 3.11+:** With `pytest` and `ruff` installed (`pip install pytest ruff`).
-5. **Database MCP Toolbox (`toolbox`):** Installed via `./scripts/install_toolbox.sh` (for Demos 3 & 4).
+1. **Operating System:** macOS 14+ (Sonoma/Sequoia) with Zsh (`/bin/zsh`).
+2. **Antigravity CLI (`agy`):** Version 1.0+ logged in via enterprise Google Cloud credentials (`agy login`).
+3. **VS Code / Antigravity 2.0:** Installed and signed in (`Use business account`).
+4. **Google Cloud SDK (`gcloud`):** Authenticated with project access (`gcloud auth application-default login`).
+5. **Python 3.11+:** With `uv`, `pytest`, and `ruff` installed (`pip install uv pytest ruff`).
+6. **Database MCP Toolbox (`toolbox`):** Installed via `./scripts/install_toolbox.sh` (for Demos 3 & 4).
