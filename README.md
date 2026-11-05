@@ -1,6 +1,8 @@
 # Advanced Antigravity Developer Workshop — Demonstration Workbench
 
 > [!IMPORTANT]
+> **Disclaimer:** I work for Google, but this is a personal open-source repository licensed under [Apache-2.0](LICENSE). This is not an officially supported Google product, and it is provided as-is without warranty.
+>
 > **Supported Platform: macOS Only**  
 > This workbench, including its VS Code integrated terminal profiles, automated reset tasks, and presenter flight paths, is tested and supported exclusively on **macOS** (Apple Silicon / Intel). Linux and Windows (WSL) environments are currently unsupported out of the box, though the underlying scripts and runtimes are largely platform-agnostic and can be adapted with minimal effort (e.g., adding Linux VS Code terminal profiles and ensuring Zsh availability).
 
