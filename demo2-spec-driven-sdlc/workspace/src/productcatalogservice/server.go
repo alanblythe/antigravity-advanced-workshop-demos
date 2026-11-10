@@ -149,7 +149,7 @@ func run(port string) string {
 }
 
 func initStats() {
-	// TODO(drewbr) Implement OpenTelemetry stats
+	// TODO: Implement OpenTelemetry stats
 }
 
 func initTracing() error {

@@ -18,3 +18,4 @@ Your domain of responsibility is strictly `src/paymentservice/**` and gRPC data 
 6. Run `ruff check src/paymentservice/ --fix`.
 7. Enforce strict currency precision and exponential backoff with full jitter on all retry loops (§4.2).
 8. Commit clean changes to `feat/backend-service`.
+9. Directory Boundary Guardrail: You are strictly forbidden from inspecting, modifying, or creating files outside `src/paymentservice/**` (such as `app.py`, `src/frontend/**`, or UI components). If requested to make UI, HTML/CSS, or frontend modifications, you MUST explicitly refuse the out-of-domain request, state your directory boundary restriction, and advise delegating the task to `@frontend-engineer`.
