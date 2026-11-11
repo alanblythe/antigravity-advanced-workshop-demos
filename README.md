@@ -29,7 +29,7 @@ TRACK A: 3-HOUR ADVANCED DEVELOPER WORKSHOP (Demos 1–5)
 ├── demo5-egm-architecture-rfc/
 │   └── Demo 5: Elephant-Goldfish Model (EGM) — Multi-Lens Ideation & Zero-Context RFC Stress-Testing (/egm-brainstorm)
 ├── demo2-spec-driven-sdlc/
-│   ├── Demo 2A: Spec-Driven Planning (/grill-me & /plan -> .scratch/reconcile-plan.md)
+│   ├── Demo 2A: Spec-Driven Planning (/grill-me & /plan -> Artifact Comments -> .scratch/reconcile-plan.md)
 │   ├── Demo 2B: Subagent Isolation via Git Worktrees & Test-Heal Loop (/goal -> pytest -> ruff)
 │   ├── Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification (@browser -> localhost:8000)
 │   └── Demo 2D: Immediate Multi-Model Adversarial PR Audit (@spec-adversary / Claude 3.5 Sonnet vs. AGENTS.md invariants)

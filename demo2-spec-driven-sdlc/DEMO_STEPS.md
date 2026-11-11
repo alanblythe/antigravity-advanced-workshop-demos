@@ -6,10 +6,10 @@
 
 ---
 
-## Demo 2A: Spec Drafting & Plan Lock
+## Demo 2A: Spec Drafting, Artifact Comments & Plan Lock
 
-* **Suggested Timing:** ~10 minutes (2m path-scoped rules, 5m `/grill-me` interview, 3m `/plan` generation)
-* **Goal:** Move from "vibe coding" to structured spec-driven engineering.
+* **Suggested Timing:** ~10 minutes (2m path-scoped rules, 4m `/grill-me` interview, 2m `/plan` generation, 2m inline artifact review)
+* **Goal:** Move from "vibe coding" to structured spec-driven engineering with human-in-the-loop artifact review.
 
 ### Step 1: Path-Scoped Rules Inspection
 * **Where to run:** VS Code Editor
@@ -27,13 +27,29 @@
 * **Expected Result:** Agent asks 3 targeted questions on idempotency key uniqueness, jittered exponential backoff, and concurrent settlement locking.
 * **Highlight:** Show the agent asking 3 pointed questions (duplicate `tx_id` handling, transient network retry backoff, and lock safety).
 
-### Step 3: Lock the Implementation Plan with `/plan`
+### Step 3: Generate the Implementation Plan with `/plan`
 * **Where to run:** Interactive Antigravity TUI (`agy`) inside `demo2-spec-driven-sdlc/workspace/`
 * **Prompt inside `agy`:**
 ```text
 /plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.
 ```
-* **Expected Result:** Creates `.scratch/reconcile-plan.md` containing 4 phased tasks, test definitions, and acceptance criteria.
+* **Expected Result:** Creates `.scratch/reconcile-plan.md` containing 4 phased tasks, test definitions, and acceptance criteria. Renders the artifact in the Antigravity preview panel.
+
+### Step 4: Human-in-the-Loop Artifact Review & Inline Commenting
+* **Where to run:** Antigravity 2.0 Artifact Preview Panel (viewing `.scratch/reconcile-plan.md`)
+* **Presenter Action:**
+  1. Open `.scratch/reconcile-plan.md` in the side-by-side artifact viewer.
+  2. Highlight the **"Phase 3: Retry & Backoff"** section in the rendered plan.
+  3. Click **Add Comment** (or press `Cmd+K` / click the inline comment icon) and enter:
+     ```text
+     Verify that reconciler retries use random jitter to avoid thundering herds (§4.2 invariant).
+     ```
+  4. Submit the comment and ask the agent to incorporate it:
+     ```text
+     Update .scratch/reconcile-plan.md to address the inline review comments on the artifact.
+     ```
+* **Expected Result:** Agent ingests the comment, refines `.scratch/reconcile-plan.md` with explicit jitter requirements and formula ($\text{delay} = \text{random.uniform}(0, \min(2.0, 0.1 \times 2^{\text{attempt}}))$), and marks the plan locked.
+* **Highlight:** Demonstrate that human engineers steer architectural constraints directly on artifacts like PR review comments before delegating code execution to subagents.
 
 ---
 

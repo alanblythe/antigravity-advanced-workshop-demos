@@ -24,13 +24,14 @@
 ./start_demo.sh && cd workspace && agy
 ```
 
-2. Interview edge cases and lock the implementation plan inside `agy`:
+2. Interview edge cases, generate plan, and review inline artifact comments inside `agy`:
 ```text
 /grill-me We need to add transaction reconciliation with automatic retry and idempotency in src/paymentservice/reconciler.py. Interview me on edge cases, failure modes, and security invariants.
 ```
 ```text
 /plan Generate the implementation plan in .scratch/reconcile-plan.md with explicit pass/fail criteria.
 ```
+*Review the rendered plan in the Artifact panel, highlight the retry section, add an inline comment enforcing §4.2 jitter invariants, and update the plan.*
 
 3. Delegate the plan to the isolated Git worktree subagent inside `agy`:
 ```text
