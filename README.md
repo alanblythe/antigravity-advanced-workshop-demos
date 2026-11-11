@@ -32,7 +32,7 @@ TRACK A: 3-HOUR ADVANCED DEVELOPER WORKSHOP (Demos 1–5)
 │   ├── Demo 2A: Spec-Driven Planning & Boundary Refusal (/grill-me & /plan -> Boundary Check -> Artifact Comments)
 │   ├── Demo 2B: Subagent Isolation via Git Worktrees, Test-Heal Loop & Reintegration (/goal -> pytest -> git merge)
 │   ├── Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification (/browser -> localhost:8000)
-│   └── Demo 2D: Immediate Multi-Model Adversarial PR Audit (@spec-adversary / Claude 3.5 Sonnet vs. AGENTS.md invariants)
+│   └── Demo 2D: Immediate Adversarial PR Audit (@spec-adversary / Gemini 3.1 Pro vs. AGENTS.md invariants)
 ├── demo3-database-guardrails/
 │   └── Demo 3: Live Database MCP Toolbox Addition & Safe Querying (BigQuery schema & blocked DROP TABLE)
 └── demo4-cloud-agent-platform/
@@ -104,7 +104,7 @@ Each demo provides its own dedicated step-by-step presenter runbook linked in th
 | Demo | Focus & Key Concepts | Track | Presenter Steps |
 |:---:|---|:---:|---|
 | **Demo 1** | [Enterprise Surface & Workspace Harmonization](./demo1-enterprise-surface/)<br>• Linux Foundation AAIF (`AGENTS.md`) & cross-tool rule harmonization<br>• AST code-graph navigation & model tier routing | Track A<br>*(Module 1)* | [demo1-enterprise-surface/DEMO_STEPS.md](./demo1-enterprise-surface/DEMO_STEPS.md) |
-| **Demo 2** | [Spec-Driven SDLC & Multi-Model Review](./demo2-spec-driven-sdlc/)<br>• `/grill-me` interview & `/plan` specification lock<br>• Subagent worktree isolation & autonomous test healing<br>• Agent browser DOM & console verification<br>• Adversarial diff audit with Claude 3.5 Sonnet | Track A<br>*(Module 2)* | [demo2-spec-driven-sdlc/DEMO_STEPS.md](./demo2-spec-driven-sdlc/DEMO_STEPS.md) |
+| **Demo 2** | [Spec-Driven SDLC & Multi-Tier Review](./demo2-spec-driven-sdlc/)<br>• `/grill-me` interview & `/plan` specification lock<br>• Subagent worktree isolation & autonomous test healing<br>• Agent browser DOM & console verification<br>• Adversarial diff audit with Gemini 3.1 Pro | Track A<br>*(Module 2)* | [demo2-spec-driven-sdlc/DEMO_STEPS.md](./demo2-spec-driven-sdlc/DEMO_STEPS.md) |
 | **Demo 3** | [Database MCP Toolbox & Guardrails](./demo3-database-guardrails/)<br>• Repository-scoped MCP Toolbox (`tools.yaml`)<br>• BigQuery telemetry & blocked `DROP TABLE` negative test | Track A<br>*(Module 3)* | [demo3-database-guardrails/DEMO_STEPS.md](./demo3-database-guardrails/DEMO_STEPS.md) |
 | **Demo 4** | [Cloud Agent Platform & A2A Collaboration](./demo4-cloud-agent-platform/)<br>• Containerized ADK agent deployment (`agents-cli deploy`)<br>• Local Antigravity invoking deployed cloud agent via A2A | Track A<br>*(Module 4)* | [demo4-cloud-agent-platform/DEMO_STEPS.md](./demo4-cloud-agent-platform/DEMO_STEPS.md) |
 | **Demo 5** | [Elephant-Goldfish Model (EGM) RFC Ideation](./demo5-egm-architecture-rfc/)<br>• Deep-context Elephant ideation (`/egm-brainstorm`)<br>• 6 parallel zero-context Goldfish review lenses & RFC publish | Track A<br>*(Module 5)* | [demo5-egm-architecture-rfc/DEMO_STEPS.md](./demo5-egm-architecture-rfc/DEMO_STEPS.md) |

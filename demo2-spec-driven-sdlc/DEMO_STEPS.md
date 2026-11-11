@@ -1,4 +1,4 @@
-# Demo 2 Presenter Flight Plan: Spec-Driven SDLC, Git Worktrees, Browser Subagent & Multi-Model Review
+# Demo 2 Presenter Flight Plan: Spec-Driven SDLC, Git Worktrees, Browser Subagent & Multi-Tier Review
 
 > **Track:** Track A (Module 2)  
 > **Total Suggested Timing:** ~35 minutes (Demo 2A: ~10m, Demo 2B: ~10m, Demo 2C: ~7m, Demo 2D: ~8m)  
@@ -111,26 +111,36 @@ Start the local dashboard server (python3 app.py) in the background on port 8000
 ```
 * **Expected Result:** Server process backgrounded on `http://localhost:8000` (PID logged, port 8000 listening).
 
-### Step 2: Autonomous Browser Verification
+### Step 2: Browser Launch & Visual UI Verification
 * **Where to run:** Antigravity 2.0 App / Chat Panel (or terminal `agy`) inside `demo2-spec-driven-sdlc/workspace/`
-* **Prompt inside chat:**
+* **Prompt inside chat (Prompt 1 — Open & Inspect):**
 ```text
-/browser Open http://localhost:8000, click "Run Batch Reconciliation", verify the #settlement-status badge renders "SETTLED" in the DOM, and assert 0 console errors.
+/browser Open http://localhost:8000 and verify that the settlement dashboard renders cleanly with 0 console errors.
 ```
-* **Expected Result:** Browser opens `http://localhost:8000`, clicks button, asserts DOM `#settlement-status` is `"SETTLED"`, asserts 0 console errors, and saves `.scratch/browser-verification.png`.
+* **Expected Result:** Browser window opens, navigates to `http://localhost:8000`, displays the Online Boutique Settlement Dashboard, and reports 0 console errors.
+* **Presenter Action:** Bring the browser window onto the presentation screen/stage so the audience sees the initial state: `legacy_9901` showing yellow badge `PENDING`.
+
+### Step 3: Interactive Reconciliation & DOM State Assertion
+* **Where to run:** Antigravity 2.0 App / Chat Panel (or terminal `agy`) inside `demo2-spec-driven-sdlc/workspace/`
+* **Prompt inside chat (Prompt 2 — Action & Verify):**
+```text
+/browser Click the "Run Batch Reconciliation" button, verify the #settlement-status badge dynamically updates to "SETTLED" in the DOM, assert 0 console errors, and capture a screenshot to .scratch/browser-verification.png.
+```
+* **Expected Result:** Browser clicks the button, asserts DOM `#settlement-status` updates to `"SETTLED"`, asserts 0 console errors, and saves `.scratch/browser-verification.png`.
 * **What to watch on screen:**
-  * Antigravity 2.0 launches the native desktop browser window.
-  * Navigates to `http://localhost:8000`, clicks the button.
-  * Inspects the **HTML DOM tree** directly (asserting `#settlement-status == 'SETTLED'`).
-  * Reads the browser DevTools console log (asserting **0 console errors**).
-  * Saves a visual verification artifact (`.scratch/browser-verification.png`).
-* **Highlight:** Proves true multi-modal, end-to-end verification (Backend unit tests + Frontend DOM/console).
+  * The audience watches the live browser window on screen.
+  * Antigravity triggers the click on "Run Batch Reconciliation".
+  * The `PENDING` badge turns green and displays `SETTLED`.
+  * Agent inspects the **HTML DOM tree** directly (asserting `#settlement-status == 'SETTLED'`).
+  * Agent checks DevTools console logs (asserting **0 console errors**).
+  * Agent saves a visual verification artifact (`.scratch/browser-verification.png`).
+* **Highlight:** Proves true multi-modal, end-to-end verification (Backend unit tests + live Frontend DOM/console) with interactive visual proof for the audience.
 
 ---
 
-## Demo 2D: Immediate Multi-Model Adversarial PR Audit (Claude 3.5 Sonnet)
+## Demo 2D: Immediate Multi-Model Adversarial PR Audit (Gemini 3.1 Pro)
 
-* **Suggested Timing:** ~8 minutes (5m cross-model adversarial diff audit, 3m invariant violation debrief)
+* **Suggested Timing:** ~8 minutes (5m adversarial diff audit, 3m invariant violation debrief)
 * **Goal:** Catch the subtle invariant flaw that unit tests and browser tests missed *before* merging the worktree.
 
 ### Step 1: Run Adversarial Reviewer Subagent
@@ -139,20 +149,12 @@ Start the local dashboard server (python3 app.py) in the background on port 8000
 ```text
 @spec-adversary Audit HEAD~1...HEAD against .agents/rules/backend.md retry and backoff invariants.
 ```
-*(Alternatively: `Use invoke subagent to execute @spec-adversary (or @staff-reviewer, powered by Claude 3.5 Sonnet on Vertex AI) to audit HEAD~1...HEAD against .agents/rules/backend.md retry and backoff invariants.`)*
-* **Expected Result:** Subagent running **Claude 3.5 Sonnet on Vertex AI** (`@spec-adversary` or `@staff-reviewer`) reports SEV-2 invariant violation at `src/paymentservice/reconciler.py:38` (linear `time.sleep(1.0)` violates mandatory exponential backoff with full jitter).
-* **Highlight:** The reviewer subagent—running **Claude 3.5 Sonnet on Vertex AI** via `@spec-adversary` (or `@staff-reviewer`)—flags a **SEV-2 invariant violation**:
+*(Alternatively: `Use invoke subagent to execute @spec-adversary (or @staff-reviewer, powered by Gemini 3.1 Pro) to audit HEAD~1...HEAD against .agents/rules/backend.md retry and backoff invariants.`)*
+* **Expected Result:** Subagent running **Gemini 3.1 Pro** (`@spec-adversary` or `@staff-reviewer`) reports SEV-2 invariant violation at `src/paymentservice/reconciler.py:38` (linear `time.sleep(1.0)` violates mandatory exponential backoff with full jitter).
+* **Highlight:** The reviewer subagent—running **Gemini 3.1 Pro** via `@spec-adversary` (or `@staff-reviewer`)—flags a **SEV-2 invariant violation**:
   `src/paymentservice/reconciler.py:38 uses time.sleep(1.0) linear backoff instead of the mandatory exponential backoff with full jitter specified in .agents/rules/backend.md §4.2.`
 * **The Climax:**
   1. Gemini 2.5 Flash implemented and healed unit tests.
   2. Antigravity 2.0 Browser Subagent verified the live DOM.
-  3. Claude 3.5 Sonnet caught the architectural flaw before merge.
-  *Zero single-model confirmation bias.*
-* **Expected Result:** Subagent running **Claude 3.5 Sonnet on Vertex AI** (`@spec-adversary` or `@staff-reviewer`) reports SEV-2 invariant violation at `src/paymentservice/reconciler.py:38` (linear `time.sleep(1.0)` violates mandatory exponential backoff with full jitter).
-* **Highlight:** The reviewer subagent—running **Claude 3.5 Sonnet on Vertex AI** via `@spec-adversary` (or `@staff-reviewer`)—flags a **SEV-2 invariant violation**:
-  `src/paymentservice/reconciler.py:38 uses time.sleep(1.0) linear backoff instead of the mandatory exponential backoff with full jitter specified in .agents/rules/backend.md §4.2.`
-* **The Climax:**
-  1. Gemini 2.5 Flash implemented and healed unit tests.
-  2. Antigravity 2.0 Browser Subagent verified the live DOM.
-  3. Claude 3.5 Sonnet caught the architectural flaw before merge.
-  *Zero single-model confirmation bias.*
+  3. Gemini 3.1 Pro caught the architectural flaw before merge.
+  *Zero single-tier confirmation bias.*

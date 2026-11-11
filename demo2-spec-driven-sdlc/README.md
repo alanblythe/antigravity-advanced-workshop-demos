@@ -44,12 +44,19 @@
 git merge feat/reconcile && git worktree remove .worktrees/feat-reconcile
 ```
 
-5. Launch local dashboard and verify live via browser subagent:
+5. Launch local dashboard and verify live via browser subagent in two steps:
 ```bash
 python3 app.py &
 ```
+*Prompt 1 (Open & Inspect):*
 ```text
-/browser Open http://localhost:8000, click "Run Batch Reconciliation", verify the #settlement-status badge renders "SETTLED" in the DOM, and assert 0 console errors.
+/browser Open http://localhost:8000 and verify that the settlement dashboard renders cleanly with 0 console errors.
+```
+*(Bring browser onto presentation screen to show initial PENDING badge)*
+
+*Prompt 2 (Action & DOM Assert):*
+```text
+/browser Click the "Run Batch Reconciliation" button, verify the #settlement-status badge dynamically updates to "SETTLED" in the DOM, assert 0 console errors, and capture a screenshot to .scratch/browser-verification.png.
 ```
 
 6. Run the adversarial review against the completed commit inside `agy`:

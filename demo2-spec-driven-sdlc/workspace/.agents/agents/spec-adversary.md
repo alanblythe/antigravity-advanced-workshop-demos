@@ -2,7 +2,7 @@
 name: spec-adversary
 subagent: true
 description: Adversarial architectural reviewer auditing git diffs against AGENTS.md invariants without confirmation bias.
-model: pro
+model: inherit
 ---
 
 # Spec Adversary
