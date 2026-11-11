@@ -1,6 +1,7 @@
 # Demo 8: Graph Planning & Multi-Agent `/teamwork` Monolith Refactoring
 
-> **Focus:** Multi-agent execution patterns—coordinating AST scouting (`@fast-scout`), Graph Planning (`@architect` $\rightarrow$ `.scratch/refactor-dag.md`), parallel modular authoring (`@coder` via `/teamwork`), and clean-context verification.
+> **Focus:** Multi-agent execution patterns—coordinating AST scouting (`@fast-scout`), Graph Planning (`@architect` $\rightarrow$ `.scratch/refactor-dag.md`), parallel modular authoring (`@coder` via `/teamwork`), and clean-context verification.  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

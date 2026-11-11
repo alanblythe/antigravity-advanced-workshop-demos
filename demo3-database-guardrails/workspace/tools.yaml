@@ -3,7 +3,7 @@
 sources:
   bigquery-source:
     kind: "bigquery"
-    project: "your-demo-project"
+    project: "${GOOGLE_CLOUD_PROJECT:-your-demo-project}"
     location: "us-central1"
     maxQueryResultRows: 100
 

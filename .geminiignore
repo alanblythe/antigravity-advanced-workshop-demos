@@ -1,5 +1,6 @@
 # Presenter & instructor runbooks (prevents agents from discovering test answers/cheat sheets)
 DEMO_STEPS.md
+demo*/DEMO_STEPS.md
 demo*/README.md
 demo*/.seed/
 

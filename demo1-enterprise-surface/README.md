@@ -1,6 +1,7 @@
 # Demo 1: Enterprise Surface, Open Standards & Context Hygiene
 
-> **Focus:** Resolving IDE/auth confusion, establishing Linux Foundation AAIF open standards (`AGENTS.md`), and AST code-graph navigation.
+> **Focus:** Resolving IDE/auth confusion, establishing Linux Foundation AAIF open standards (`AGENTS.md`), and AST code-graph navigation.  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

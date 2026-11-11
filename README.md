@@ -58,6 +58,7 @@ To prevent coding agents from cheating or suffering prompt dilution by discoveri
 ```
 demoX-.../
 ├── README.md               # Presenter & student guide (harness level)
+├── DEMO_STEPS.md           # Dedicated step-by-step presenter flight plan
 ├── start_demo.sh           # Deterministic workspace reset script
 ├── .seed/                  # Pristine seed template restored by start_demo.sh
 └── workspace/              # 🎯 Dedicated Agent Execution Surface
@@ -67,30 +68,50 @@ demoX-.../
     └── .agents/            # Path-scoped rules & custom subagent definitions
 ```
 
-* **Presenter Harness (`demoX/`):** Contains the demo's `README.md`, `.seed/` pristine assets, and the `./start_demo.sh` reset engine.
+* **Presenter Harness (`demoX/`):** Contains the demo's `README.md`, `DEMO_STEPS.md`, `.seed/` pristine assets, and the `./start_demo.sh` reset engine.
 * **Agent Execution Surface (`demoX/workspace/`):** The isolated working directory where the presenter/student executes `pytest`, launches `agy`, and where coding subagents write code and run test loops.
 
 ---
 
-## Presenter Runbook & Step-by-Step Instructions
+## Demo Launch & Reset
 
-For exact command blocks, where to execute them (IDE vs. TUI vs. terminal), and what to highlight on screen during live presentation, see:
+Every demo follows an identical sub-second deterministic reset pattern:
 
-👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *The complete presenter flight plan.*
+* **Via VS Code Tasks (Recommended):**  
+  Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) $\rightarrow$ select **`Tasks: Run Task`** $\rightarrow$ choose **`Reset & Open: Demo <N>`** (e.g., `Reset & Open: Demo 1`). This restores `workspace/` from `.seed/` in <1s and opens a dedicated terminal running `agy` directly inside `workspace/`.
+
+* **Via Terminal CLI from Repo Root:**
+  ```bash
+  ./start_demo.sh <N>     # Reset a specific demo (1-9)
+  ./start_demo.sh 201     # Reset all 4 Antigravity 201 demos (Demos 6-9)
+  ./start_demo.sh all     # Reset all 9 workshop demos
+  ```
+
+* **Via Terminal CLI from Demo Directory:**
+  ```bash
+  cd demo<N>-<name> && ./start_demo.sh && cd workspace && agy
+  ```
 
 ---
 
-## Directory Overview
+## Demonstrations & Presenter Runbooks
 
-* **[`demo1-enterprise-surface/`](./demo1-enterprise-surface/)**: Enterprise authentication scripts, Linux Foundation AAIF open standards setup (`AGENTS.md`, `.agents/rules/`, `.agents/skills/`), and AST code-graph navigation.
-* **[`demo2-spec-driven-sdlc/`](./demo2-spec-driven-sdlc/)**: Python reconciliation service with a seeded failure, spec drafting template, worktree-instructed subagent, and adversarial reviewer subagent.
-* **[`demo3-database-guardrails/`](./demo3-database-guardrails/)**: Database MCP Toolbox configuration (`tools.yaml`), BigQuery telemetry schema, read-only query templates, and negative security testing configurations.
-* **[`demo4-cloud-agent-platform/`](./demo4-cloud-agent-platform/)**: Containerized ADK agent (`bq-telemetry-agent`), Dockerfile bundling MCP Toolbox, `agents-cli deploy` scripts, and local Antigravity subagent definition calling the deployed cloud agent over A2A.
-* **[`demo5-egm-architecture-rfc/`](./demo5-egm-architecture-rfc/)**: Open-source **Elephant-Goldfish Model (`egm`)** plugin demonstration (`/egm-brainstorm`), pitting a deep-context Elephant session against 6 parallel zero-context Goldfish subagents to stress-test a flawed checkout webhook proposal and publish an RFC (`concepts_brief.md` $\rightarrow$ `docs/designs/`).
-* **[`demo6-linked-design-boost/`](./demo6-linked-design-boost/)**: Online Boutique **Order Discount & Promo Engine** demonstrating `AGENTS.md` linking to long-lived architectural guardrails in `@docs/adr/0001-decimal-currency-and-discount-caps.md`, path-scoped `.agents/rules/discount-invariants.md`, a single-conversation feature specification (`@docs/specs/0001-stacked-promo-engine.md`), and autonomous **`⚡ Boost`** (`/boost`) execution.
-* **[`demo7-contract-spec-tdd/`](./demo7-contract-spec-tdd/)**: Online Boutique **Cart Inventory Reservation Service** starting with a pre-written failing 5-test contract suite (`Red` state) and `docs/specs/0001-stock-reservation-holds.md` edge cases, driving `/grill-me` clarification, `/plan` task breakdown, and an autonomous **Act $\rightarrow$ Verify** test-heal loop (`Green` state).
-* **[`demo8-teamwork-monolith-refactor/`](./demo8-teamwork-monolith-refactor/)**: Online Boutique **Monolith Order Processor** (`monolith_order_app.py`) decomposed into `models.py`, `repositories.py`, `services.py`, and `routes.py` using `@fast-scout` (`ast-graph` MCP), `@architect` **Graph Planning** (`.scratch/refactor-dag.md`), and parallel **`/teamwork`** (`👥 Teamwork`) execution across `@coder` subagents.
-* **[`demo9-adversarial-review-loop/`](./demo9-adversarial-review-loop/)**: Online Boutique **Payment Webhook & Settlement Dispatcher** in a "False-Green" state (`pytest` passes 100%, but 3 seeded security/resiliency/outbox regressions violate `@docs/adr/0001-payment-webhook-and-settlement-guardrails.md`), audited by a clean-context **`@adversarial-reviewer`** subagent that outputs a production guardrail table with `file:line` proof before human PR review.
+For global timing allocations, session flow notes, and workshop credential setup, see the master runbook:  
+👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *The master facilitator flight plan & global timings.*
+
+Each demo provides its own dedicated step-by-step presenter runbook linked in the table below:
+
+| Demo | Focus & Key Concepts | Track | Presenter Steps |
+|:---:|---|:---:|---|
+| **Demo 1** | [Enterprise Surface & Workspace Harmonization](./demo1-enterprise-surface/)<br>• Linux Foundation AAIF (`AGENTS.md`) & cross-tool rule harmonization<br>• AST code-graph navigation & model tier routing | Track A<br>*(Module 1)* | [demo1-enterprise-surface/DEMO_STEPS.md](./demo1-enterprise-surface/DEMO_STEPS.md) |
+| **Demo 2** | [Spec-Driven SDLC & Multi-Model Review](./demo2-spec-driven-sdlc/)<br>• `/grill-me` interview & `/plan` specification lock<br>• Subagent worktree isolation & autonomous test healing<br>• Agent browser DOM & console verification<br>• Adversarial diff audit with Claude 3.5 Sonnet | Track A<br>*(Module 2)* | [demo2-spec-driven-sdlc/DEMO_STEPS.md](./demo2-spec-driven-sdlc/DEMO_STEPS.md) |
+| **Demo 3** | [Database MCP Toolbox & Guardrails](./demo3-database-guardrails/)<br>• Repository-scoped MCP Toolbox (`tools.yaml`)<br>• BigQuery telemetry & blocked `DROP TABLE` negative test | Track A<br>*(Module 3)* | [demo3-database-guardrails/DEMO_STEPS.md](./demo3-database-guardrails/DEMO_STEPS.md) |
+| **Demo 4** | [Cloud Agent Platform & A2A Collaboration](./demo4-cloud-agent-platform/)<br>• Containerized ADK agent deployment (`agents-cli deploy`)<br>• Local Antigravity invoking deployed cloud agent via A2A | Track A<br>*(Module 4)* | [demo4-cloud-agent-platform/DEMO_STEPS.md](./demo4-cloud-agent-platform/DEMO_STEPS.md) |
+| **Demo 5** | [Elephant-Goldfish Model (EGM) RFC Ideation](./demo5-egm-architecture-rfc/)<br>• Deep-context Elephant ideation (`/egm-brainstorm`)<br>• 6 parallel zero-context Goldfish review lenses & RFC publish | Track A<br>*(Module 5)* | [demo5-egm-architecture-rfc/DEMO_STEPS.md](./demo5-egm-architecture-rfc/DEMO_STEPS.md) |
+| **Demo 6** | [Grounding Specs, Linked ADRs & Boost](./demo6-linked-design-boost/)<br>• Three-tier context hierarchy (`AGENTS.md` $\rightarrow$ `docs/adr/` + `docs/specs/`)<br>• Autonomous `⚡ Boost` (`/boost`) execution | Track B<br>*(201)* | [demo6-linked-design-boost/DEMO_STEPS.md](./demo6-linked-design-boost/DEMO_STEPS.md) |
+| **Demo 7** | [Contract-First Spec Clarification & TDD](./demo7-contract-spec-tdd/)<br>• Red-to-green contract suite<br>• `/grill-me` clarification, `/plan`, and autonomous test-heal loop | Track B<br>*(201)* | [demo7-contract-spec-tdd/DEMO_STEPS.md](./demo7-contract-spec-tdd/DEMO_STEPS.md) |
+| **Demo 8** | [Graph Planning & Parallel Teamwork Refactoring](./demo8-teamwork-monolith-refactor/)<br>• `@architect` DAG planning (`.scratch/refactor-dag.md`)<br>• Multi-agent `/teamwork` monolith decomposition | Track B<br>*(201)* | [demo8-teamwork-monolith-refactor/DEMO_STEPS.md](./demo8-teamwork-monolith-refactor/DEMO_STEPS.md) |
+| **Demo 9** | [Clean-Context Adversarial Review Loop](./demo9-adversarial-review-loop/)<br>• Auditing "False-Green" test suite<br>• Catching seeded ADR regressions with clean `@adversarial-reviewer` | Track B<br>*(201)* | [demo9-adversarial-review-loop/DEMO_STEPS.md](./demo9-adversarial-review-loop/DEMO_STEPS.md) |
 
 ---
 

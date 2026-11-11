@@ -1,6 +1,7 @@
 # Demo 9: Clean-Context Adversarial Review Loop
 
-> **Focus:** Adversarial review loops (`@adversarial-reviewer`) that stress-test "false-green" code against production guardrails in `docs/adr/` (security, resiliency, and idempotency) and catch regressions before human PR review.
+> **Focus:** Adversarial review loops (`@adversarial-reviewer`) that stress-test "false-green" code against production guardrails in `docs/adr/` (security, resiliency, and idempotency) and catch regressions before human PR review.  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

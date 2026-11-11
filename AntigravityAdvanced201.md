@@ -1,5 +1,5 @@
 # Antigravity Advanced 201: Spec-Driven Development & Multi-Agent Workflows
-### Viasat Engineering Enablement — Comprehensive Run-of-Show & Presenter Flight Plan
+### Enterprise Engineering Enablement — Comprehensive Run-of-Show & Presenter Flight Plan
 
 > **Session Target:** 60 Minutes Total (48m Content & Demos + 12m Open Q&A Buffer)  
 > **Slide Talk Time:** ~12m 30s | **Live Demo Wall-Clock Time:** ~35m 30s | **Q&A Buffer:** 12m 00s  
@@ -11,7 +11,7 @@
 
 ```mermaid
 gantt
-    title Viasat Antigravity 201 Master Timeline (60 Minutes Total)
+    title Enterprise Antigravity 201 Master Timeline (60 Minutes Total)
     dateFormat mm:ss
     axisFormat %M:%S
 
@@ -33,7 +33,7 @@ gantt
     Demo 8 Finale (Return for Verification & Wrap-up)  :d8_finale, 45:00, 03:00
 
     section Section 4: Q&A
-    Open Discussion & Viasat Q&A Buffer                :qna, 48:00, 12:00
+    Open Discussion & Engineering Q&A Buffer           :qna, 48:00, 12:00
 ```
 
 ---
@@ -44,7 +44,7 @@ gantt
 
 | Timestamp | Slide & Topic | Duration | Key Talking Points & Visual Cues |
 |---|---|:---:|---|
-| **00:00 - 00:30** | **Slide 1: Cover** — *Antigravity 201: Spec-Driven Development & Multi-Agent Workflows* | 0:30 | <ul><li>Welcome Viasat engineering team.</li><li>Focus: Moving past single-turn chat prompts into deterministic, spec-driven engineering and coordinated multi-agent pipelines.</li></ul> |
+| **00:00 - 00:30** | **Slide 1: Cover** — *Antigravity 201: Spec-Driven Development & Multi-Agent Workflows* | 0:30 | <ul><li>Welcome attendees and engineering team.</li><li>Focus: Moving past single-turn chat prompts into deterministic, spec-driven engineering and coordinated multi-agent pipelines.</li></ul> |
 | **00:30 - 01:30** | **Slide 2: Open Agentic Foundations** *(Linux Foundation AAIF)* | 1:00 | <ul><li>Explain Linux Foundation AAIF open standards: instructions (`AGENTS.md`), reusable playbooks (`.agents/skills/`), and tool interfaces (`.mcp.json`).</li><li>No vendor lock-in: standardized files work across agent platforms.</li></ul> |
 | **01:30 - 02:30** | **Slide 3: Cross-Tool Harmonization** *(Single Source of Truth)* | 1:00 | <ul><li>How backward-compatible symlinks (`.cursorrules -> AGENTS.md`, `CLAUDE.md -> AGENTS.md`, `GEMINI.md -> AGENTS.md`) allow teams using Cursor, Claude Code, and Antigravity to share a single repo configuration.</li></ul> |
 | **02:30 - 03:15** | **Slide 4: Inside Global Preferences** *(`~/.gemini/`)* | 0:45 | <ul><li>Quick tour of user-level config: `settings.json`, global rules, skills, and model defaults.</li><li>Separation between machine-level defaults and repository-pinned constraints.</li></ul> |
@@ -90,4 +90,4 @@ gantt
 
 | Timestamp | Phase | Duration | Details |
 |---|---|:---:|---|
-| **48:00 - 60:00** | **Open Engineering Q&A & Wrap-Up** | 12:00 | <ul><li>Open discussion with Viasat engineering leadership and attendees.</li><li>Address enterprise adoption questions, subagent routing patterns, and next steps for team workflows.</li><li>Buffer absorbs any live network variance without overflowing the 60-minute mark.</li></ul> |
+| **48:00 - 60:00** | **Open Engineering Q&A & Wrap-Up** | 12:00 | <ul><li>Open discussion with engineering leadership and attendees.</li><li>Address enterprise adoption questions, subagent routing patterns, and next steps for team workflows.</li><li>Buffer absorbs any live network variance without overflowing the 60-minute mark.</li></ul> |

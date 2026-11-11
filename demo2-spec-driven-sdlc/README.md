@@ -1,6 +1,7 @@
 # Demo 2: Spec-Driven Coding, Git Worktrees & Test-Heal Loop
 
-> **Focus:** Spec drafting (`/grill-me` & `/plan`), isolated subagent execution in Git worktrees, autonomous test self-healing, and immediate multi-model adversarial PR auditing.
+> **Focus:** Spec drafting (`/grill-me` & `/plan`), isolated subagent execution in Git worktrees, autonomous test self-healing, and immediate multi-model adversarial PR auditing.  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

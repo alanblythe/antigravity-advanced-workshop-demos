@@ -1,6 +1,7 @@
 # Demo 4: Production Cloud Agent Platform & A2A Collaboration
 
-> **Focus:** Containerizing an ADK agent bundling Database MCP Toolbox, deploying to Gemini Enterprise Agent Platform (GEAP), and invoking the cloud agent from local Antigravity via Agent-to-Agent (A2A).
+> **Focus:** Containerizing an ADK agent bundling Database MCP Toolbox, deploying to Gemini Enterprise Agent Platform (GEAP), and invoking the cloud agent from local Antigravity via Agent-to-Agent (A2A).  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

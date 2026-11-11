@@ -1,6 +1,7 @@
 # Demo 5: Multi-Lens Architecture Ideation & Zero-Context RFC Stress-Testing (EGM)
 
-> **Focus:** Installing the open-source **Elephant-Goldfish Model (`egm`)** plugin, defeating LLM sycophancy ("glazing") during system design, and dispatching 6 parallel zero-context Goldfish subagents to stress-test a feature hypothesis before writing code.
+> **Focus:** Installing the open-source **Elephant-Goldfish Model (`egm`)** plugin, defeating LLM sycophancy ("glazing") during system design, and dispatching 6 parallel zero-context Goldfish subagents to stress-test a feature hypothesis before writing code.  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

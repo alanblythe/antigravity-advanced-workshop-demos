@@ -1,6 +1,7 @@
 # Demo 3: Enterprise Data Guardrails & Admin Governance
 
-> **Focus:** Declarative Database MCP Toolbox configuration committed in-repo, querying BigQuery read-only via MCP, demonstrating negative security controls (blocked `DROP TABLE`), and centralized admin governance.
+> **Focus:** Declarative Database MCP Toolbox configuration committed in-repo, querying BigQuery read-only via MCP, demonstrating negative security controls (blocked `DROP TABLE`), and centralized admin governance.  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

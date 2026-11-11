@@ -1,6 +1,7 @@
 # Demo 7: Contract-First Spec Clarification & Autonomous Test-Heal Loop
 
-> **Focus:** Translating product requirements (`docs/specs/`) with pre-written failing contract tests (`Red` state) into a structured implementation plan (`/grill-me` $\rightarrow$ `/plan`) adhering to architectural invariants (`docs/adr/`), and running an autonomous **Act $\rightarrow$ Verify** test-heal loop (`Green` state).
+> **Focus:** Translating product requirements (`docs/specs/`) with pre-written failing contract tests (`Red` state) into a structured implementation plan (`/grill-me` $\rightarrow$ `/plan`) adhering to architectural invariants (`docs/adr/`), and running an autonomous **Act $\rightarrow$ Verify** test-heal loop (`Green` state).  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 

@@ -1,6 +1,7 @@
 # Demo 6: Grounding Specs, Linked ADRs & `⚡ Boost`
 
-> **Focus:** Separating long-lived architectural decision records (`AGENTS.md` $\rightarrow$ `docs/adr/` + `.agents/rules/`) from single-conversation feature specifications (`docs/specs/`), and executing via autonomous **`⚡ Boost`** (`/boost`).
+> **Focus:** Separating long-lived architectural decision records (`AGENTS.md` $\rightarrow$ `docs/adr/` + `.agents/rules/`) from single-conversation feature specifications (`docs/specs/`), and executing via autonomous **`⚡ Boost`** (`/boost`).  
+> 👉 **[DEMO_STEPS.md](./DEMO_STEPS.md)** — *Step-by-step presenter flight plan & talk tracks.*
 
 ---
 
