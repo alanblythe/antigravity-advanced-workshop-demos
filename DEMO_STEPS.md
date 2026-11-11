@@ -53,9 +53,9 @@ source ./scripts/set_gcloud_env.sh
 
 ### [Module 2: Spec-Driven Coding, Git Worktrees, Browser Subagent & Multi-Model Review](./demo2-spec-driven-sdlc/DEMO_STEPS.md) *(~35 mins total)*
 * 👉 **[Open Demo 2 Presenter Flight Plan](./demo2-spec-driven-sdlc/DEMO_STEPS.md)**
-* **Demo 2A: Spec Drafting, Artifact Comments & Plan Lock (~10 mins):** Path-scoped progressive disclosure (`.agents/rules/`), edge-case interview via `/grill-me`, `/plan` artifact generation, and human-in-the-loop inline artifact commenting to steer architectural invariants into `.scratch/reconcile-plan.md`.
-* **Demo 2B: Subagent Worktree Isolation & Test-Heal Loop (~10 mins):** Delegating the locked plan via `/goal` to an isolated `@worktree-implementer` subagent in `.worktrees/feat-reconcile`, fixing seeded `KeyError`, and passing `pytest`.
-* **Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification (~7 mins):** Verifying the live local web dashboard via `@browser`, asserting DOM status `#settlement-status == 'SETTLED'`, checking console logs for 0 errors, and capturing visual verification artifacts.
+* **Demo 2A: Spec Drafting, Boundary Enforcement & Plan Lock (~10 mins):** Path-scoped progressive disclosure (`.agents/rules/`), negative test testing directory boundary refusal (`@backend-engineer` refusing to edit UI in `app.py`), edge-case interview via `/grill-me`, `/plan` artifact generation, and human-in-the-loop inline artifact commenting to steer architectural invariants into `.scratch/reconcile-plan.md`.
+* **Demo 2B: Subagent Worktree Isolation, Test-Heal Loop & Reintegration (~10 mins):** Delegating the locked plan via `/goal` to an isolated `@worktree-implementer` subagent in `.worktrees/feat-reconcile`, fixing seeded `KeyError`, passing `pytest`, and merging `feat/reconcile` cleanly back into `main`.
+* **Demo 2C: Antigravity 2.0 Browser Subagent E2E DOM Verification (~7 mins):** Verifying the live local web dashboard via `/browser`, asserting DOM status `#settlement-status == 'SETTLED'`, checking console logs for 0 errors, and capturing visual verification artifacts.
 * **Demo 2D: Immediate Multi-Model Adversarial PR Audit (~8 mins):** Running `@spec-adversary` (Claude 3.5 Sonnet on Vertex AI) against the worktree diff to catch subtle invariant flaws (`time.sleep` linear backoff violating exponential backoff policies) before PR merge.
 
 ### [Module 3: Enterprise Data Guardrails & Admin Governance](./demo3-database-guardrails/DEMO_STEPS.md) *(~12 mins total)*

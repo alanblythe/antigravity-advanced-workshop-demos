@@ -37,8 +37,25 @@
 ```text
 /goal Delegate implementation of .scratch/reconcile-plan.md to @worktree-implementer
 ```
+*Subagent creates `.worktrees/feat-reconcile`, self-heals unit tests, passes `ruff`, and commits.*
 
-4. Run the adversarial review against the completed worktree diff inside `agy`:
+4. Merge changes back to main and clean up worktree:
+```bash
+git merge feat/reconcile && git worktree remove .worktrees/feat-reconcile
+```
+
+5. Launch local dashboard and verify live via browser subagent:
+```bash
+python3 app.py &
+```
+```text
+/browser Open http://localhost:8000, click "Run Batch Reconciliation", verify the #settlement-status badge renders "SETTLED" in the DOM, and assert 0 console errors.
+```
+
+6. Run the adversarial review against the completed commit inside `agy`:
+```text
+@spec-adversary Audit HEAD~1...HEAD against AGENTS.md retry and backoff invariants.
+```
 ```text
 Use invoke subagent to execute spec-adversary to audit git diff main...feat/reconcile against .agents/rules/backend.md retry and backoff invariants.
 ```
