@@ -71,6 +71,13 @@ reset_demo9() {
     echo "    ✔ Demo 9 clean."
 }
 
+reset_demo10() {
+    echo "==> Resetting Demo 10: Greenfield Spec-to-App..."
+    cd "$ROOT_DIR/demo10-greenfield-spec-to-app"
+    ./start_demo.sh >/dev/null
+    echo "    ✔ Demo 10 clean."
+}
+
 case "$DEMO_NUM" in
     1) reset_demo1 ;;
     2) reset_demo2 ;;
@@ -81,11 +88,13 @@ case "$DEMO_NUM" in
     7) reset_demo7 ;;
     8) reset_demo8 ;;
     9) reset_demo9 ;;
+    10) reset_demo10 ;;
     201)
         reset_demo6
         reset_demo7
         reset_demo8
         reset_demo9
+        reset_demo10
         ;;
     all)
         reset_demo1
@@ -97,9 +106,10 @@ case "$DEMO_NUM" in
         reset_demo7
         reset_demo8
         reset_demo9
+        reset_demo10
         ;;
     *)
-        echo "Usage: ./start_demo.sh [1|2|3|4|5|6|7|8|9|201|all]"
+        echo "Usage: ./start_demo.sh [1|2|3|4|5|6|7|8|9|10|201|all]"
         exit 1
         ;;
 esac
